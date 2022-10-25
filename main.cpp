@@ -1,7 +1,7 @@
 #include <iostream>
 #include  <vector>
 #include <ctime>
-
+#include "angajat.h"
 using std::cout;
 using std::string;
 
@@ -52,53 +52,6 @@ public:
 
 
     ~Task(){}
-};
-class Angajat{
-
-    string nume;
-
-    std::vector<int>TaskuriAngajat;
-    int NrTaskuriRezolvate=0;
-public:
-    Angajat(const string &nume, const std::vector <int>&TaskuriAngajat,int TaskRez=0):
-            nume{nume},
-            TaskuriAngajat{TaskuriAngajat},
-            NrTaskuriRezolvate{TaskRez}
-    {
-    }
-
-public:
-    friend std::ostream &operator<<(std::ostream&cout,const Angajat&angajat);
-
-    Angajat &operator=(const Angajat&altul){
-
-        nume=altul.nume;
-        TaskuriAngajat=altul.TaskuriAngajat;
-        NrTaskuriRezolvate=altul.NrTaskuriRezolvate;
-        return *this;
-        // cout<<"Operator = de copiere angajat "<<'\n';
-    }
-    Angajat(const Angajat&altul):
-            nume{altul.nume},
-            TaskuriAngajat{altul.TaskuriAngajat},
-            NrTaskuriRezolvate{altul.NrTaskuriRezolvate}
-    {
-        //cout<<"Constructor copiere angajat "<<'\n';
-    }
-
-
-    // void CalculNrTaskRez(){
-
-
-
-
-
-    ~Angajat()= default;
-
-
-
-
-
 };
 
 class Departament{
