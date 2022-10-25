@@ -19,12 +19,10 @@ class Companie {
 private:
     string DenumireCompanie;
     std::vector<Departament> Departamente;
-    std::vector<Task> TaskuriCompanie;
 
 
 public:
-    Companie(const string &Denumire, const std::vector<Departament> &Departamente1,
-             const std::vector<Task> &TaskuriCompanie);
+    Companie(const string &Denumire, const std::vector<Departament> &Departamente1);
 
 
     Companie &operator=(const Companie &altul);

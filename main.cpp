@@ -40,7 +40,7 @@ int main() {
     //cout<<d1;
 
 
-    Companie c1("IBM", Departamente, Taskuri);
+    Companie c1("IBM", Departamente);
     cout << c1;
     // Companie c2("Microsoft",Angajati,Taskuri);
     // Companie c2=c1;

@@ -17,7 +17,7 @@ class Angajat{
 
     string nume;
 
-    std::vector<Task> TaskuriAngajat;
+    std::vector<Task> TaskAngajat;
     int NrTaskuriRezolvate = 0;
 public:
     Angajat(const string &nume, const std::vector<Task> &TaskuriAngajat, int TaskRez = 0);
