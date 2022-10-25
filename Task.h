@@ -16,12 +16,15 @@ using std::string;
 class Task {
     int IdTask;
     string DenumireTask;
-    string Angajat; // cine se ocupa de task-ul respectiv
     float ProfitTask = 0;
     bool StatusTask = 0;
     // time_t DeadLine;
 public:
-    Task(int IdTask, const string &DenumireTask, const string &Angajat, float ProfitTask, bool StatusTask);
+    Task(int IdTask, const string &DenumireTask,,
+
+    float ProfitTask,
+    bool StatusTask
+    );
 
 
     Task(const Task &other);
