@@ -28,11 +28,7 @@ public:
 
     Angajat(const Angajat &altul);
 
-
-    void CalculNrTaskRez();
-
-
-
+    void CalculeazaTaskAngajat(Angajat &a);
 
 
     ~Angajat()= default;

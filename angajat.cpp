@@ -8,6 +8,8 @@ Angajat::Angajat(const string &nume, const std::vector<Task> &TaskuriAngajat, in
         TaskAngajat{TaskuriAngajat},
         NrTaskuriRezolvate{TaskRez}
 {
+    CalculeazaTaskAngajat(*this);
+
 }
 
 Angajat &Angajat::operator=(const Angajat &altul) {
@@ -31,19 +33,23 @@ std::ostream &operator<<(std::ostream &cout1, const Angajat &angajat) {
     cout1 << "Nume angajat: " << angajat.nume << '\n';
     cout1 << "Task-uri rezolvate: " << angajat.NrTaskuriRezolvate << std::endl;
     cout1 << "Task-urile pe care le are angajatul:\n";
-
-    for (const auto &i: angajat.TaskAngajat)
+    cout1 << angajat.NrTaskuriRezolvate;
+  //  for (const auto &i: angajat.TaskAngajat)
 
         cout1 << std::endl;
     return cout1;
 }
 
-void Angajat::CalculNrTaskRez() {
-    for (const auto &i: TaskAngajat)
-        if (true == i.StatusTask)
-            NrTaskuriRezolvate += 1;
+void Angajat::CalculeazaTaskAngajat(Angajat &a) {
 
-    cout << "Angajatul " << nume << " a rezolvat " << NrTaskuriRezolvate << " taskuri!";
+    for (const auto &i: a.TaskAngajat) {
+        if (i.StatusTask == 1)
+            a.NrTaskuriRezolvate += 1;
+
+
+    }
 
 
 }
+
+
