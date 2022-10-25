@@ -20,16 +20,18 @@ class Task {
     bool StatusTask = 0;
     // time_t DeadLine;
 public:
-    Task(int IdTask, const string &DenumireTask,,
+    Task(int IdTask, const string &DenumireTask,
 
-    float ProfitTask,
-    bool StatusTask
+         float ProfitTask,
+         bool StatusTask
     );
 
 
     Task(const Task &other);
 
     friend std::ostream &operator<<(std::ostream &cout, const Task &task);
+
+    friend class Angajat;
 
     Task &operator=(const Task &other);
 

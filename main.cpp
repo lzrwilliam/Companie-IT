@@ -11,18 +11,29 @@ using std::string;
 
 
 int main() {
-    Task t1(1, "Configurare router principal", "William", 900, true);
-    Angajat a1("William", {1});
     std::vector<Task> Taskuri;
     std::vector<Angajat> Angajati;
     std::vector<Departament> Departamente;
-    Taskuri.push_back(t1);
-    Angajati.push_back(a1);
 
-    Angajat a2("Turis", {1, 2});
-    Task t2(2, "Reparare ip", "Turis", 200, false);
-    Taskuri.push_back(t2);
+    Task t1(1, "Configurare router principal", 900, 1);
+    Task t2(2, "Reparare ip", 200, false);
+    Task t3(3, "Configurare switch", 500, 1);
+
+
+    Taskuri.push_back(t1);
+    Angajat a1("William", Taskuri);
+    Taskuri.clear();
+    Angajat a2("Turis", Taskuri);
+    Taskuri.push_back(t1);
+    Taskuri.push_back(t3);
+
+
+    Angajat a3("Tudor", Taskuri);
+
+    Angajati.push_back(a1);
     Angajati.push_back(a2);
+    Angajati.push_back(a3);
+
 
     Departament d1("HR", Angajati);
     Departamente.push_back(d1);
