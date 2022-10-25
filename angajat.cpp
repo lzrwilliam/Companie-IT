@@ -32,7 +32,7 @@ std::ostream &operator<<(std::ostream &cout1, const Angajat &angajat) {
     cout1 << "Task-uri rezolvate: " << angajat.NrTaskuriRezolvate << std::endl;
     cout1 << "Task-urile pe care le are angajatul:\n";
 
-    for (const auto &i: angajat.TaskAngajat)
+  //  for (const auto &i: angajat.TaskAngajat)
 
         cout1 << std::endl;
     return cout1;
