@@ -44,7 +44,7 @@ void Angajat::CalculeazaTaskAngajat(Angajat &a) {
 
     for (const auto &i: a.TaskAngajat) {
         if (i.StatusTask == 1)
-            a.NrTaskuriRezolvate += 1;
+            a.NrTaskuriRezolvate++;
 
 
     }
