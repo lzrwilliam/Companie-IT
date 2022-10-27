@@ -1,7 +1,7 @@
 //
 // Created by lazar on 10/25/2022.
 //
-
+//dadada
 #include "Companie.h"
 
 Companie::Companie(const string &Denumire, const std::vector<Departament> &Departamente1) :
