@@ -5,6 +5,8 @@
 #include "AlteFunctii.h"
 
 char *ConvertireData(time_t time1) {
+
+
     char *dt= ctime(&time1);
     return dt;
 

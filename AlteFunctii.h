@@ -6,6 +6,7 @@
 #define OOP_ALTEFUNCTII_H
 #include <iostream>
 #include "ctime"
+#include <cstdio>
 
 
 char * ConvertireData(time_t time1);
