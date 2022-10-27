@@ -32,7 +32,7 @@ public:
 
     void CalculeazaTaskAngajat(Angajat &a);
 
-    void AfisareTaskRestant(Angajat &a);
+    static void AfisareTaskRestant(const Angajat &a);
 
 
 
