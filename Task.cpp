@@ -62,10 +62,7 @@ std::ostream &operator<<(std::ostream &cout1, const Task &task) {
 
 }
 
-time_t Task::GetDataTaskDeadline(const Task &t) {
-    return t.Deadline;
 
-}
 
 int Task::GetTaskId(const Task &t) {
     return t.IdTask;

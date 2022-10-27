@@ -19,7 +19,7 @@ int main() {
     Task t2(2, "Reparare ip", 200, 1,2023,6,2);
     Task t3(3, "Configurare switch", 500, 1,2020,1,2);
 
-
+ //cout<<Task::TaskRestant(t1)<<std::endl; verifica daca task-ul a depasit deadline-ul
     Taskuri.push_back(t1);
     Angajat a1("William", Taskuri);
     Taskuri.clear();
