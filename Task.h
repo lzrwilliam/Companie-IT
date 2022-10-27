@@ -18,12 +18,14 @@ class Task {
     string DenumireTask;
     float ProfitTask = 0;
     bool StatusTask = 0;
-    // time_t DeadLine;
+    tm * Deadline;
+
 public:
     Task(int IdTask, const string &DenumireTask,
 
          float ProfitTask,
-         bool StatusTask
+         bool StatusTask,
+         tm *deadline=0
     );
 
 

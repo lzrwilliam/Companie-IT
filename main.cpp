@@ -9,16 +9,17 @@
 using std::cout;
 using std::string;
 
-
+time_t now=time(0);
+tm *time2= localtime(&now);
 int main() {
     std::vector<Task> Taskuri;
     std::vector<Angajat> Angajati;
     std::vector<Departament> Departamente;
 
-    Task t1(1, "Configurare router principal", 900, 1);
-    Task t2(2, "Reparare ip", 200, false);
-    Task t3(3, "Configurare switch", 500, 1);
-
+    Task t1(1, "Configurare router principal", 900, 1,time2);
+    Task t2(2, "Reparare ip", 200, false,time2);
+    Task t3(3, "Configurare switch", 500, 1,time2);
+cout<<t1;
 
     Taskuri.push_back(t1);
     Angajat a1("William", Taskuri);
