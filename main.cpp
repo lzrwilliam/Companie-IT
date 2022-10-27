@@ -9,8 +9,7 @@
 using std::cout;
 using std::string;
 
-time_t now=time(0);
-tm *time2= localtime(&now);
+
 int main() {
     std::vector<Task> Taskuri;
     std::vector<Angajat> Angajati;
