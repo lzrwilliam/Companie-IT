@@ -31,3 +31,5 @@ std::ostream &operator<<(std::ostream &afisare, const Departament &departament) 
     return afisare;
 
 }
+
+

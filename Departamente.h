@@ -10,6 +10,7 @@
 #include <ctime>
 #include "angajat.h"
 
+
 using std::cout;
 using std::string;
 
@@ -27,6 +28,7 @@ public:
     Departament &operator=(const Departament &altul);
 
     friend std::ostream &operator<<(std::ostream &afisare, const Departament &departament);
+
 
 
     ~Departament() {}

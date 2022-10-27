@@ -10,6 +10,7 @@
 #include <ctime>
 #include "Task.h"
 
+
 using std::cout;
 using std::string;
 
@@ -29,6 +30,7 @@ public:
     Angajat(const Angajat &altul);
 
     void CalculeazaTaskAngajat(Angajat &a);
+
 
 
     ~Angajat()= default;
