@@ -22,6 +22,7 @@ int main() {
  //cout<<Task::TaskRestant(t1)<<std::endl; verifica daca task-ul a depasit deadline-ul
     Taskuri.push_back(t1);
     Angajat a1("William", Taskuri);
+  //  Angajat::CalcProfitAngajat(a1); calculeaza profitul generat de angajat
     Taskuri.clear();
     Angajat a2("Turis", Taskuri);
     Taskuri.push_back(t1);

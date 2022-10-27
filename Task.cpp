@@ -81,5 +81,9 @@ bool Task::TaskRestant(const Task &t) {
     return false;
 }
 
+int Task::GetProfitTask(const Task &t) {
+    return t.ProfitTask;
+}
+
 
 
