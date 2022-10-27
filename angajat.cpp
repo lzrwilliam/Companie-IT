@@ -99,9 +99,9 @@ void Angajat::CalcProfitAngajat(Angajat &a) {
 
 }
 
-float Angajat::GetAngajatProfit(const Angajat &a) {
-    return a.ProfitAngajat;
-}
+//float Angajat::GetAngajatProfit(const Angajat &a) {
+//    return a.ProfitAngajat;
+//}
 
 
 
