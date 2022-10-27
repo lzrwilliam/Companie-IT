@@ -8,6 +8,7 @@
 #include <iostream>
 #include  <vector>
 #include <ctime>
+#include "AlteFunctii.h"
 
 using std::cout;
 using std::string;
@@ -18,14 +19,16 @@ class Task {
     string DenumireTask;
     float ProfitTask = 0;
     bool StatusTask = 0;
-    tm * Deadline;
+   time_t Deadline;
 
 public:
     Task(int IdTask, const string &DenumireTask,
 
          float ProfitTask,
          bool StatusTask,
-         tm *deadline=0
+         int an,
+         int luna,
+         int zi
     );
 
 

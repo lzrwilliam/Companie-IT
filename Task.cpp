@@ -4,15 +4,25 @@
 
 #include "Task.h"
 
-Task::Task(int IdTask, const string &DenumireTask, float ProfitTask, bool StatusTask, tm*deadline)
+Task::Task(int IdTask, const string &DenumireTask, float ProfitTask, bool StatusTask, int an,int luna,int zi)
         :
         IdTask{IdTask},
         DenumireTask{DenumireTask},
         ProfitTask{ProfitTask},
-        StatusTask{StatusTask},
-       Deadline{deadline}
+        StatusTask{StatusTask}
 
-{ //cout<<"Constructor initializare Task! \n";
+
+{
+
+    std::tm tm={};
+    tm.tm_year=an-1900;
+    tm.tm_mon=luna-1;
+    tm.tm_mday=zi;
+std::time_t  time1= mktime(&tm);
+Deadline=time1;
+
+
+
 
 }
 
@@ -41,7 +51,10 @@ std::ostream &operator<<(std::ostream &cout1, const Task &task) {
 
     cout << "Id Task:" << task.IdTask << std::endl << "Denumire Task : " << task.DenumireTask << '\n' << "Responsabil: "
          << "de afisat numele angajatului" << '\n'
-         << "Profit Task " << task.ProfitTask << "\n Status: " << task.StatusTask << '\n'<<"Deadline :";
+         << "Profit Task " << task.ProfitTask << "\n Status: " << task.StatusTask << '\n'<<"Deadline :"<<ConvertireData(task.Deadline);
     return cout1;
 
 }
+
+
+
