@@ -9,6 +9,7 @@
 #include  <vector>
 #include <ctime>
 #include "Task.h"
+#include "AlteFunctii.h"
 
 
 using std::cout;
@@ -30,6 +31,8 @@ public:
     Angajat(const Angajat &altul);
 
     void CalculeazaTaskAngajat(Angajat &a);
+
+    void AfisareTaskRestant(Angajat &a);
 
 
 

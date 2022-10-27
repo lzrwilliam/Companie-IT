@@ -32,9 +32,14 @@ std::ostream &operator<<(std::ostream &cout1, const Angajat &angajat) {
 
     cout1 << "Nume angajat: " << angajat.nume << '\n';
     cout1 << "Task-uri rezolvate: " << angajat.NrTaskuriRezolvate << std::endl;
-    cout1 << "Task-urile pe care le are angajatul:\n";
-    cout1 << angajat.NrTaskuriRezolvate;
-  //  for (const auto &i: angajat.TaskAngajat)
+    cout1 << "Task-urile pe care le are angajatul de rezolvat:\n";
+
+
+    for (const auto &i: angajat.TaskAngajat) {
+        if (Task::GetStatusTask(i)==0)
+            cout1<<i<<std::endl;
+
+    ;}
 
         cout1 << std::endl;
     return cout1;
@@ -51,5 +56,12 @@ void Angajat::CalculeazaTaskAngajat(Angajat &a) {
 
 
 }
+
+//void Angajat::AfisareTaskRestant(Angajat &a) {
+//
+//
+//}
+
+
 
 

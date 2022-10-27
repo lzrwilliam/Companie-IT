@@ -56,5 +56,11 @@ std::ostream &operator<<(std::ostream &cout1, const Task &task) {
 
 }
 
+ int Task:: GetStatusTask(const Task &t){
+    if(t.StatusTask==1) return 1;
+    return 0;
+
+}
+
 
 

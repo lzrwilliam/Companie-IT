@@ -35,7 +35,7 @@ public:
     Task(const Task &other);
 
     friend std::ostream &operator<<(std::ostream &cout, const Task &task);
-
+ static int GetStatusTask(const Task &t);
     friend class Angajat;
 
     Task &operator=(const Task &other);
