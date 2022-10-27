@@ -5,7 +5,7 @@
 #ifndef OOP_ALTEFUNCTII_H
 #define OOP_ALTEFUNCTII_H
 #include <iostream>
-#include "ctime"
+#include <ctime>
 #include <cstdio>
 
 
