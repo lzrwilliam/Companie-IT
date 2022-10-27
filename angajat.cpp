@@ -78,7 +78,7 @@ for(const auto &i : a.TaskAngajat){
 
 }
 
-if(ok==0) cout<<" nu are task-uri restante";
+if(ok==0) cout<<" nu are task-uri restante!";
 }
 
 
