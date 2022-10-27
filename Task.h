@@ -39,6 +39,8 @@ public:
 static time_t GetDataTaskDeadline(const Task&t);
 static int GetTaskId(const Task &t);
 
+    static bool TaskRestant(const Task &t);
+
 
     Task &operator=(const Task &other);
 

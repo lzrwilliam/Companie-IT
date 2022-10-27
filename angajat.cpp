@@ -62,17 +62,16 @@ void Angajat::CalculeazaTaskAngajat(Angajat &a) {
 }
 
 void Angajat::AfisareTaskRestant(const Angajat &a) {
-    const int secunda_pe_zi=60*60*24;
     int ok=0;
     cout<<a.nume;
 for(const auto &i : a.TaskAngajat){
-    time_t datatask=Task::GetDataTaskDeadline(i);
 
-    double DiferentaIntreDati=std::difftime(ObtineDataCurentaPentruDiferenta(),datatask)/secunda_pe_zi;
-    if(DiferentaIntreDati>0){ ok++;
-        if(ok==1)    cout<<" este in urma cu task-urile cu nr: \n";
+    if (Task::TaskRestant(i)) {
+        ok++;
+        if (ok == 1) cout << " este in urma cu task-urile cu nr: \n";
 
-        cout<<Task::GetTaskId(i)<<" ";}
+        cout << Task::GetTaskId(i) << " ";
+    }
 
 
 
