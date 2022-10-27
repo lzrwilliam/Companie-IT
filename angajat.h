@@ -35,8 +35,9 @@ public:
 
     static void AfisareTaskRestant(const Angajat &a);
     static void CalcProfitAngajat(Angajat &a);
+    static float GetAngajatProfit(const Angajat &a);
 
-
+int GetTaskID(const Angajat &a);
 
 
 

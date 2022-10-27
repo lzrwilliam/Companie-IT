@@ -96,7 +96,15 @@ void Angajat::CalcProfitAngajat(Angajat &a) {
     }
     a.ProfitAngajat=profit;
 
+
 }
+
+float Angajat::GetAngajatProfit(const Angajat &a) {
+    return a.ProfitAngajat;
+}
+
+
+
 
 
 

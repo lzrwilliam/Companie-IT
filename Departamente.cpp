@@ -7,7 +7,9 @@
 Departament::Departament(const string &Nume, const std::vector<Angajat> &Angajati, float Profit) :
         NumeDepartament{Nume},
         AngajatiDepartament{Angajati},
-        ProfitDepartament{Profit} {}
+        ProfitDepartament{Profit} {
+
+}
 
 Departament::Departament(const Departament &other) :
         NumeDepartament{other.NumeDepartament},
@@ -31,5 +33,22 @@ std::ostream &operator<<(std::ostream &afisare, const Departament &departament) 
     return afisare;
 
 }
+// de facut profitu departamentelor
+//void Departament::SetProfitDep( Departament &d,float profit) {
+//
+//
+//    for(const auto &i:d.AngajatiDepartament){
+// profit+=Angajat::GetAngajatProfit(i);
+//
+//
+//
+//    }
+//    d.ProfitDepartament=profit;
+//
+//
+//}
+
+
+
 
 

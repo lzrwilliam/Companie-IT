@@ -38,11 +38,15 @@ int main() {
 
     Departament d1("HR", Angajati);
     Departamente.push_back(d1);
-    cout<<d1;
+   // Departament::SetProfitDep(d1);
+
+
+   // cout<<d1;
+
 
 
     Companie c1("IBM", Departamente);
-   // cout << c1;
+    cout << c1;
     // Companie c2("Microsoft",Angajati,Taskuri);
     // Companie c2=c1;
 
