@@ -4,7 +4,7 @@
 
 #include "AlteFunctii.h"
 
-char *ConvertireData(time_t time1) {
+char *ConvertireData(const time_t time1) {
 
 
     char *dt= ctime(&time1);

@@ -9,6 +9,6 @@
 #include <cstdio>
 
 
-char * ConvertireData(time_t time1);
+char * ConvertireData(const time_t time1);
 
 #endif //OOP_ALTEFUNCTII_H
