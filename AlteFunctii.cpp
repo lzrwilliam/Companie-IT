@@ -6,7 +6,6 @@
 
 char *ConvertireData(time_t time1) {
     char *dt= ctime(&time1);
-    char *dt1=time
     return dt;
 
 
