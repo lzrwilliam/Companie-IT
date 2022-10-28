@@ -1,4 +1,4 @@
-# OOP Template
+# Proiect OOP - Evidenta Companie IT
 
 ### Tema 0
 
