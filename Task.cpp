@@ -49,9 +49,12 @@ Task &Task::operator=(const Task &other) {
 
 std::ostream &operator<<(std::ostream &cout1, const Task &task) {
 
-    cout << "Id Task:" << task.IdTask << std::endl << "Denumire Task : " << task.DenumireTask << '\n' << "Responsabil: "
-         << "de afisat numele angajatului" << '\n'
-         << "Profit Task " << task.ProfitTask << "\n Status: " << task.StatusTask << '\n'<<"Deadline :"<<ConvertireData(task.Deadline);
+    cout1 << "Id Task:" << task.IdTask << std::endl <<
+    "Denumire Task : " << task.DenumireTask << '\n'
+         << "Profit Task " << task.ProfitTask <<
+         "\n Status: " << task.StatusTask <<
+         '\n'<<"Deadline :"<<ConvertireData(task.Deadline);
+    cout1<<'\n'<<'\n'<<'\n';
     return cout1;
 
 }
