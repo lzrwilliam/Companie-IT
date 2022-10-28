@@ -15,7 +15,7 @@ int main() {
     std::vector<Angajat> Angajati;
     std::vector<Departament> Departamente;
 
-    Task t1(1, "Configurare router principal", 900, 0,2022,6,7);
+    Task t1(1, "Configurare router principal", 900, 0,2023,6,7);
     Task t2(2, "Reparare ip", 200, 1,2023,6,2);
     Task t3(3, "Configurare switch", 500, 1,2020,1,2);
 
@@ -37,16 +37,17 @@ int main() {
 
 
     Departament d1("HR", Angajati);
+    Departament::SetProfitDep(d1);
     Departamente.push_back(d1);
-   // Departament::SetProfitDep(d1);
-
-
-   // cout<<d1;
 
 
 
-    Companie c1("IBM", Departamente);
-    cout << c1;
+    cout<<d1;
+
+
+
+   // Companie c1("IBM", Departamente);
+   // cout << c1;
     // Companie c2("Microsoft",Angajati,Taskuri);
     // Companie c2=c1;
 

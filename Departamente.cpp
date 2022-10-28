@@ -33,20 +33,22 @@ std::ostream &operator<<(std::ostream &afisare, const Departament &departament) 
     return afisare;
 
 }
-// de facut profitu departamentelor
-//void Departament::SetProfitDep( Departament &d,float profit) {
-//
-//
-//    for(const auto &i:d.AngajatiDepartament){
-// profit+=Angajat::GetAngajatProfit(i);
-//
-//
-//
-//    }
-//    d.ProfitDepartament=profit;
-//
-//
-//}
+
+
+void Departament::SetProfitDep( Departament &d) {
+
+float profit=0;
+    for(const auto &i:d.AngajatiDepartament){
+        Angajat::CalcProfitAngajat(const_cast<Angajat &>(i));
+     profit+=Angajat::GetAngajatProfit(i);
+
+
+
+    }
+    d.ProfitDepartament=profit;
+
+
+}
 
 
 

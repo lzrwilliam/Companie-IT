@@ -32,7 +32,7 @@ Angajat::Angajat(const Angajat &altul) :
 }
 
 std::ostream &operator<<(std::ostream &cout1, const Angajat &angajat) {
-    Angajat::CalcProfitAngajat(const_cast<Angajat &>(angajat));
+    //Angajat::CalcProfitAngajat(const_cast<Angajat &>(angajat));
     cout1 << "Nume angajat: " << angajat.nume << '\n';
     cout1<<"Profit generat:"<< angajat.ProfitAngajat<<'\n';
     cout1 << "Task-uri rezolvate: " << angajat.NrTaskuriRezolvate << std::endl;
@@ -99,9 +99,9 @@ void Angajat::CalcProfitAngajat(Angajat &a) {
 
 }
 
-//float Angajat::GetAngajatProfit(const Angajat &a) {
-//    return a.ProfitAngajat;
-//}
+float Angajat::GetAngajatProfit(const Angajat &a) {
+    return a.ProfitAngajat;
+}
 
 
 

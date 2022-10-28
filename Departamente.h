@@ -32,7 +32,7 @@ public:
 
 
 
-// static void SetProfitDep(Departament &d,float profit=0);
+ static void SetProfitDep(Departament &d);
 
     ~Departament() {}
 
