@@ -17,11 +17,11 @@ using std::string;
 
 class Departament {
     string NumeDepartament;
-    std::vector<Angajat> AngajatiDepartament;
+    std::vector<Angajat *> AngajatiDepartament;
     float ProfitDepartament = 0;
 
 public:
-    Departament(const string &Nume, const std::vector<Angajat> &Angajati, float Profit = 0);
+    Departament(const string &Nume, const std::vector<Angajat *> &Angajati, float Profit = 0);
 
     Departament(const Departament &other);
 

@@ -12,7 +12,7 @@ using std::string;
 
 int main() {
     std::vector<Task> Taskuri;
-    std::vector<Angajat> Angajati;
+    std::vector<Angajat *> Angajati;
     std::vector<Departament> Departamente;
 
     Task t1(1, "Configurare router principal", 900, 1, 2023, 6, 7);
@@ -36,15 +36,15 @@ int main() {
 
     Angajat a3("Tudor", Taskuri);
 
-    Angajati.push_back(a1);
-    Angajati.push_back(a2);
-    Angajati.push_back(a3);
+    Angajati.push_back(&a1);
+    Angajati.push_back(&a2);
+    Angajati.push_back(&a3);
     Taskuri.clear();
     Taskuri.push_back(t4);
     Taskuri.push_back(t5);
     Taskuri.push_back(t6);
     Angajat a4("catalin", Taskuri);
-    Angajati.push_back(a4);
+    Angajati.push_back(&a4);
 
 
     Departament d1("HR", Angajati);
@@ -59,6 +59,8 @@ int main() {
 
     Companie c1("IBM", Departamente);
     cout << c1;
+
+
     Departament::StergereAngajatCuTaskuriRestante(d1);
 
     // Companie c2("Microsoft",Angajati,Taskuri);
