@@ -60,8 +60,8 @@ int main() {
     Companie c1("IBM", Departamente);
     cout << c1;
 
-
-    Departament::StergereAngajatCuTaskuriRestante(d1);
+    // Departament::StergereAngajatCuTaskuriRestante(d1);
+    //concediem angajatul lenes!
 
     // Companie c2("Microsoft",Angajati,Taskuri);
     // Companie c2=c1;

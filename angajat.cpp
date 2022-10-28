@@ -39,7 +39,6 @@ std::ostream &operator<<(std::ostream &cout1, const Angajat &angajat) {
     cout1 << "Nume angajat: " << angajat.nume << '\n';
     cout1<<"Profit generat:"<< angajat.ProfitAngajat<<'\n';
     cout1 << "Task-uri rezolvate: " << angajat.NrTaskuriRezolvate << std::endl;
-    cout1 << "RESTANTE" << angajat.TaskuriRestante << std::endl;
 
 
 
@@ -86,7 +85,6 @@ void Angajat::AfisareTaskRestant(Angajat &a) {
     }
     a.TaskuriRestante = ok;
     if (ok == 0) cout << " nu are task-uri restante!";
-    cout << "LOCAL RESTANTE " << a.TaskuriRestante << std::endl;
 
 }
 
