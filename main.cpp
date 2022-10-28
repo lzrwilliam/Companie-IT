@@ -59,7 +59,8 @@ int main() {
 
     Companie c1("IBM", Departamente);
     cout << c1;
-
+    for (const auto &i: Departamente)
+        Departament::StergereAngajatCuTaskuriRestante(const_cast<Departament &>(i));
     // Departament::StergereAngajatCuTaskuriRestante(d1);
     //concediem angajatul lenes!
 
