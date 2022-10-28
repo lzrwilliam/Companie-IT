@@ -72,7 +72,7 @@ for(const auto &i : a.TaskAngajat){
 
     if (Task::TaskRestant(i)) {
         ok++;
-        if (ok == 1) cout << " este in urma cu task-urile cu nr: \n";
+        if (ok == 1) cout << " este in urma cu task-urile cu ID: ";
 
         cout << Task::GetTaskId(i) << " ";
     }

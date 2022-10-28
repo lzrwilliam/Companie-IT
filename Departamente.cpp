@@ -24,10 +24,11 @@ Departament &Departament::operator=(const Departament &altul) {
 }
 
 std::ostream &operator<<(std::ostream &afisare, const Departament &departament) {
+    Departament::SetProfitDep(const_cast<Departament &>(departament));
 
     afisare << "Numele departamentului: " << departament.NumeDepartament << std::endl;
     afisare << "Profit departament: " << departament.ProfitDepartament << std::endl;
-    afisare << "Angajatii din departament:" << std::endl;
+    afisare << "Angajatii din departament:" << std::endl << '\n';
     for (const auto &i: departament.AngajatiDepartament)
         afisare << i;
     return afisare;

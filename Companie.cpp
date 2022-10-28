@@ -21,7 +21,7 @@ Companie::Companie(Companie &other) :
         Departamente{other.Departamente} { cout << "CC Companie" << std::endl; }
 
 std::ostream &operator<<(std::ostream &cout1, const Companie &companie) {
-    cout1 << "Numele companiei: " << companie.DenumireCompanie << '\n' << "Departamentele companiei:" << '\n';
+    cout1 << "Numele companiei: " << companie.DenumireCompanie << '\n' << "Departamentele companiei:" << '\n' << '\n';
     for (const auto &i: companie.Departamente) {
         cout1 << i;
         cout1 << std::endl;
