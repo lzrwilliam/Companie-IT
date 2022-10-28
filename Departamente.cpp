@@ -35,13 +35,30 @@ std::ostream &operator<<(std::ostream &afisare, const Departament &departament) 
 
 }
 
+void Departament::StergereAngajatCuTaskuriRestante(Departament &d) {
+    int poz = 0;
+    for (const auto &i: d.AngajatiDepartament) {
 
-void Departament::SetProfitDep( Departament &d) {
+        if (Angajat::GetNrTaskRestante(i) >= 3) {
+            cout << "Angajatul " << Angajat::GetNume(i) << " din departamentul " << d.NumeDepartament
+                 << " a fost concediat!" << '\n';
+            d.AngajatiDepartament.erase(d.AngajatiDepartament.begin() + poz);
+        }
 
-float profit=0;
-    for(const auto &i:d.AngajatiDepartament){
+        poz++;
+
+
+    }
+
+}
+
+
+void Departament::SetProfitDep(Departament &d) {
+
+    float profit = 0;
+    for (const auto &i: d.AngajatiDepartament) {
         Angajat::CalcProfitAngajat(const_cast<Angajat &>(i));
-     profit+=Angajat::GetAngajatProfit(i);
+        profit += Angajat::GetAngajatProfit(i);
 
 
 

@@ -3,12 +3,13 @@
 //
 
 #include "angajat.h"
-Angajat::Angajat(const string &nume, const std::vector<Task> &TaskuriAngajat, int TaskRez,float ProfitAngajat) :
+Angajat::Angajat(const string &nume, const std::vector<Task> &TaskuriAngajat, int TaskRez, float ProfitAngajat,
+                 int TaskuriRestante) :
         nume{nume},
         TaskAngajat{TaskuriAngajat},
         NrTaskuriRezolvate{TaskRez},
-        ProfitAngajat{ProfitAngajat}
-{
+        ProfitAngajat{ProfitAngajat},
+        TaskuriRestante{TaskuriRestante} {
     CalculeazaTaskAngajat(*this);
 
 }
@@ -18,7 +19,8 @@ Angajat &Angajat::operator=(const Angajat &altul) {
     nume = altul.nume;
     TaskAngajat = altul.TaskAngajat;
     NrTaskuriRezolvate = altul.NrTaskuriRezolvate;
-    ProfitAngajat=altul.ProfitAngajat;
+    ProfitAngajat = altul.ProfitAngajat;
+    TaskuriRestante = altul.TaskuriRestante;
     return *this;
     // cout<<"Operator = de copiere angajat "<<'\n';
 }
@@ -27,7 +29,8 @@ Angajat::Angajat(const Angajat &altul) :
         nume{altul.nume},
         TaskAngajat{altul.TaskAngajat},
         NrTaskuriRezolvate{altul.NrTaskuriRezolvate},
-        ProfitAngajat{altul.ProfitAngajat}{
+        ProfitAngajat{altul.ProfitAngajat},
+        TaskuriRestante{altul.TaskuriRestante} {
     //cout<<"Constructor copiere angajat "<<'\n';
 }
 
@@ -36,6 +39,7 @@ std::ostream &operator<<(std::ostream &cout1, const Angajat &angajat) {
     cout1 << "Nume angajat: " << angajat.nume << '\n';
     cout1<<"Profit generat:"<< angajat.ProfitAngajat<<'\n';
     cout1 << "Task-uri rezolvate: " << angajat.NrTaskuriRezolvate << std::endl;
+    cout1 << "RESTANTE" << angajat.TaskuriRestante << std::endl;
 
 
 
@@ -45,10 +49,11 @@ std::ostream &operator<<(std::ostream &cout1, const Angajat &angajat) {
             cout1<<i<<std::endl;
 
     ;}
-    Angajat::AfisareTaskRestant(angajat);
+    Angajat::AfisareTaskRestant(const_cast<Angajat &>(angajat));
 
 
         cout1 << std::endl<<std::endl;
+
 
     return cout1;
 }
@@ -65,23 +70,24 @@ void Angajat::CalculeazaTaskAngajat(Angajat &a) {
 
 }
 
-void Angajat::AfisareTaskRestant(const Angajat &a) {
-    int ok=0;
-    cout<<a.nume;
-for(const auto &i : a.TaskAngajat){
+void Angajat::AfisareTaskRestant(Angajat &a) {
 
-    if (Task::TaskRestant(i)) {
-        ok++;
-        if (ok == 1) cout << " este in urma cu task-urile cu ID: ";
+    int ok = 0;
+    cout << a.nume;
+    for (const auto &i: a.TaskAngajat) {
+        if (Task::TaskRestant(i)) {
+            ok++;
+            if (ok == 1) cout << " este in urma cu task-urile cu ID: ";
 
-        cout << Task::GetTaskId(i) << " ";
+            cout << Task::GetTaskId(i) << " ";
+        }
+
+
     }
+    a.TaskuriRestante = ok;
+    if (ok == 0) cout << " nu are task-uri restante!";
+    cout << "LOCAL RESTANTE " << a.TaskuriRestante << std::endl;
 
-
-
-}
-
-if(ok==0) cout<<" nu are task-uri restante!";
 }
 
 void Angajat::CalcProfitAngajat(Angajat &a) {
@@ -91,16 +97,22 @@ void Angajat::CalcProfitAngajat(Angajat &a) {
         else if(Task::GetStatusTask(i)==0 && Task::TaskRestant(i)==true) profit-=Task::GetProfitTask(i);
 
 
-
-
     }
-    a.ProfitAngajat=profit;
+    a.ProfitAngajat = profit;
 
 
 }
 
 float Angajat::GetAngajatProfit(const Angajat &a) {
     return a.ProfitAngajat;
+}
+
+int Angajat::GetNrTaskRestante(const Angajat &a) {
+    return a.TaskuriRestante;
+}
+
+string Angajat::GetNume(const Angajat &a) {
+    return a.nume;
 }
 
 

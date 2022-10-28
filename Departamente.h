@@ -37,6 +37,7 @@ public:
     ~Departament() {}
 
 
+    static void StergereAngajatCuTaskuriRestante(Departament &d);
 };
 
 

@@ -54,7 +54,7 @@ std::ostream &operator<<(std::ostream &cout1, const Task &task) {
          << "Profit Task " << task.ProfitTask <<
          "\n Status: " << task.StatusTask <<
          '\n'<<"Deadline :"<<ConvertireData(task.Deadline);
-    cout1<<'\n'<<'\n'<<'\n';
+
     return cout1;
 
 }
