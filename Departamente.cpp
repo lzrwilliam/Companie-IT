@@ -29,18 +29,18 @@ std::ostream &operator<<(std::ostream &afisare, const Departament &departament) 
     afisare << "Numele departamentului: " << departament.NumeDepartament << std::endl;
     afisare << "Profit departament: " << departament.ProfitDepartament << std::endl;
     afisare << "Angajatii din departament:" << std::endl << '\n';
-    for (const auto *i: departament.AngajatiDepartament)
-        afisare << *i;
+    for (const auto *angajat: departament.AngajatiDepartament)
+        afisare << *angajat;
     return afisare;
 
 }
 
 void Departament::StergereAngajatCuTaskuriRestante(Departament &d) {
     int poz = 0;
-    for (const auto &i: d.AngajatiDepartament) {
+    for (const auto &angajat: d.AngajatiDepartament) {
 
-        if (Angajat::GetNrTaskRestante(*i) >= 3) {
-            cout << "Angajatul " << Angajat::GetNume(*i) << " din departamentul " << d.NumeDepartament
+        if (angajat->GetNrTaskRestante() >= 3) {
+            cout << "Angajatul " << Angajat::GetNume(*angajat) << " din departamentul " << d.NumeDepartament
                  << " a fost concediat!" << '\n';
             d.AngajatiDepartament.erase(d.AngajatiDepartament.begin() + poz);
         }

@@ -105,8 +105,8 @@ float Angajat::GetAngajatProfit(const Angajat &a) {
     return a.ProfitAngajat;
 }
 
-int Angajat::GetNrTaskRestante(const Angajat &a) {
-    return a.TaskuriRestante;
+int Angajat::GetNrTaskRestante() {
+    return this->TaskuriRestante;
 }
 
 string Angajat::GetNume(const Angajat &a) {

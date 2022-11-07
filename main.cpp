@@ -25,25 +25,18 @@ int main() {
 
 
     //cout<<Task::TaskRestant(t1)<<std::endl; verifica daca task-ul a depasit deadline-ul
-    Taskuri.push_back(t1);
-    Angajat a1("William", Taskuri);
+    Angajat a1("William", {t1});
     //  Angajat::CalcProfitAngajat(a1); calculeaza profitul generat de angajat
-    Taskuri.clear();
-    Angajat a2("Turis", Taskuri);
-    Taskuri.push_back(t1);
-    Taskuri.push_back(t3);
+    Angajat a2("Turis", {});
 
 
-    Angajat a3("Tudor", Taskuri);
+    Angajat a3("Tudor", {t1, t3});
 
     Angajati.push_back(&a1);
     Angajati.push_back(&a2);
     Angajati.push_back(&a3);
-    Taskuri.clear();
-    Taskuri.push_back(t4);
-    Taskuri.push_back(t5);
-    Taskuri.push_back(t6);
-    Angajat a4("catalin", Taskuri);
+
+    Angajat a4("catalin", {t4, t5, t6});
     Angajati.push_back(&a4);
 
 
@@ -59,8 +52,8 @@ int main() {
 
     Companie c1("IBM", Departamente);
     cout << c1;
-    for (const auto &i: Departamente)
-        Departament::StergereAngajatCuTaskuriRestante(const_cast<Departament &>(i));
+    for (auto &i: Departamente)
+        Departament::StergereAngajatCuTaskuriRestante(i);
     // Departament::StergereAngajatCuTaskuriRestante(d1);
     //concediem angajatul lenes!
 

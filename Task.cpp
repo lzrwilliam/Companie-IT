@@ -77,7 +77,7 @@ bool Task::TaskRestant(const Task &t) {
 
     const int secunda_pe_zi = 60 * 60 * 24;
     time_t datatask = t.Deadline;
-    double DiferentaIntreDati = std::difftime(ObtineDataCurentaPentruDiferenta(), datatask) / secunda_pe_zi;
+    double DiferentaIntreDati = std::difftime(DataCurenta(), datatask) / secunda_pe_zi;
     if (DiferentaIntreDati > 0) return true;
 
 

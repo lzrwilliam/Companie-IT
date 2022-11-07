@@ -41,7 +41,7 @@ public:
 
     static float GetAngajatProfit(const Angajat &a);
 
-    static int GetNrTaskRestante(const Angajat &a);
+   int GetNrTaskRestante();
 
     static string GetNume(const Angajat &a);
 
