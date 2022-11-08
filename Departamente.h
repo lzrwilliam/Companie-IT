@@ -17,11 +17,11 @@ using std::string;
 
 class Departament {
     string NumeDepartament;
-    std::vector<Angajat *> AngajatiDepartament;
-    float ProfitDepartament = 0;
+    std::vector<Angajat> AngajatiDepartament;
+
 
 public:
-    Departament(const string &Nume, const std::vector<Angajat *> &Angajati, float Profit = 0);
+    Departament(const string &Nume, const std::vector<Angajat> &Angajati);
 
     Departament(const Departament &other);
 
@@ -30,14 +30,10 @@ public:
     friend std::ostream &operator<<(std::ostream &afisare, const Departament &departament);
 
 
-
-
- static void SetProfitDep(Departament &d);
-
     ~Departament() {}
 
 
-    static void StergereAngajatCuTaskuriRestante(Departament &d);
+    void StergereAngajatCuTaskuriRestante();
 };
 
 

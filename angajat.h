@@ -23,27 +23,28 @@ class Angajat{
     int NrTaskuriRezolvate = 0;
     float ProfitAngajat;
     int TaskuriRestante = 0;
+
+
 public:
     Angajat(const string &nume, const std::vector<Task> &TaskuriAngajat, int TaskRez = 0, float ProfitAngajat = 0,
             int TaskuriRestante = 0);
 
-    friend std::ostream &operator<<(std::ostream&cout,const Angajat&angajat);
+    friend std::ostream &operator<<(std::ostream &afisare, Angajat &angajat);
 
     Angajat &operator=(const Angajat &altul);
 
     Angajat(const Angajat &altul);
 
-    static void CalculeazaTaskAngajat(Angajat &a);
+    void CalculeazaTaskAngajat();
 
-    static void AfisareTaskRestant(Angajat &a);
+    void AfisareTaskRestant();
 
-    static void CalcProfitAngajat(Angajat &a);
 
-    static float GetAngajatProfit(const Angajat &a);
+    float GetProfitAngajat() const;
 
    int GetNrTaskRestante();
 
-    static string GetNume(const Angajat &a);
+    string GetNume();
 
 
     ~Angajat() = default;

@@ -4,45 +4,40 @@
 
 #include "Departamente.h"
 
-Departament::Departament(const string &Nume, const std::vector<Angajat *> &Angajati, float Profit) :
+Departament::Departament(const string &Nume, const std::vector<Angajat> &Angajati) :
         NumeDepartament{Nume},
-        AngajatiDepartament{Angajati},
-        ProfitDepartament{Profit} {
+        AngajatiDepartament{Angajati} {
 
 }
 
 Departament::Departament(const Departament &other) :
         NumeDepartament{other.NumeDepartament},
-        AngajatiDepartament{other.AngajatiDepartament},
-        ProfitDepartament{other.ProfitDepartament} {}
+        AngajatiDepartament{other.AngajatiDepartament} {}
 
 Departament &Departament::operator=(const Departament &altul) {
     NumeDepartament = altul.NumeDepartament;
     AngajatiDepartament = altul.AngajatiDepartament;
-    ProfitDepartament = altul.ProfitDepartament;
     return *this;
 }
 
 std::ostream &operator<<(std::ostream &afisare, const Departament &departament) {
-    Departament::SetProfitDep(const_cast<Departament &>(departament));
 
     afisare << "Numele departamentului: " << departament.NumeDepartament << std::endl;
-    afisare << "Profit departament: " << departament.ProfitDepartament << std::endl;
     afisare << "Angajatii din departament:" << std::endl << '\n';
-    for (const auto *angajat: departament.AngajatiDepartament)
-        afisare << *angajat;
+    for (auto angajat: departament.AngajatiDepartament)
+        afisare << angajat;
     return afisare;
 
 }
 
-void Departament::StergereAngajatCuTaskuriRestante(Departament &d) {
+void Departament::StergereAngajatCuTaskuriRestante() {
     int poz = 0;
-    for (const auto &angajat: d.AngajatiDepartament) {
+    for (auto &angajat: this->AngajatiDepartament) {
 
-        if (angajat->GetNrTaskRestante() >= 3) {
-            cout << "Angajatul " << Angajat::GetNume(*angajat) << " din departamentul " << d.NumeDepartament
+        if (angajat.GetNrTaskRestante() >= 3) {
+            cout << "Angajatul " << angajat.GetNume() << " din departamentul " << this->NumeDepartament
                  << " a fost concediat!" << '\n';
-            d.AngajatiDepartament.erase(d.AngajatiDepartament.begin() + poz);
+            this->AngajatiDepartament.erase(this->AngajatiDepartament.begin() + poz);
         }
 
         poz++;
@@ -53,19 +48,6 @@ void Departament::StergereAngajatCuTaskuriRestante(Departament &d) {
 }
 
 
-void Departament::SetProfitDep(Departament &d) {
-
-    float profit = 0;
-    for (const auto &i: d.AngajatiDepartament) {
-        Angajat::CalcProfitAngajat(const_cast<Angajat &>(*i));
-        profit += Angajat::GetAngajatProfit(*i);
-
-
-    }
-    d.ProfitDepartament=profit;
-
-
-}
 
 
 

@@ -75,13 +75,9 @@ int Task::GetTaskId(const Task &t) {
 
 bool Task::TaskRestant(const Task &t) {
 
-    const int secunda_pe_zi = 60 * 60 * 24;
-    time_t datatask = t.Deadline;
-    double DiferentaIntreDati = std::difftime(DataCurenta(), datatask) / secunda_pe_zi;
-    if (DiferentaIntreDati > 0) return true;
 
-
-    return false;
+    double DiferentaIntreDati = std::difftime(DataCurenta(), t.Deadline) / (60 * 60 * 24); //nr secunde intr-o zi
+    return DiferentaIntreDati > 0;
 }
 
 int Task::GetProfitTask(const Task &t) {

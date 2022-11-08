@@ -9,6 +9,9 @@
 #include  <vector>
 #include <ctime>
 #include "AlteFunctii.h"
+#include <iomanip>      // std::put_time
+
+using std::tm;
 
 using std::cout;
 using std::string;
