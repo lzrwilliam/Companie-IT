@@ -3,12 +3,11 @@
 //
 
 #include "angajat.h"
-Angajat::Angajat(const string &nume, const std::vector<Task> &TaskuriAngajat, int TaskRez, float ProfitAngajat,
-                 int TaskuriRestante) :
+Angajat::Angajat(const string &nume, const std::vector<Task> &TaskuriAngajat, int TaskRez, int TaskuriRestante) :
         nume{nume},
         TaskAngajat{TaskuriAngajat},
         NrTaskuriRezolvate{TaskRez},
-        ProfitAngajat{ProfitAngajat},
+
         TaskuriRestante{TaskuriRestante} {
     this->CalculeazaTaskAngajat();
 
@@ -19,7 +18,7 @@ Angajat &Angajat::operator=(const Angajat &altul) {
     nume = altul.nume;
     TaskAngajat = altul.TaskAngajat;
     NrTaskuriRezolvate = altul.NrTaskuriRezolvate;
-    ProfitAngajat = altul.ProfitAngajat;
+
     TaskuriRestante = altul.TaskuriRestante;
     return *this;
     // cout<<"Operator = de copiere angajat "<<'\n';
@@ -29,7 +28,6 @@ Angajat::Angajat(const Angajat &altul) :
         nume{altul.nume},
         TaskAngajat{altul.TaskAngajat},
         NrTaskuriRezolvate{altul.NrTaskuriRezolvate},
-        ProfitAngajat{altul.ProfitAngajat},
         TaskuriRestante{altul.TaskuriRestante} {
     //cout<<"Constructor copiere angajat "<<'\n';
 }

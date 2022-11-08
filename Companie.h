@@ -32,7 +32,7 @@ public:
 
     ~Companie() = default;
 
-    friend std::ostream &operator<<(std::ostream &cout, const Companie &companie);
+    friend std::ostream &operator<<(std::ostream &afisare, const Companie &companie);
 
 };
 

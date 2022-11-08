@@ -20,14 +20,14 @@ Companie::Companie(Companie &other) :
         DenumireCompanie{other.DenumireCompanie},
         Departamente{other.Departamente} { cout << "CC Companie" << std::endl; }
 
-std::ostream &operator<<(std::ostream &cout1, const Companie &companie) {
-    cout1 << "Numele companiei: " << companie.DenumireCompanie << '\n' << "Departamentele companiei:" << '\n' << '\n';
+std::ostream &operator<<(std::ostream &afisare, const Companie &companie) {
+    afisare << "Numele companiei: " << companie.DenumireCompanie << '\n' << "Departamentele companiei:" << '\n' << '\n';
     for (const auto &i: companie.Departamente) {
-        cout1 << i;
-        cout1 << std::endl;
+        afisare << i;
+        afisare << std::endl;
     }
 
-    return cout1;
+    return afisare;
 
 
 }

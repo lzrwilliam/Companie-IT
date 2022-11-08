@@ -21,13 +21,12 @@ class Angajat{
 
     std::vector<Task> TaskAngajat;
     int NrTaskuriRezolvate = 0;
-    float ProfitAngajat;
+
     int TaskuriRestante = 0;
 
 
 public:
-    Angajat(const string &nume, const std::vector<Task> &TaskuriAngajat, int TaskRez = 0, float ProfitAngajat = 0,
-            int TaskuriRestante = 0);
+    Angajat(const string &nume, const std::vector<Task> &TaskuriAngajat, int TaskRez = 0, int TaskuriRestante = 0);
 
     friend std::ostream &operator<<(std::ostream &afisare, Angajat &angajat);
 
