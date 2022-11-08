@@ -11,7 +11,6 @@ using std::string;
 
 
 int main() {
-    std::vector<Task> Taskuri;
     std::vector<Angajat> Angajati;
     std::vector<Departament> Departamente;
 
