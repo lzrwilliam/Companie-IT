@@ -23,9 +23,11 @@ int main() {
 
 
 
-    //cout<<Task::TaskRestant(t1)<<std::endl; verifica daca task-ul a depasit deadline-ul
+
+    // cout<<t1.TaskRestant();verifica daca task-ul a depasit deadline-ul
     Angajat a1("William", {t1});
-    //  Angajat::CalcProfitAngajat(a1); calculeaza profitul generat de angajat
+
+    //cout<<a1.GetProfitAngajat(); obtinem profitul unui angajat
     Angajat a2("Turis", {});
 
 
@@ -40,7 +42,7 @@ int main() {
 
 
     Departament d1("HR", Angajati);
-    // calculeaza profitul departamentului  Departament::SetProfitDep(d1);
+
     Departamente.push_back(d1);
 
 
