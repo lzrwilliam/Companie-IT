@@ -54,13 +54,9 @@ int main() {
     cout << c1;
     for (auto &i: Departamente)
         i.StergereAngajatCuTaskuriRestante();
-    // Departament::StergereAngajatCuTaskuriRestante(d1);
+
     //concediem angajatul lenes!
 
-    // Companie c2("Microsoft",Angajati,Taskuri);
-    // Companie c2=c1;
-
-    // cout<<c2;
 
 
 

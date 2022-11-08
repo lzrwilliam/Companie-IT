@@ -38,11 +38,14 @@ public:
     Task(const Task &other);
 
     friend std::ostream &operator<<(std::ostream &cout, const Task &task);
- static int GetStatusTask(const Task &t);
-static int GetTaskId(const Task &t);
-static int GetProfitTask(const Task &t);
 
-    static bool TaskRestant(const Task &t);
+    int GetStatusTask() const;
+
+    int GetTaskId() const;
+
+    int GetProfitTask() const;
+
+    bool TaskRestant() const;
 
 
     Task &operator=(const Task &other);

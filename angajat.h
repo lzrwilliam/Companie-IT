@@ -39,10 +39,12 @@ public:
 
     void AfisareTaskRestant();
 
+    void SetTaskRestant();
+
 
     float GetProfitAngajat() const;
 
-   int GetNrTaskRestante();
+    int GetNrTaskRestante() const;
 
     string GetNume();
 

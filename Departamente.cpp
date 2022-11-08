@@ -33,11 +33,17 @@ std::ostream &operator<<(std::ostream &afisare, const Departament &departament) 
 void Departament::StergereAngajatCuTaskuriRestante() {
     int poz = 0;
     for (auto &angajat: this->AngajatiDepartament) {
-
+angajat.SetTaskRestant();
         if (angajat.GetNrTaskRestante() >= 3) {
+
             cout << "Angajatul " << angajat.GetNume() << " din departamentul " << this->NumeDepartament
                  << " a fost concediat!" << '\n';
             this->AngajatiDepartament.erase(this->AngajatiDepartament.begin() + poz);
+//            this->AngajatiDepartament.erase(
+//                    std::remove_if(this->AngajatiDepartament.begin(),
+//                                   this->AngajatiDepartament.end(),angajat.GetNrTaskRestante()>=3),
+//                                   this->AngajatiDepartament.end());
+
         }
 
         poz++;

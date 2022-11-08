@@ -50,38 +50,37 @@ Task &Task::operator=(const Task &other) {
 std::ostream &operator<<(std::ostream &cout1, const Task &task) {
 
     cout1 << "Id Task:" << task.IdTask << std::endl <<
-    "Denumire Task : " << task.DenumireTask << '\n'
-         << "Profit Task " << task.ProfitTask <<
-         "\n Status: " << task.StatusTask <<
-         '\n'<<"Deadline :"<<ConvertireData(task.Deadline);
+          "Denumire Task : " << task.DenumireTask << '\n'
+          << "Profit Task " << task.ProfitTask <<
+          "\n Status: " << task.StatusTask <<
+          '\n' << "Deadline :" << ConvertireData(task.Deadline);
 
     return cout1;
 
 }
 
- int Task:: GetStatusTask(const Task &t){
-    if(t.StatusTask==1) return 1;
+int Task::GetStatusTask() const {
+    if (this->StatusTask == 1) return 1;
     return 0;
 
 }
 
 
-
-int Task::GetTaskId(const Task &t) {
-    return t.IdTask;
+int Task::GetTaskId() const {
+    return this->IdTask;
 
 
 }
 
-bool Task::TaskRestant(const Task &t) {
+bool Task::TaskRestant() const {
 
 
-    double DiferentaIntreDati = std::difftime(DataCurenta(), t.Deadline) / (60 * 60 * 24); //nr secunde intr-o zi
+    double DiferentaIntreDati = std::difftime(DataCurenta(), this->Deadline) / (60 * 60 * 24); //nr secunde intr-o zi
     return DiferentaIntreDati > 0;
 }
 
-int Task::GetProfitTask(const Task &t) {
-    return t.ProfitTask;
+int Task::GetProfitTask() const {
+    return this->ProfitTask;
 }
 
 
