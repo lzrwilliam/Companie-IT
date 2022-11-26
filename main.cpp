@@ -19,7 +19,7 @@ int main() {
     Task t3(3, "Configurare switch", 500, 1, 2020, 1, 2);
     Task t4(4, "dasda", 500, 0, 2020, 1, 2);
     Task t5(5, "dasda", 500, 0, 2020, 1, 2);
-    Task t6(6, "dasda", 500, 0, 2020, 1, 2);
+
 
 
 
@@ -37,7 +37,7 @@ int main() {
     Angajati.push_back(a2);
     Angajati.push_back(a3);
 
-    Angajat a4("catalin", {t4, t5, t6});
+    Angajat a4("catalin", {t4, t5});
     Angajati.push_back(a4);
 
 
