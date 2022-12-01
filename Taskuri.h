@@ -42,6 +42,8 @@ public:
     TaskPrincipal(string Denumire, float valoare);
 
     shared_ptr<Task> clone() const override;
+
+    void afisare(std::ostream &afis) const override;
 };
 
 

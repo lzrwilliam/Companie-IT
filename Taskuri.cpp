@@ -23,3 +23,11 @@ shared_ptr<Task> TaskPrincipal::clone() const {
 TaskPrincipal::TaskPrincipal(string Denumire, float Valoare) : Task(Denumire, Valoare) {
 
 }
+
+
+void TaskPrincipal::afisare(std::ostream &afis) const {
+    afis << "TASK PRINCIPAL!!!";
+    afis << '\n';
+
+
+}
