@@ -45,8 +45,9 @@ class NetworkEngineer : public Angajat {
 
 
 public:
-    NetworkEngineer(string Nume, float Salariu = 400, int Penalizari = 0, int ReteleRez = 0, int EchipamenteDis = 0,
-                    int ClientiMultu = 0);
+  explicit NetworkEngineer(string Nume, float Salariu = 400, int Penalizari = 0, int ReteleRez = 0,
+                           int EchipamenteDis = 0,
+                           int ClientiMultu = 0);
 
     std::shared_ptr<Angajat> clone() const override;
 
@@ -63,8 +64,8 @@ class OperatorCallCenter : public Angajat {
 public:
     std::shared_ptr<Angajat> clone() const override;
 
-    OperatorCallCenter(string Nume, float Salariu = 400, int Penalizari = 0, int NrApeluriPeUltimaLuna = 0,
-                       int NrPentruTargetLunar = 0, float ProcentTarget = 0);
+    explicit OperatorCallCenter(string Nume, float Salariu = 400, int Penalizari = 0, int NrApeluriPeUltimaLuna = 0,
+                                int NrPentruTargetLunar = 0, float ProcentTarget = 0);
 
 
 };

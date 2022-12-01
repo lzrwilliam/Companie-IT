@@ -23,7 +23,7 @@ public:
     Companie(const string &Denumire, const std::vector<std::shared_ptr<Departament>> &Departamente1);
 
 
-    Companie &operator=(const Companie altul);
+    Companie &operator=(const Companie &altul);
 
     friend void swap(Companie c1, Companie c2);
 

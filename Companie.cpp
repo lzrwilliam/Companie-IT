@@ -8,7 +8,7 @@ Companie::Companie(const string &Denumire, const std::vector<std::shared_ptr<Dep
         DenumireCompanie{Denumire},
         Departamente{Departamente1} {}
 
-Companie &Companie::operator=(Companie altul) {
+Companie &Companie::operator=(const Companie &altul) {
     swap(*this, altul);
     return *this;
 }
