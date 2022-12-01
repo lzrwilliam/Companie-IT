@@ -52,7 +52,7 @@ private:
 
 public:
     DepartamenteTehnice(const std::string &NumeDepartament, float profit, int nrtaskuri,
-                        std::vector<std::shared_ptr<Angajat>> AngajatiTehnic);
+                        const std::vector<std::shared_ptr<Angajat>> &AngajatiTehnic);
 
     std::shared_ptr<Departament> clone() const override {
         return std::make_shared<DepartamenteTehnice>(*this);

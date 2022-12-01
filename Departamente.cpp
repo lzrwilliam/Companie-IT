@@ -25,7 +25,7 @@ Departament::Departament(const string &Nume) : NumeDepartament(Nume) {
 
 
 DepartamenteTehnice::DepartamenteTehnice(const std::string &NumeDepartament, float Profit, int nrtaskuri,
-                                         std::vector<std::shared_ptr<Angajat>> AngajatiTehnic) :
+                                         const std::vector<std::shared_ptr<Angajat>> &AngajatiTehnic) :
         Departament(NumeDepartament), ProfitTotal(Profit),
         NrTaskuriTotale(nrtaskuri), AngajatiTehnic(AngajatiTehnic) {
 
