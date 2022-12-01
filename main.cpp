@@ -24,7 +24,7 @@ int main() {
 
     //cout << d3;
 
-    TaskRetelistica t1("Dd", 2, 2, 3, 2022, 2, 2);
+    TaskRetelistica t1("Dd", 2, 2, 3, 2022, true, 2, 2);
 cout << t1;
 
     return 0;
