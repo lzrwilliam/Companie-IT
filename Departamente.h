@@ -18,12 +18,13 @@ using std::string;
 class Departament {
     // de facut IdDepartament cu incrementare automata
     string NumeDepartament;
+    std::vector<std::shared_ptr<Angajat>> AngajatiiDinDepartamente;
 
     virtual void afisare(std::ostream &) const;
 
 public:
 
-    explicit Departament(const string &Nume);
+    Departament(string Nume, std::vector<std::shared_ptr<Angajat>> AngajatiiDinDepartamente);
 
     virtual std::shared_ptr<Departament> clone() const = 0;
 
@@ -31,6 +32,7 @@ public:
 
 
     virtual  ~Departament() = default;
+
 
 protected:
     Departament(const Departament &other) = default;
@@ -44,15 +46,16 @@ class DepartamenteTehnice : public Departament {
 private:
     float ProfitTotal;
     int NrTaskuriTotale;
-    std::vector<std::shared_ptr<Angajat>> AngajatiTehnic;
+
 
     //vect task-uri cred sau nu
     void afisare(std::ostream &afis) const override;
 
 
 public:
-    DepartamenteTehnice(const std::string &NumeDepartament, float profit, int nrtaskuri,
-                        const std::vector<std::shared_ptr<Angajat>> &AngajatiTehnic);
+    DepartamenteTehnice(const std::string &NumeDepartament,
+                        const std::vector<std::shared_ptr<Angajat>> &AngajatiiDinDepartamente, float profit,
+                        int nrtaskuri);
 
     std::shared_ptr<Departament> clone() const override {
         return std::make_shared<DepartamenteTehnice>(*this);
@@ -61,7 +64,6 @@ public:
 
     DepartamenteTehnice &operator=(DepartamenteTehnice altul);
 
-    // DepartamenteTehnice(const DepartamenteTehnice&altul);
     ~DepartamenteTehnice();
 
 
@@ -69,17 +71,27 @@ public:
 
 
 };
-// sa vad daca mai fac alt departament, automat mai trebuie si alta derivata pt angajati, cred
-//class DepartamentDeCatering:public Departament{
-//
-//   std::vector<std::shared_ptr<std::pair<string ,float>>>MeniuDisponibil;
-//    std::vector<std::shared_ptr<Angajat>>AngajatiCatering;
-//    void afisare(std::ostream&afis) const override;
-//
-//
-//
-//
-//};
+
+class DepartamentRelatiiClienti : public Departament {
+    int Target;
+
+    void afisare(std::ostream &afis) const override;
+
+public:
+    DepartamentRelatiiClienti(const std::string &NumeDepartament,
+                              const std::vector<std::shared_ptr<Angajat>> &AngajatiDepartamente, int Target);
+
+    ~DepartamentRelatiiClienti() {}
+
+    std::shared_ptr<Departament> clone() const override;
+
+    DepartamentRelatiiClienti &operator=(DepartamentRelatiiClienti altul);
+
+
+    friend void swap1(DepartamentRelatiiClienti &d1, DepartamentRelatiiClienti &d2);
+
+
+};
 
 
 
