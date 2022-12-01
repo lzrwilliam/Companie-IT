@@ -36,5 +36,13 @@ protected:
     Task(const Task &altul) = default;
 };
 
+class TaskPrincipal : public Task {
+
+public:
+    TaskPrincipal(string Denumire, float valoare);
+
+    shared_ptr<Task> clone() const override;
+};
+
 
 #endif //OOP_TASKURI_H

@@ -15,3 +15,11 @@ std::ostream &operator<<(std::ostream &afis, const Task &task) {
 }
 
 Task::Task(string Denumire, float Valoare) : DenumireTask(Denumire), ValoareTask(Valoare) {}
+
+shared_ptr<Task> TaskPrincipal::clone() const {
+    return std::make_shared<TaskPrincipal>(*this);
+}
+
+TaskPrincipal::TaskPrincipal(string Denumire, float Valoare) : Task(Denumire, Valoare) {
+
+}

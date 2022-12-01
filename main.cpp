@@ -4,7 +4,7 @@
 #include "Companie.h"
 #include "Departamente.h"
 #include "Angajat.h"
-
+#include "Taskuri.h"
 #include <memory>
 
 int main() {
@@ -21,7 +21,10 @@ int main() {
     DepartamenteTehnice d1("Retele", {n.clone(), n1.clone()}, 100, 3);
     DepartamentRelatiiClienti d3("Call Center", {n1.clone()}, 5);
 
-    cout << d3;
+
+    //cout << d3;
+
+    TaskPrincipal t1("Dd", 2);
 
 
     return 0;
