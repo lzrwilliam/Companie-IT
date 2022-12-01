@@ -9,14 +9,18 @@
 #include <memory>
 #include <vector>
 #include <iostream>
+#include <ctime>
+#include "altefunctii.h"
+
 using std::shared_ptr;
 using std::vector;
 using std::string;
 
 class Task {
-
+// id task automat
     string DenumireTask;
     float ValoareTask;
+    time_t Deadline;
 
     virtual void afisare(std::ostream &) const {}
 
@@ -28,7 +32,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &afis, const Task &task);
 
-    Task(string Denumire, float Valoare);
+    Task(string Denumire, float Valoare, int zi, int luna, int an);
 
 protected:
     Task &operator=(const Task &altul) = default;
@@ -36,14 +40,19 @@ protected:
     Task(const Task &altul) = default;
 };
 
-class TaskPrincipal : public Task {
+class TaskRetelistica : public Task {
+
+    int NrEchipInMentenanta;
+    int ReteleImplicate;
+
+    void afisare(std::ostream &afis) const override;
 
 public:
-    TaskPrincipal(string Denumire, float valoare);
+    TaskRetelistica(string Denumire, float valoare, int zi, int luna, int an, int nrEchipamenteInMentenanta,
+                    int ReteleImplicate);
 
     shared_ptr<Task> clone() const override;
 
-    void afisare(std::ostream &afis) const override;
 };
 
 
