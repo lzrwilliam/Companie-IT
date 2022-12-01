@@ -23,13 +23,13 @@ std::tm CreazaData(int zi, int luna, int an) {
 
 }
 
-time_t DataCurenta() {
-
-    time_t now = time(0);
-    tm *timp = localtime(&now);
-    std::tm tm2 = CreazaData(timp->tm_mday, 1 + timp->tm_mon, 1900 + timp->tm_year);
-    std::time_t time1 = mktime(&tm2);
-    return time1;
-
-
-}
+//time_t DataCurenta() {
+//
+//    time_t now = time(0);
+//    tm *timp = localtime(&now);
+//    std::tm tm2 = CreazaData(timp->tm_mday, 1 + timp->tm_mon, 1900 + timp->tm_year);
+//    std::time_t time1 = mktime(&tm2);
+//    return time1;
+//
+//
+//}
