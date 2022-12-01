@@ -13,15 +13,15 @@ char *ConvertireData(const time_t time1) {
 
 }
 
-std::tm CreazaData(int zi, int luna, int an) {
-    std::tm tm = {};
-    tm.tm_year = an - 1900;
-    tm.tm_mon = luna - 1;
-    tm.tm_mday = zi;
-    return tm;
-
-
-}
+//std::tm CreazaData(int zi, int luna, int an) {
+//    std::tm tm = {};
+//    tm.tm_year = an - 1900;
+//    tm.tm_mon = luna - 1;
+//    tm.tm_mday = zi;
+//    return tm;
+//
+//
+//}
 
 //time_t DataCurenta() {
 //

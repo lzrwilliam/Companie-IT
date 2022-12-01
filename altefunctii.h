@@ -13,7 +13,7 @@
 
 char *ConvertireData(const time_t time1);
 
-std::tm CreazaData(int zi, int luna, int an);
+//std::tm CreazaData(int zi, int luna, int an);
 
 //time_t DataCurenta();
 
