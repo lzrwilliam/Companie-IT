@@ -22,10 +22,9 @@ int main() {
     DepartamentRelatiiClienti d3("Call Center", {n1.clone()}, 5);
 
 
-    //cout << d3;
-
     TaskRetelistica t1("Dd", 2, 3, 2022, true, 2, 2,900);
-cout << t1;
+    TaskRelatiiClienti t2("Recuperat bani",3,4,2005,false,3);
+cout << t2;
 
     return 0;
 }

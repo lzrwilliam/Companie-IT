@@ -59,13 +59,19 @@ public:
 
 
 
-//class TaskRelatiiClienti:public Task{
-//
-//
-//
-//
-//
-//
-//};
+class TaskRelatiiClienti:public Task{
+
+    int ImportantaApel;
+
+    void afisare(std::ostream&afis) const override;
+public:
+   explicit TaskRelatiiClienti(string Denumire, int zi, int luna, int an, bool Status,int ImportantaApel);
+    shared_ptr<Task>clone() const override;
+
+
+
+
+
+};
 
 #endif //OOP_TASKURI_H

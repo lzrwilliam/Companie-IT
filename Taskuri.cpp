@@ -52,3 +52,20 @@ void TaskRetelistica::afisare(std::ostream &afis) const {
 }
 
 
+TaskRelatiiClienti::TaskRelatiiClienti(string Denumire, int zi, int luna, int an, bool Status,int ImportantaApel):
+        Task(std::move(Denumire), zi, luna, an, Status),ImportantaApel(ImportantaApel)
+
+{
+
+}
+
+shared_ptr<Task> TaskRelatiiClienti::clone() const {
+    return std::make_shared<TaskRelatiiClienti>(*this);
+}
+
+void TaskRelatiiClienti::afisare(std::ostream &afis) const {
+
+    afis<<"Apelul valoreaza cat "<<ImportantaApel<<" apeluri!";
+    afis<<'\n';
+
+}
