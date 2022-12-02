@@ -12,6 +12,9 @@ int main() {
     TaskRetelistica t1("Dd", 2, 3, 2022, true, 2, 2,900);
     TaskRelatiiClienti t2("Recuperat bani",3,4,2005,false,3);
 
+//    std::shared_ptr<Task>Ttest=t2.clone();
+//    Ttest=t1.clone();
+//    cout<<*Ttest;
     NetworkEngineer n("William",{t1.clone(),t2.clone()}, 100, 1, 1, 3, 4);
     //OperatorCallCenter n1("William12", 0, 1, 1, 1, 1);
 
@@ -21,7 +24,7 @@ int main() {
 
 
 //cout << t2;
-cout<<n;
+//cout<<n;
 
     return 0;
 }
