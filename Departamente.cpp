@@ -28,6 +28,20 @@ Departament::Departament(string Nume, std::vector<std::shared_ptr<Angajat>> Anga
 
 }
 
+Departament &Departament::operator=(const Departament &altul) {
+
+    auto copie=altul.clone();
+    std::swap(NumeDepartament,copie->NumeDepartament);
+    std::swap(AngajatiiDinDepartamente,copie->AngajatiiDinDepartamente);
+    return *this;
+
+}
+
+Departament::Departament(const Departament &altul):NumeDepartament(altul.NumeDepartament) {
+    for(const auto &Angajati:altul.AngajatiiDinDepartamente)
+        AngajatiiDinDepartamente.emplace_back(Angajati->clone());
+}
+
 
 DepartamenteTehnice::DepartamenteTehnice(const std::string &NumeDepartament,
                                          const std::vector<std::shared_ptr<Angajat>> &AngajatiDepartamente,

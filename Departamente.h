@@ -35,9 +35,9 @@ public:
 
 
 protected:
-    Departament(const Departament &other) = default;
+    Departament &operator=(const Departament&altul);
+    Departament(const Departament &altul);
 
-    Departament &operator=(const Departament &altul) = default;
 
 };
 
