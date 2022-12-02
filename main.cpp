@@ -16,7 +16,7 @@ int main() {
 //    std::shared_ptr<Task>Ttest=t2.clone();
 //    Ttest=t1.clone();
 //    cout<<*Ttest;
-    NetworkEngineer n("William",{t1.clone(),t2.clone()}, 100, 1, 1, 3, 4);
+  //  NetworkEngineer n("William",{t1.clone(),t2.clone()}, 100, 1, 1, 3, 4);
     //OperatorCallCenter n1("William12", 0, 1, 1, 1, 1);
 
   //  DepartamenteTehnice d1("Retele", {n.clone(), n1.clone()}, 100, 3);
