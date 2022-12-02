@@ -21,7 +21,7 @@ class Angajat {
 
 
 public:
-    Angajat(const string &nume,std::vector<std::shared_ptr<Task>>TaskAng ,float salariu, int Penalizari);
+    Angajat(const string &nume,const std::vector<std::shared_ptr<Task>>TaskAng ,float salariu, int Penalizari);
 
     virtual std::shared_ptr<Angajat> clone() const = 0;
 
@@ -45,7 +45,7 @@ class NetworkEngineer : public Angajat {
 
 
 public:
-  explicit NetworkEngineer(string Nume, std::vector<std::shared_ptr<Task>>TaskAng,float Salariu = 400, int Penalizari = 0, int ReteleRez = 0,
+  explicit NetworkEngineer(const string Nume, const std::vector<std::shared_ptr<Task>>TaskAng,float Salariu = 400, int Penalizari = 0, int ReteleRez = 0,
                            int EchipamenteDis = 0,
                            int ClientiMultu = 0);
 
@@ -64,7 +64,7 @@ class OperatorCallCenter : public Angajat {
 public:
     std::shared_ptr<Angajat> clone() const override;
 
-    explicit OperatorCallCenter(string Nume, std::vector<std::shared_ptr<Task>>TaskAng,float Salariu = 400, int Penalizari = 0, int NrApeluriPeUltimaLuna = 0,
+    explicit OperatorCallCenter(const string Nume, const std::vector<std::shared_ptr<Task>>TaskAng,float Salariu = 400, int Penalizari = 0, int NrApeluriPeUltimaLuna = 0,
                                 int NrPentruTargetLunar = 0, float ProcentTarget = 0);
 
 

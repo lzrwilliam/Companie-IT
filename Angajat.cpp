@@ -4,7 +4,7 @@
 
 #include "Angajat.h"
 
-Angajat::Angajat(const string &nume, std::vector<std::shared_ptr<Task>>TaskAng,float salariu, int Penalizari) : NumeAngajat(nume), TaskAng(TaskAng),Salariu(salariu),
+Angajat::Angajat(const string &nume, const std::vector<std::shared_ptr<Task>>TaskAng,float salariu, int Penalizari) : NumeAngajat(nume), TaskAng(TaskAng),Salariu(salariu),
                                                                       PenalizariPentruTaskuriIntarziate(Penalizari) {
 
 }
@@ -20,7 +20,7 @@ std::ostream &operator<<(std::ostream &afis, const Angajat &angajat) {
     return afis;
 }
 
-NetworkEngineer::NetworkEngineer(string Nume, std::vector<std::shared_ptr<Task>>TaskAng,float Salariu, int Penalizari, int ReteleRez, int EchipamenteDis,
+NetworkEngineer::NetworkEngineer(const string Nume, const std::vector<std::shared_ptr<Task>>TaskAng,float Salariu, int Penalizari, int ReteleRez, int EchipamenteDis,
                                  int ClientiMultu) : Angajat(Nume, TaskAng,Salariu, Penalizari),
                                                      ReteleRezolvate(ReteleRez), EchipamenteDistruse(EchipamenteDis),
                                                      ClientiMultumiti(ClientiMultu) {
@@ -47,7 +47,7 @@ std::shared_ptr<Angajat> OperatorCallCenter::clone() const {
     return std::make_shared<OperatorCallCenter>(*this);
 }
 
-OperatorCallCenter::OperatorCallCenter(string Nume, std::vector<std::shared_ptr<Task>>TaskAng,float Salariu, int Penalizari, int NrApeluriPeUltimaLuna,
+OperatorCallCenter::OperatorCallCenter(const string Nume, const std::vector<std::shared_ptr<Task>>TaskAng,float Salariu, int Penalizari, int NrApeluriPeUltimaLuna,
                                        int NrPentruTargetLunar, float ProcentTarget) : Angajat(Nume, TaskAng,Salariu,
                                                                                                Penalizari),
                                                                                        NrApeluriPeUltimaLuna(
