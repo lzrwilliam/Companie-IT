@@ -46,18 +46,18 @@ void DepartamenteTehnice::afisare(std::ostream &afis) const {
 
 }
 
-void swap(DepartamenteTehnice &d1, DepartamenteTehnice &d2) {
-    std::swap(d1.ProfitTotal, d2.ProfitTotal);
-    std::swap(d1.NrTaskuriTotale, d2.NrTaskuriTotale);
+//void swap(DepartamenteTehnice &d1, DepartamenteTehnice &d2) {
+//    std::swap(d1.ProfitTotal, d2.ProfitTotal);
+//    std::swap(d1.NrTaskuriTotale, d2.NrTaskuriTotale);
+//
+//}
+//
+//DepartamenteTehnice &DepartamenteTehnice::operator=(DepartamenteTehnice altul) {
+//    swap(*this, altul);
+//    return *this;
+//}
 
-}
-
-DepartamenteTehnice &DepartamenteTehnice::operator=(DepartamenteTehnice altul) {
-    swap(*this, altul);
-    return *this;
-}
-
-DepartamenteTehnice::~DepartamenteTehnice() {}
+//DepartamenteTehnice::~DepartamenteTehnice() {}
 
 DepartamentRelatiiClienti::DepartamentRelatiiClienti(const std::string &NumeDepartament,
                                                      const std::vector<std::shared_ptr<Angajat>> &AngajatiDepartamente,
@@ -76,16 +76,16 @@ std::shared_ptr<Departament> DepartamentRelatiiClienti::clone() const {
     return std::make_shared<DepartamentRelatiiClienti>(*this);
 }
 
-DepartamentRelatiiClienti &DepartamentRelatiiClienti::operator=(DepartamentRelatiiClienti altul) {
-    swap1(*this, altul);
-    return *this;
-}
-
-void swap1(DepartamentRelatiiClienti &d1, DepartamentRelatiiClienti &d2) {
-    std::swap(d1.Target, d2.Target);
-
-
-}
+//DepartamentRelatiiClienti &DepartamentRelatiiClienti::operator=(DepartamentRelatiiClienti altul) {
+//    swap1(*this, altul);
+//    return *this;
+//}
+//
+//void swap1(DepartamentRelatiiClienti &d1, DepartamentRelatiiClienti &d2) {
+//    std::swap(d1.Target, d2.Target);
+//
+//
+//}
 
 
 

@@ -61,12 +61,12 @@ public:
     }
 
 
-    DepartamenteTehnice &operator=(DepartamenteTehnice altul);
+   // DepartamenteTehnice &operator=(DepartamenteTehnice altul);
 
-    ~DepartamenteTehnice();
+  //  ~DepartamenteTehnice();
 
 
-    friend void swap(DepartamenteTehnice &d1, DepartamenteTehnice &d2);
+   // friend void swap(DepartamenteTehnice &d1, DepartamenteTehnice &d2);
 
 
 };
