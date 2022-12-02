@@ -48,7 +48,6 @@ private:
     int NrTaskuriTotale;
 
 
-    //vect task-uri cred sau nu
     void afisare(std::ostream &afis) const override;
 
 
