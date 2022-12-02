@@ -28,10 +28,9 @@ public:
     friend std::ostream &operator<<(std::ostream &afis, const Angajat &angajat);
 
     virtual ~Angajat() = default;
+    Angajat &operator=(const Angajat &altul);
 
-protected:
-    Angajat &operator=(const Angajat &other) = default; // trebuie cu swap daca o sa fac cu pointeri
-    Angajat(const Angajat &other) = default;
+    Angajat(const Angajat &other);
 
 };
 
@@ -50,6 +49,8 @@ public:
                            int ClientiMultu = 0);
 
     std::shared_ptr<Angajat> clone() const override;
+
+
 
 
 };

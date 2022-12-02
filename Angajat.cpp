@@ -20,6 +20,23 @@ std::ostream &operator<<(std::ostream &afis, const Angajat &angajat) {
     return afis;
 }
 
+Angajat &Angajat::operator=(const Angajat &altul) {
+ auto copie=altul.clone();
+ std::swap(NumeAngajat,copie->NumeAngajat);
+ std::swap(TaskAng,copie->TaskAng);
+ std::swap(Salariu,copie->Salariu);
+ std::swap(PenalizariPentruTaskuriIntarziate,copie->PenalizariPentruTaskuriIntarziate);
+    return *this;
+}
+
+Angajat::Angajat(const Angajat &other):NumeAngajat(other.NumeAngajat),Salariu(other.Salariu),PenalizariPentruTaskuriIntarziate(other.PenalizariPentruTaskuriIntarziate) {
+    for(const auto &task:other.TaskAng)
+        TaskAng.emplace_back(task->clone());
+
+
+}
+
+
 NetworkEngineer::NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float Salariu, int Penalizari, int ReteleRez, int EchipamenteDis,
                                  int ClientiMultu) : Angajat(Nume, TaskAng,Salariu, Penalizari),
                                                      ReteleRezolvate(ReteleRez), EchipamenteDistruse(EchipamenteDis),
