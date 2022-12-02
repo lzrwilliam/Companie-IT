@@ -9,7 +9,7 @@
 
 std::ostream &operator<<(std::ostream &afis, const Task &task) {
     afis << "Numele task-ului: " << task.DenumireTask << '\n';
-    afis << "Valoare task: " << task.ValoareTask << '\n';
+  //  afis << "Valoare task: " << task.ValoareTask << '\n';
     afis << "Data deadline: " << ConvertireData(task.Deadline);
     afis << "Status task:" << task.Status << '\n';
     task.afisare(afis);
@@ -18,8 +18,7 @@ std::ostream &operator<<(std::ostream &afis, const Task &task) {
 
 }
 
-Task::Task(string Denumire, float Valoare, int zi, int luna, int an, bool Status) : DenumireTask(std::move(Denumire)),
-                                                                                    ValoareTask(Valoare),
+Task::Task(string Denumire, int zi, int luna, int an, bool Status) : DenumireTask(std::move(Denumire)),
                                                                                     Status(Status) {
 
     std::tm tm = {};
@@ -34,11 +33,11 @@ shared_ptr<Task> TaskRetelistica::clone() const {
     return std::make_shared<TaskRetelistica>(*this);
 }
 
-TaskRetelistica::TaskRetelistica(string Denumire, float Valoare, int zi, int luna, int an, bool Status,
+TaskRetelistica::TaskRetelistica(string Denumire, int zi, int luna, int an, bool Status,
                                  int NrEchipinMentenanta,
-                                 int NrReteleimplicate) : Task(std::move(Denumire), Valoare, zi, luna, an, Status),
+                                 int NrReteleimplicate,float  ValoareTask) : Task(std::move(Denumire), zi, luna, an, Status),
                                                           NrEchipInMentenanta(NrEchipinMentenanta),
-                                                          ReteleImplicate(NrReteleimplicate) {
+                                                          ReteleImplicate(NrReteleimplicate),ValoareTask(ValoareTask) {
 
 }
 
@@ -47,6 +46,7 @@ void TaskRetelistica::afisare(std::ostream &afis) const {
 
     afis << "Echipamente in mentenanta : " << NrEchipInMentenanta << '\n';
     afis << "Retele implicate: " << ReteleImplicate << '\n';
+    afis<<"Valoare task:"<<ValoareTask<<'\n';
     afis << '\n';
 
 }

@@ -19,7 +19,6 @@ using std::string;
 class Task {
 // id task automat
     string DenumireTask;
-    float ValoareTask;
     time_t Deadline;
     bool Status;
 
@@ -33,7 +32,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &afis, const Task &task);
 
-    Task(string Denumire, float Valoare, int zi, int luna, int an, bool Status);
+    Task(string Denumire, int zi, int luna, int an, bool Status);
 
 protected:
     Task &operator=(const Task &altul) = default;
@@ -45,17 +44,28 @@ class TaskRetelistica : public Task {
 
     int NrEchipInMentenanta;
     int ReteleImplicate;
+    float ValoareTask;
 
     void afisare(std::ostream &afis) const override;
 
 public:
-    TaskRetelistica(string Denumire, float valoare, int zi, int luna, int an, bool Status,
+    TaskRetelistica(string Denumire, int zi, int luna, int an, bool Status,
                     int nrEchipamenteInMentenanta,
-                    int ReteleImplicate);
+                    int ReteleImplicate,float ValoareTask);
 
     shared_ptr<Task> clone() const override;
 
 };
 
+
+
+//class TaskRelatiiClienti:public Task{
+//
+//
+//
+//
+//
+//
+//};
 
 #endif //OOP_TASKURI_H
