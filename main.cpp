@@ -10,7 +10,7 @@
 int main() {
 
     TaskRetelistica t1("Dd", 2, 3, 2022, true, 2, 2,900);
-    TaskRelatiiClienti t2("Recuperat bani",3,4,2005,false,3);
+   // TaskRelatiiClienti t2("Recuperat bani",3,4,2005,false,3);
 
 
 //    std::shared_ptr<Task>Ttest=t2.clone();
