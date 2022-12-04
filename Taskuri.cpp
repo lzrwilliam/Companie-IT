@@ -7,9 +7,11 @@
 #include <utility>
 
 
+int Task::Id=1;
+
 std::ostream &operator<<(std::ostream &afis, const Task &task) {
+    afis<<"Id task:"<<task.IdTask<<'\n';
     afis << "Numele task-ului: " << task.DenumireTask << '\n';
-  //  afis << "Valoare task: " << task.ValoareTask << '\n';
     afis << "Data deadline: " << ConvertireData(task.Deadline);
     afis << "Status task:" << task.Status << '\n';
     task.afisare(afis);
@@ -19,7 +21,7 @@ std::ostream &operator<<(std::ostream &afis, const Task &task) {
 }
 
 Task::Task(string Denumire, int zi, int luna, int an, bool Status) : DenumireTask(std::move(Denumire)),
-                                                                                    Status(Status) {
+                                                                                    Status(Status),IdTask(Id) { Id++;
 
     std::tm tm = {};
     tm.tm_year = an - 1900;
@@ -27,6 +29,14 @@ Task::Task(string Denumire, int zi, int luna, int an, bool Status) : DenumireTas
     tm.tm_mday = zi;
     std::time_t time1 = mktime(&tm);
     Deadline = time1;
+}
+
+Task &Task::operator=(const Task &altul) {
+    auto copie=altul.clone();
+    DenumireTask=altul.DenumireTask;
+    Deadline=altul.Deadline;
+    Status= altul.Status;
+    return *this;
 }
 
 shared_ptr<Task> TaskRetelistica::clone() const {

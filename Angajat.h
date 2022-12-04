@@ -28,6 +28,8 @@ public:
     friend std::ostream &operator<<(std::ostream &afis, const Angajat &angajat);
 
     virtual ~Angajat() = default;
+
+protected:
     Angajat &operator=(const Angajat &altul);
 
     Angajat(const Angajat &other);
@@ -59,7 +61,6 @@ class OperatorCallCenter : public Angajat {
     int NrApeluriPeUltimaLuna; // functie sa calculez nr asta din task-uri
     int NrPentruTargetLunar;// nr minim pe care trebuie sa il aiba de apeluri
     float ProcentTarget; //cat a indeplinit din target
-//vect task-uri o sa trebuiasca operator = cu swap
     void afisare(std::ostream &afis) const override;
 
 public:

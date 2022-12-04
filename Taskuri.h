@@ -17,11 +17,11 @@ using std::vector;
 using std::string;
 
 class Task {
-// id task automat
     string DenumireTask;
     time_t Deadline;
     bool Status;
-
+    static int Id;
+    const int IdTask;
     virtual void afisare(std::ostream &) const {}
 
 public:
@@ -35,7 +35,7 @@ public:
     Task(string Denumire, int zi, int luna, int an, bool Status);
 
 protected:
-    Task &operator=(const Task &altul) = default;
+    Task &operator=(const Task &altul);
 
     Task(const Task &altul) = default;
 };

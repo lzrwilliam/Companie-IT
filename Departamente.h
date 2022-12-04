@@ -80,14 +80,10 @@ public:
     DepartamentRelatiiClienti(const std::string &NumeDepartament,
                               const std::vector<std::shared_ptr<Angajat>> &AngajatiDepartamente, int Target);
 
-    ~DepartamentRelatiiClienti() {}
+ //   ~DepartamentRelatiiClienti() {}
 
     std::shared_ptr<Departament> clone() const override;
 
-    DepartamentRelatiiClienti &operator=(DepartamentRelatiiClienti altul);
-
-
-    friend void swap1(DepartamentRelatiiClienti &d1, DepartamentRelatiiClienti &d2);
 
 
 };
