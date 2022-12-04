@@ -18,6 +18,8 @@ class Angajat {
     float Salariu;
     int PenalizariPentruTaskuriIntarziate;
     virtual void afisare(std::ostream &) const {}
+    static int Id;
+    const int IdAngajat;
 
 
 public:

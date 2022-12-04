@@ -14,10 +14,12 @@ int main() {
 
 
 //    std::shared_ptr<Task>Ttest=t2.clone();
-//    Ttest=t1.clone();
-//    cout<<*Ttest;
+//   Ttest=t1.clone();
+//   cout<<*Ttest;
    NetworkEngineer n("William",{t1.clone()}, 100, 1, 1, 3, 4);
- //   OperatorCallCenter n1("Andreea",{t2.clone()},100,1,1,1,1);
+    NetworkEngineer n2("Williamdasda",{t1.clone()}, 100, 1, 1, 3, 4);
+
+    //   OperatorCallCenter n1("Andreea",{t2.clone()},100,1,1,1,1);
 
 
     DepartamenteTehnice d1("Retele", {n.clone()}, 100, 3);

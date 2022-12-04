@@ -5,11 +5,13 @@
 #include "Angajat.h"
 
 Angajat::Angajat(const string &nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float salariu, int Penalizari) : NumeAngajat(nume), TaskAng(TaskAng),Salariu(salariu),
-                                                                      PenalizariPentruTaskuriIntarziate(Penalizari) {
+                                                                      PenalizariPentruTaskuriIntarziate(Penalizari),IdAngajat(Id) { Id++;
 
 }
+int Angajat::Id=1;
 
 std::ostream &operator<<(std::ostream &afis, const Angajat &angajat) {
+    afis<<"Id Angajat:"<<angajat.IdAngajat<<'\n';
     afis << "Numele angajatului: " << angajat.NumeAngajat << '\n';
     afis << "Salariul:" << angajat.Salariu << '\n';
     afis << "Penalitati:" << angajat.PenalizariPentruTaskuriIntarziate << '\n';
@@ -29,7 +31,8 @@ Angajat &Angajat::operator=(const Angajat &altul) {
     return *this;
 }
 
-Angajat::Angajat(const Angajat &other):NumeAngajat(other.NumeAngajat),Salariu(other.Salariu),PenalizariPentruTaskuriIntarziate(other.PenalizariPentruTaskuriIntarziate) {
+Angajat::Angajat(const Angajat &other):NumeAngajat(other.NumeAngajat),Salariu(other.Salariu),PenalizariPentruTaskuriIntarziate(other.PenalizariPentruTaskuriIntarziate),IdAngajat(Id) {
+    Id++;
     for(const auto &task:other.TaskAng)
         TaskAng.emplace_back(task->clone());
 
