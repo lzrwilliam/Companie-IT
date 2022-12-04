@@ -7,6 +7,7 @@
 
 
 #include <iostream>
+#include <typeinfo>
 
 using std::cout;
 using std::string;
@@ -16,15 +17,17 @@ using std::string;
 #include "Angajat.h"
 
 class Departament {
-    // de facut IdDepartament cu incrementare automata
     string NumeDepartament;
-    std::vector<std::shared_ptr<Angajat>> AngajatiiDinDepartamente;
 
     virtual void afisare(std::ostream &) const;
 
+  std::vector<std::shared_ptr<Angajat>> AngajatiiDinDepartamente;
+
 public:
+  // virtual void CalculeazaPierderiDepartament() const;
 
     Departament(string Nume, std::vector<std::shared_ptr<Angajat>> AngajatiiDinDepartamente);
+  void AdaugaAngajat(std::shared_ptr<Angajat>Ang);
 
     virtual std::shared_ptr<Departament> clone() const = 0;
 
@@ -59,6 +62,7 @@ public:
     std::shared_ptr<Departament> clone() const override {
         return std::make_shared<DepartamenteTehnice>(*this);
     }
+ //   void CalculeazaPierderiDepartament() const override;
 
 
    // DepartamenteTehnice &operator=(DepartamenteTehnice altul);

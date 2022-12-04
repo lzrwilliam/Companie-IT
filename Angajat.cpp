@@ -39,6 +39,11 @@ Angajat::Angajat(const Angajat &other):NumeAngajat(other.NumeAngajat),Salariu(ot
 
 }
 
+void Angajat::AdaugaTask(const std::shared_ptr<Task> TaskAng1) {
+    TaskAng.emplace_back(TaskAng1);
+
+}
+
 
 NetworkEngineer::NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float Salariu, int Penalizari, int ReteleRez, int EchipamenteDis,
                                  int ClientiMultu) : Angajat(Nume, TaskAng,Salariu, Penalizari),

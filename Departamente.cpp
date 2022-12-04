@@ -42,6 +42,11 @@ Departament::Departament(const Departament &altul):NumeDepartament(altul.NumeDep
         AngajatiiDinDepartamente.emplace_back(Angajati->clone());
 }
 
+void Departament::AdaugaAngajat(std::shared_ptr<Angajat> Ang){
+    AngajatiiDinDepartamente.emplace_back(Ang);
+
+}
+
 
 DepartamenteTehnice::DepartamenteTehnice(const std::string &NumeDepartament,
                                          const std::vector<std::shared_ptr<Angajat>> &AngajatiDepartamente,
@@ -59,6 +64,14 @@ void DepartamenteTehnice::afisare(std::ostream &afis) const {
 
 
 }
+
+//void DepartamenteTehnice::CalculeazaPierderiDepartament() const {
+//    float Pierdere=0;
+//    for(const auto &angajat:AngajatiiDinDepartamente){
+//        auto &d2=dynamic_cast<NetworkEngineer&>(*angajat);
+//        Pierdere+= }
+//
+//}
 
 //void swap(DepartamenteTehnice &d1, DepartamenteTehnice &d2) {
 //    std::swap(d1.ProfitTotal, d2.ProfitTotal);

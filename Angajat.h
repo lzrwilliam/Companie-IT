@@ -30,6 +30,7 @@ public:
     friend std::ostream &operator<<(std::ostream &afis, const Angajat &angajat);
 
     virtual ~Angajat() = default;
+    void AdaugaTask(const std::shared_ptr<Task>TaskAng1);
 
 protected:
     Angajat &operator=(const Angajat &altul);
