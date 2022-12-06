@@ -65,13 +65,20 @@ void DepartamenteTehnice::afisare(std::ostream &afis) const {
 
 }
 
-//void DepartamenteTehnice::CalculeazaPierderiDepartament() const {
-//    float Pierdere=0;
-//    for(const auto &angajat:AngajatiiDinDepartamente){
-//        auto &d2=dynamic_cast<NetworkEngineer&>(*angajat);
-//        Pierdere+= }
-//
-//}
+void DepartamenteTehnice::CalculeazaPierderiDepartament() const {
+    for(const auto &angajat:AngajatiiDinDepartamente)
+    {
+        std::shared_ptr<NetworkEngineer>AngajatNetwork=std::dynamic_pointer_cast<NetworkEngineer>(angajat);
+        cout<<angajat->getnumeangajat()<<"::";
+        if(AngajatNetwork!= nullptr){
+            cout<<"Network engineer"<<'\n';
+            cout<<AngajatNetwork->getnrretele()<<'\n';
+        }
+        else cout<<"Operator \n";
+
+    }
+
+}
 
 //void swap(DepartamenteTehnice &d1, DepartamenteTehnice &d2) {
 //    std::swap(d1.ProfitTotal, d2.ProfitTotal);
@@ -101,6 +108,10 @@ void DepartamentRelatiiClienti::afisare(std::ostream &afis) const {
 
 std::shared_ptr<Departament> DepartamentRelatiiClienti::clone() const {
     return std::make_shared<DepartamentRelatiiClienti>(*this);
+}
+
+void DepartamentRelatiiClienti::CalculeazaPierderiDepartament() const {
+    Departament::CalculeazaPierderiDepartament();
 }
 
 //DepartamentRelatiiClienti &DepartamentRelatiiClienti::operator=(DepartamentRelatiiClienti altul) {

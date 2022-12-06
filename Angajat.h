@@ -29,6 +29,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &afis, const Angajat &angajat);
 
+    string getnumeangajat(){return NumeAngajat;}
     virtual ~Angajat() = default;
     void AdaugaTask(const std::shared_ptr<Task>TaskAng1);
 
@@ -54,6 +55,8 @@ public:
                            int ClientiMultu = 0);
 
     std::shared_ptr<Angajat> clone() const override;
+
+    int getnrretele(){return ReteleRezolvate;}
 
 
 

@@ -20,11 +20,11 @@ class Departament {
     string NumeDepartament;
 
     virtual void afisare(std::ostream &) const;
-
+protected:
   std::vector<std::shared_ptr<Angajat>> AngajatiiDinDepartamente;
 
 public:
-  // virtual void CalculeazaPierderiDepartament() const;
+   virtual void CalculeazaPierderiDepartament() const{}
 
     Departament(string Nume, std::vector<std::shared_ptr<Angajat>> AngajatiiDinDepartamente);
   void AdaugaAngajat(std::shared_ptr<Angajat>Ang);
@@ -62,7 +62,7 @@ public:
     std::shared_ptr<Departament> clone() const override {
         return std::make_shared<DepartamenteTehnice>(*this);
     }
- //   void CalculeazaPierderiDepartament() const override;
+    void CalculeazaPierderiDepartament() const override;
 
 
    // DepartamenteTehnice &operator=(DepartamenteTehnice altul);
@@ -77,6 +77,8 @@ public:
 
 class DepartamentRelatiiClienti : public Departament {
     int Target;
+    void CalculeazaPierderiDepartament() const override;
+
 
     void afisare(std::ostream &afis) const override;
 

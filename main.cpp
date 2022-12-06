@@ -16,7 +16,7 @@ TaskRetelistica t2("Task principal",2,3,2002,true,2,3,1);
 //    std::shared_ptr<Task>Ttest=t2.clone();
 //   Ttest=t1.clone();
 //   cout<<*Ttest;
-   NetworkEngineer n("William",{t1.clone()}, 100, 1, 1, 3, 4);
+   NetworkEngineer n("William",{t1.clone()}, 100, 2, 4, 5, 6);
   //  NetworkEngineer n2("Williamdasda",{t1.clone()}, 100, 1, 1, 3, 4);
 n.AdaugaTask(t2.clone());
       OperatorCallCenter n1("Andreea",{t2.clone()},100,1,1,1,1);
@@ -27,7 +27,8 @@ n.AdaugaTask(t2.clone());
    // Companie c1("Cisco",{d1.clone()});
 
    d1.AdaugaAngajat(n1.clone());
-cout<<d1;
+   d1.CalculeazaPierderiDepartament();
+//cout<<d1;
 //cout << t2;
 //cout<<n;
 
