@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <typeinfo>
+#include "Exceptii.h"
 
 using std::cout;
 using std::string;

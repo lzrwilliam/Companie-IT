@@ -55,6 +55,7 @@ DepartamenteTehnice::DepartamenteTehnice(const std::string &NumeDepartament,
                                          float Profit, int nrtaskuri) :
         Departament(NumeDepartament, AngajatiDepartamente), ProfitTotal(Profit),
         NrTaskuriTotale(nrtaskuri) {
+    if(AngajatiiDinDepartamente.size()==0) throw EroareLaConstructor("Departamentul trebuie sa aiba minim un angajat!");
 
 }
 

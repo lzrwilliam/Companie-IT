@@ -64,9 +64,9 @@ void Angajat::SetPenalizariTaskIntarziat() {
 
 }
 
-int Angajat::GetPenalizari() {
-    return PenalizariPentruTaskuriIntarziate;
-}
+//int Angajat::GetPenalizari() {
+//    return PenalizariPentruTaskuriIntarziate;
+//}
 
 
 NetworkEngineer::NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float Salariu, int Penalizari, int ReteleRez, int EchipamenteDis,
