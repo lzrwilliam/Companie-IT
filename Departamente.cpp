@@ -48,6 +48,8 @@ void Departament::AdaugaAngajat(std::shared_ptr<Angajat> Ang){
 }
 
 
+
+
 DepartamenteTehnice::DepartamenteTehnice(const std::string &NumeDepartament,
                                          const std::vector<std::shared_ptr<Angajat>> &AngajatiDepartamente,
                                          float Profit, int nrtaskuri) :
@@ -65,33 +67,59 @@ void DepartamenteTehnice::afisare(std::ostream &afis) const {
 
 }
 
-void DepartamenteTehnice::CalculeazaPierderiDepartament() const {
-    for(const auto &angajat:AngajatiiDinDepartamente)
-    {
-        std::shared_ptr<NetworkEngineer>AngajatNetwork=std::dynamic_pointer_cast<NetworkEngineer>(angajat);
-        cout<<angajat->getnumeangajat()<<"::";
-        if(AngajatNetwork!= nullptr){
-            cout<<"Network engineer"<<'\n';
-            cout<<AngajatNetwork->getnrretele()<<'\n';
+//int DepartamenteTehnice::CalculeazaPierderiDepartament() const {
+//    float pierdere=0;
+//    for(const auto &angajat:AngajatiiDinDepartamente)
+//    {
+//        std::shared_ptr<NetworkEngineer>AngajatNetwork=std::dynamic_pointer_cast<NetworkEngineer>(angajat);
+//        if(AngajatNetwork!= nullptr){
+//            pierdere+=100*AngajatNetwork->GetNrEchipDis();
+//
+//        }
+//        //else angajatul este de alt tip si nu networkengineer
+//
+//
+//
+//    }
+//    return pierdere;
+//
+//}
+
+void DepartamenteTehnice::SetProfitDepartament() {
+
+    for(const auto &angajat:AngajatiiDinDepartamente){
+        std::shared_ptr<NetworkEngineer>Angajat = std::dynamic_pointer_cast<NetworkEngineer>(angajat);
+        if(Angajat!= nullptr) {
+            ProfitTotal += Angajat->GetReteleRez() * 300 - Angajat->GetNrEchipDis() * 100;
+            for (const auto &task: angajat->GetVectorAng()) {
+                std::shared_ptr<TaskRetelistica> t = std::dynamic_pointer_cast<TaskRetelistica>(task);
+                if(t!= nullptr){
+                if (task->GetStatusTask() == false && DiferentaIntreDouaDati(DataCurenta(), task->GetDeadlineTask()) > 0) {
+ProfitTotal-=t->GetValoareTask();
+
+
+
+                    } else if(task->GetStatusTask()== true) ProfitTotal+=t->GetValoareTask();
+
+
+                }
+            }
+
+
         }
-        else cout<<"Operator \n";
+
 
     }
 
 }
 
-//void swap(DepartamenteTehnice &d1, DepartamenteTehnice &d2) {
-//    std::swap(d1.ProfitTotal, d2.ProfitTotal);
-//    std::swap(d1.NrTaskuriTotale, d2.NrTaskuriTotale);
-//
-//}
-//
-//DepartamenteTehnice &DepartamenteTehnice::operator=(DepartamenteTehnice altul) {
-//    swap(*this, altul);
-//    return *this;
-//}
+void DepartamenteTehnice::SetNrTaskuriTotale() {
+for(const auto&angajat:AngajatiiDinDepartamente){
+    NrTaskuriTotale+=angajat->GetSizeOfVectTaskAng();
 
-//DepartamenteTehnice::~DepartamenteTehnice() {}
+}
+}
+
 
 DepartamentRelatiiClienti::DepartamentRelatiiClienti(const std::string &NumeDepartament,
                                                      const std::vector<std::shared_ptr<Angajat>> &AngajatiDepartamente,
@@ -110,20 +138,8 @@ std::shared_ptr<Departament> DepartamentRelatiiClienti::clone() const {
     return std::make_shared<DepartamentRelatiiClienti>(*this);
 }
 
-void DepartamentRelatiiClienti::CalculeazaPierderiDepartament() const {
-    Departament::CalculeazaPierderiDepartament();
-}
 
-//DepartamentRelatiiClienti &DepartamentRelatiiClienti::operator=(DepartamentRelatiiClienti altul) {
-//    swap1(*this, altul);
-//    return *this;
-//}
-//
-//void swap1(DepartamentRelatiiClienti &d1, DepartamentRelatiiClienti &d2) {
-//    std::swap(d1.Target, d2.Target);
-//
-//
-//}
+
 
 
 

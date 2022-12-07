@@ -15,7 +15,9 @@ char *ConvertireData(const time_t time1);
 
 //std::tm CreazaData(int zi, int luna, int an);
 
-//time_t DataCurenta();
+time_t DataCurenta();
+
+bool DiferentaIntreDouaDati(time_t t1,time_t t2);
 
 
 #endif //OOP_ALTEFUNCTII_H

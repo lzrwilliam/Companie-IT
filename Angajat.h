@@ -14,9 +14,11 @@ using std::string;
 class Angajat {
 
     string NumeAngajat;
+protected:
     std::vector<std::shared_ptr<Task>>TaskAng;
+private:
     float Salariu;
-    int PenalizariPentruTaskuriIntarziate;
+    int PenalizariPentruTaskuriIntarziate; /// la 3 penalizari stergem angajatul din departament, il dam afara
     virtual void afisare(std::ostream &) const {}
     static int Id;
     const int IdAngajat;
@@ -28,10 +30,12 @@ public:
     virtual std::shared_ptr<Angajat> clone() const = 0;
 
     friend std::ostream &operator<<(std::ostream &afis, const Angajat &angajat);
-
+int GetSizeOfVectTaskAng();
     string getnumeangajat(){return NumeAngajat;}
     virtual ~Angajat() = default;
     void AdaugaTask(const std::shared_ptr<Task>TaskAng1);
+
+    std::vector<std::shared_ptr<Task>> GetVectorAng() const;
 
 protected:
     Angajat &operator=(const Angajat &altul);
@@ -43,7 +47,7 @@ protected:
 class NetworkEngineer : public Angajat {
     int ReteleRezolvate;
     int EchipamenteDistruse;
-    int ClientiMultumiti;
+    int ClientiMultumiti; // daca task-ul e rezolvat pe ultima 100 de metri clientul nu este multumit
 
 
     void afisare(std::ostream &afis) const override;
@@ -56,7 +60,9 @@ public:
 
     std::shared_ptr<Angajat> clone() const override;
 
-    int getnrretele(){return ReteleRezolvate;}
+    int GetNrEchipDis();
+    int GetReteleRez();
+    void SetEchipDistruseReteleRez();
 
 
 

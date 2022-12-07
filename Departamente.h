@@ -24,7 +24,6 @@ protected:
   std::vector<std::shared_ptr<Angajat>> AngajatiiDinDepartamente;
 
 public:
-   virtual void CalculeazaPierderiDepartament() const{}
 
     Departament(string Nume, std::vector<std::shared_ptr<Angajat>> AngajatiiDinDepartamente);
   void AdaugaAngajat(std::shared_ptr<Angajat>Ang);
@@ -62,22 +61,17 @@ public:
     std::shared_ptr<Departament> clone() const override {
         return std::make_shared<DepartamenteTehnice>(*this);
     }
-    void CalculeazaPierderiDepartament() const override;
+    int CalculeazaPierderiDepartament() const;
 
 
-   // DepartamenteTehnice &operator=(DepartamenteTehnice altul);
-
-  //  ~DepartamenteTehnice();
-
-
-   // friend void swap(DepartamenteTehnice &d1, DepartamenteTehnice &d2);
+   void SetProfitDepartament();
+   void SetNrTaskuriTotale();
 
 
 };
 
 class DepartamentRelatiiClienti : public Departament {
     int Target;
-    void CalculeazaPierderiDepartament() const override;
 
 
     void afisare(std::ostream &afis) const override;
@@ -86,7 +80,6 @@ public:
     DepartamentRelatiiClienti(const std::string &NumeDepartament,
                               const std::vector<std::shared_ptr<Angajat>> &AngajatiDepartamente, int Target);
 
- //   ~DepartamentRelatiiClienti() {}
 
     std::shared_ptr<Departament> clone() const override;
 

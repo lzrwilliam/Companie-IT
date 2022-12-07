@@ -39,6 +39,20 @@ Task &Task::operator=(const Task &altul) {
     return *this;
 }
 
+void Task::SetStatusTask() {
+    if(DiferentaIntreDouaDati(DataCurenta(), Deadline)== false)
+        Status= false;
+
+}
+
+bool Task::GetStatusTask() {
+    return Status;
+}
+
+time_t Task::GetDeadlineTask() {
+    return Deadline;
+}
+
 shared_ptr<Task> TaskRetelistica::clone() const {
     return std::make_shared<TaskRetelistica>(*this);
 }
@@ -59,6 +73,18 @@ void TaskRetelistica::afisare(std::ostream &afis) const {
     afis<<"Valoare task:"<<ValoareTask<<'\n';
     afis << '\n';
 
+}
+
+int TaskRetelistica::GetEchipamente() {
+    return NrEchipInMentenanta;
+}
+
+int TaskRetelistica::GetReteleImplicate() {
+    return ReteleImplicate;
+}
+
+float TaskRetelistica::GetValoareTask() {
+    return ValoareTask;
 }
 
 

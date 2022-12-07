@@ -44,6 +44,15 @@ void Angajat::AdaugaTask(const std::shared_ptr<Task> TaskAng1) {
 
 }
 
+int Angajat::GetSizeOfVectTaskAng() {
+    return TaskAng.size();
+}
+
+std::vector<std::shared_ptr<Task>> Angajat::GetVectorAng() const {
+   std::vector<std::shared_ptr<Task>>vec (TaskAng.begin(),TaskAng.end());
+   return vec;
+}
+
 
 NetworkEngineer::NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float Salariu, int Penalizari, int ReteleRez, int EchipamenteDis,
                                  int ClientiMultu) : Angajat(Nume, TaskAng,Salariu, Penalizari),
@@ -60,6 +69,30 @@ void NetworkEngineer::afisare(std::ostream &afis) const {
     afis << "Nr de retele rezolvate: " << ReteleRezolvate << '\n';
     afis << "Echipamente Distruse:" << EchipamenteDistruse << '\n';
     afis << "Clienti care s-au declarat multumiti: " << ClientiMultumiti << '\n';
+}
+
+int NetworkEngineer::GetNrEchipDis()  {
+    return EchipamenteDistruse;
+}
+
+int NetworkEngineer::GetReteleRez() {
+    return ReteleRezolvate;
+}
+
+void NetworkEngineer::SetEchipDistruseReteleRez() {
+    for(const auto &task: TaskAng ){
+        std::shared_ptr<TaskRetelistica> t= std::dynamic_pointer_cast<TaskRetelistica>(t);
+        if(t!= nullptr){
+
+
+            if(task->GetStatusTask()==false)
+                EchipamenteDistruse=t->GetEchipamente();
+            else ReteleRezolvate=t->GetReteleImplicate();
+        }
+
+
+    }
+
 }
 
 void OperatorCallCenter::afisare(std::ostream &afis) const {

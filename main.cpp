@@ -9,28 +9,29 @@
 
 int main() {
 
-    TaskRetelistica t1("Dd", 2, 3, 2022, true, 2, 2,900);
-   // TaskRelatiiClienti t2("Recuperat bani",3,4,2005,false,3);
-TaskRetelistica t2("Task principal",2,3,2002,true,2,3,1);
+//
+//    TaskRetelistica n2("Configurare switch1",10,10,2020, true,3,3,2);
+//    TaskRetelistica n3("Configurare switch",10,10,2023, false,3,3,90000);
+//    //std::shared_ptr<TaskRetelistica>n= std::make_shared<TaskRetelistica>("Configurare switch",10,10,2020,true,3,3,2);
+//    NetworkEngineer n1("William",{n2.clone(),n3.clone()},500,0,5,0,0);
+//    DepartamenteTehnice d1("Cisco",{n1.clone()},0,0);
+//    n2.SetStatusTask();
+//    n3.SetStatusTask();
+//    // d1.SetNrTaskuriTotale();
+//    //  d1.SetProfitDepartament();
+////    cout<<d1.CalculeazaPierderiDepartament();
+//
+//    cout<<n2;
+//   // cout<<d1;
 
-//    std::shared_ptr<Task>Ttest=t2.clone();
-//   Ttest=t1.clone();
-//   cout<<*Ttest;
-   NetworkEngineer n("William",{t1.clone()}, 100, 2, 4, 5, 6);
-  //  NetworkEngineer n2("Williamdasda",{t1.clone()}, 100, 1, 1, 3, 4);
-n.AdaugaTask(t2.clone());
-      OperatorCallCenter n1("Andreea",{t2.clone()},100,1,1,1,1);
 
 
-    DepartamenteTehnice d1("Retele", {n.clone()}, 100, 3);
-  //  DepartamentRelatiiClienti d3("Call Center", {n1.clone()}, 5);
-   // Companie c1("Cisco",{d1.clone()});
-
-   d1.AdaugaAngajat(n1.clone());
-   d1.CalculeazaPierderiDepartament();
-//cout<<d1;
-//cout << t2;
-//cout<<n;
-
-    return 0;
+std::vector<std::shared_ptr<Task>> TaskuriAng1;
+std::shared_ptr<Task>t1 = std::make_shared<TaskRetelistica>("Configurare Router",10,10,2020,true,0,0,100);
+TaskuriAng1.emplace_back(t1);
+std::shared_ptr<NetworkEngineer>n123= std::make_shared<NetworkEngineer>("William",TaskuriAng1,1,1,1,0,0);
+DepartamenteTehnice d123("csico",{n123},0,0);
+t1->SetStatusTask();
+cout<<d123;
+return 0;
 }

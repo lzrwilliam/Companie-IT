@@ -25,6 +25,7 @@ class Task {
     virtual void afisare(std::ostream &) const {}
 
 public:
+    void SetStatusTask();
 
     virtual  ~Task() = default;
 
@@ -33,6 +34,8 @@ public:
     friend std::ostream &operator<<(std::ostream &afis, const Task &task);
 
     Task(string Denumire, int zi, int luna, int an, bool Status);
+    bool GetStatusTask();
+    time_t GetDeadlineTask();
 
 protected:
     Task &operator=(const Task &altul);
@@ -54,6 +57,10 @@ public:
                     int ReteleImplicate,float ValoareTask);
 
     shared_ptr<Task> clone() const override;
+
+    int GetEchipamente();
+    int GetReteleImplicate();
+    float GetValoareTask();
 
 };
 
