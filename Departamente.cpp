@@ -94,7 +94,8 @@ void DepartamenteTehnice::SetProfitDepartament() {
             for (const auto &task: angajat->GetVectorAng()) {
                 std::shared_ptr<TaskRetelistica> t = std::dynamic_pointer_cast<TaskRetelistica>(task);
                 if(t!= nullptr){
-                if (task->GetStatusTask() == false && DiferentaIntreDouaDati(DataCurenta(), task->GetDeadlineTask()) > 0) {
+                if (task->GetStatusTask() == false && DiferentaIntreDouaDati(DataCurenta(), task->GetDeadlineTask()) ==
+                                                      false) {
 ProfitTotal-=t->GetValoareTask();
 
 
