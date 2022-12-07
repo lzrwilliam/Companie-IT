@@ -48,16 +48,31 @@ int Angajat::GetSizeOfVectTaskAng() {
     return TaskAng.size();
 }
 
-std::vector<std::shared_ptr<Task>> Angajat::GetVectorAng() const {
+std::vector<std::shared_ptr<Task>> Angajat::GetVectorTaskAng() const {
    std::vector<std::shared_ptr<Task>>vec (TaskAng.begin(),TaskAng.end());
    return vec;
+}
+
+void Angajat::SetPenalizariTaskIntarziat() {
+
+
+    for(const auto &task:TaskAng)
+        if(task->GetStatusTask()== false && DiferentaIntreDouaDati(DataCurenta(),task->GetDeadlineTask())== false)
+            PenalizariPentruTaskuriIntarziate++;
+
+
+
+}
+
+int Angajat::GetPenalizari() {
+    return PenalizariPentruTaskuriIntarziate;
 }
 
 
 NetworkEngineer::NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float Salariu, int Penalizari, int ReteleRez, int EchipamenteDis,
                                  int ClientiMultu) : Angajat(Nume, TaskAng,Salariu, Penalizari),
                                                      ReteleRezolvate(ReteleRez), EchipamenteDistruse(EchipamenteDis),
-                                                     ClientiMultumiti(ClientiMultu) {
+                                                     ClientiNemultumiti(ClientiMultu) {
 
 }
 
@@ -68,7 +83,7 @@ std::shared_ptr<Angajat> NetworkEngineer::clone() const {
 void NetworkEngineer::afisare(std::ostream &afis) const {
     afis << "Nr de retele rezolvate: " << ReteleRezolvate << '\n';
     afis << "Echipamente Distruse:" << EchipamenteDistruse << '\n';
-    afis << "Clienti care s-au declarat multumiti: " << ClientiMultumiti << '\n';
+    afis << "Clienti care s-au declarat nemultumiti: " << ClientiNemultumiti << '\n';
 }
 
 int NetworkEngineer::GetNrEchipDis()  {
@@ -95,6 +110,27 @@ void NetworkEngineer::SetEchipDistruseReteleRez() {
 
 }
 
+void NetworkEngineer::SetClientiNemultumiti() {
+    for(const auto &task:TaskAng){
+        int DifInZile= DiferentaIntreDouaDati(DataCurenta(),task->GetDeadlineTask())/(60*60*24);
+        if (DifInZile <= 2 &&task->GetStatusTask() == false )
+             ClientiNemultumiti++;
+
+    }
+
+
+
+}
+
+void NetworkEngineer::MarireSalariu() {
+
+
+
+    if(PenalizariPentruTaskuriIntarziate==0)
+        Salariu+=ReteleRezolvate*40;
+
+}
+
 void OperatorCallCenter::afisare(std::ostream &afis) const {
     afis << "Apelurile din ultima luna: " << NrApeluriPeUltimaLuna << '\n';
     afis << "NrNecesarPtTarget:" << NrPentruTargetLunar << '\n';
@@ -113,3 +149,28 @@ OperatorCallCenter::OperatorCallCenter(const string &Nume, const std::vector<std
                                                                                        NrPentruTargetLunar(
                                                                                                NrPentruTargetLunar),
                                                                                        ProcentTarget(ProcentTarget) {}
+
+void OperatorCallCenter::MarireSalariu() {
+    if(PenalizariPentruTaskuriIntarziate==0 && ProcentTarget==100)
+        Salariu+=(NrApeluriPeUltimaLuna-NrPentruTargetLunar)*10;
+
+}
+
+void OperatorCallCenter::SetNrApeluri()
+{
+
+for(const auto &task: this->TaskAng)
+    if(task->GetTerminatTask()==true && DiferentaIntreDouaDatiInZile(DataCurenta(),task->GetDeadlineTask())<=30)
+        NrApeluriPeUltimaLuna++;
+
+}
+
+void OperatorCallCenter::SetNrTargetLunar(int x) {
+    NrPentruTargetLunar=x;
+
+}
+
+void OperatorCallCenter::SetProcentTargetRealizat() {
+    ProcentTarget=NrApeluriPeUltimaLuna*100/NrPentruTargetLunar;
+
+}

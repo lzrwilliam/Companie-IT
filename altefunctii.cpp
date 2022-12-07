@@ -41,4 +41,12 @@ return diff<0;
 
     }
 
+float DiferentaIntreDouaDatiInZile(time_t t1,time_t t2){
+    double  diff=std::difftime(t1,t2)/(60*60*24);
+    return diff;
+
+
+}
+
+
 

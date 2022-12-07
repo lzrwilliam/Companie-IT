@@ -32,8 +32,10 @@ public:
 
     friend std::ostream &operator<<(std::ostream &afisare, const Departament &departament);
 
-
+virtual void AfisareProcentReusitaDepartament() const =0;
     virtual  ~Departament() = default;
+
+   // virtual void ConcediereAngajatiIneficienti() =0;
 
 
 protected:
@@ -61,11 +63,14 @@ public:
     std::shared_ptr<Departament> clone() const override {
         return std::make_shared<DepartamenteTehnice>(*this);
     }
-    int CalculeazaPierderiDepartament() const;
+
+    void AfisareProcentReusitaDepartament() const override;
+
 
 
    void SetProfitDepartament();
    void SetNrTaskuriTotale();
+  // void ConcediereAngajatiIneficienti() override;
 
 
 };
@@ -83,9 +88,14 @@ public:
 
     std::shared_ptr<Departament> clone() const override;
 
+    void AfisareProcentReusitaDepartament() const override;
+  //  void ConcediereAngajatiIneficienti()  override;
+
+
 
 
 };
+
 
 
 

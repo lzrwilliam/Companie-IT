@@ -19,7 +19,8 @@ using std::string;
 class Task {
     string DenumireTask;
     time_t Deadline;
-    bool Status;
+    bool StatusCurent;
+    bool Terminat;
     static int Id;
     const int IdTask;
     virtual void afisare(std::ostream &) const {}
@@ -33,8 +34,10 @@ public:
 
     friend std::ostream &operator<<(std::ostream &afis, const Task &task);
 
-    Task(string Denumire, int zi, int luna, int an, bool Status);
+    Task(string Denumire, int zi, int luna, int an, bool StatusCurent,bool terminat);
     bool GetStatusTask();
+    bool GetTerminatTask();
+    void SetTerminatTask();
     time_t GetDeadlineTask();
 
 protected:
@@ -52,7 +55,7 @@ class TaskRetelistica : public Task {
     void afisare(std::ostream &afis) const override;
 
 public:
-    TaskRetelistica(string Denumire, int zi, int luna, int an, bool Status,
+    TaskRetelistica(string Denumire, int zi, int luna, int an, bool StatusCurent,bool Terminat,
                     int nrEchipamenteInMentenanta,
                     int ReteleImplicate,float ValoareTask);
 
@@ -72,7 +75,7 @@ class TaskRelatiiClienti:public Task{
 
     void afisare(std::ostream&afis) const override;
 public:
-   explicit TaskRelatiiClienti(string Denumire, int zi, int luna, int an, bool Status,int ImportantaApel);
+   explicit TaskRelatiiClienti(string Denumire, int zi, int luna, int an, bool StatusCurent,bool Terminat,int ImportantaApel);
     shared_ptr<Task>clone() const override;
 
 

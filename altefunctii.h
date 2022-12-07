@@ -18,6 +18,8 @@ char *ConvertireData(const time_t time1);
 time_t DataCurenta();
 
 bool DiferentaIntreDouaDati(time_t t1,time_t t2);
+float DiferentaIntreDouaDatiInZile(time_t t1,time_t t2);
+
 
 
 #endif //OOP_ALTEFUNCTII_H

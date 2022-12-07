@@ -13,15 +13,16 @@ std::ostream &operator<<(std::ostream &afis, const Task &task) {
     afis<<"Id task:"<<task.IdTask<<'\n';
     afis << "Numele task-ului: " << task.DenumireTask << '\n';
     afis << "Data deadline: " << ConvertireData(task.Deadline);
-    afis << "Status task:" << task.Status << '\n';
+    afis << "Status task:" << task.StatusCurent << '\n';
+    afis<<"Taskul a fost terminat?: "<<task.Terminat<<'\n';
     task.afisare(afis);
     afis << '\n';
     return afis;
 
 }
 
-Task::Task(string Denumire, int zi, int luna, int an, bool Status) : DenumireTask(std::move(Denumire)),
-                                                                                    Status(Status),IdTask(Id) { Id++;
+Task::Task(string Denumire, int zi, int luna, int an, bool StatusCurent,bool Terminat) : DenumireTask(std::move(Denumire)),
+                                                                                    StatusCurent(StatusCurent),Terminat(Terminat),IdTask(Id) { Id++;
 
     std::tm tm = {};
     tm.tm_year = an - 1900;
@@ -35,31 +36,44 @@ Task &Task::operator=(const Task &altul) {
     auto copie=altul.clone();
     DenumireTask=altul.DenumireTask;
     Deadline=altul.Deadline;
-    Status= altul.Status;
+    StatusCurent= altul.StatusCurent;
+    Terminat=altul.Terminat;
     return *this;
 }
 
 void Task::SetStatusTask() {
-    if(DiferentaIntreDouaDati(DataCurenta(), Deadline)== false)
-        Status= false;
+    if(DiferentaIntreDouaDati(DataCurenta(), Deadline)== false && this->GetTerminatTask()== false)
+        StatusCurent= false;
 
 }
 
 bool Task::GetStatusTask() {
-    return Status;
+    return StatusCurent;
 }
 
 time_t Task::GetDeadlineTask() {
     return Deadline;
 }
 
+bool Task::GetTerminatTask() {
+    return  Terminat;
+}
+
+void Task::SetTerminatTask() {
+    if((StatusCurent==true &&Terminat==false) && DiferentaIntreDouaDati(DataCurenta(),Deadline)==false){StatusCurent= false;}  // terminat dupa deadline
+        if(StatusCurent==false && DiferentaIntreDouaDati(DataCurenta(),Deadline)==false) Terminat= false;
+        if(StatusCurent==true && DiferentaIntreDouaDati(DataCurenta(),Deadline))  Terminat=true;
+                // am acoperit cazul in care angajatul terminat task-ul dupa data de deadline, pentru a putea face diferenta intre cele terminate la timp si cu intarziere
+
+}
+
 shared_ptr<Task> TaskRetelistica::clone() const {
     return std::make_shared<TaskRetelistica>(*this);
 }
 
-TaskRetelistica::TaskRetelistica(string Denumire, int zi, int luna, int an, bool Status,
+TaskRetelistica::TaskRetelistica(string Denumire, int zi, int luna, int an, bool StatusCurent,bool Terminat,
                                  int NrEchipinMentenanta,
-                                 int NrReteleimplicate,float  ValoareTask) : Task(std::move(Denumire), zi, luna, an, Status),
+                                 int NrReteleimplicate,float  ValoareTask) : Task(std::move(Denumire), zi, luna, an, StatusCurent,Terminat),
                                                           NrEchipInMentenanta(NrEchipinMentenanta),
                                                           ReteleImplicate(NrReteleimplicate),ValoareTask(ValoareTask) {
 
@@ -88,8 +102,8 @@ float TaskRetelistica::GetValoareTask() {
 }
 
 
-TaskRelatiiClienti::TaskRelatiiClienti(string Denumire, int zi, int luna, int an, bool Status,int ImportantaApel):
-        Task(std::move(Denumire), zi, luna, an, Status),ImportantaApel(ImportantaApel)
+TaskRelatiiClienti::TaskRelatiiClienti(string Denumire, int zi, int luna, int an, bool StatusCurent,bool Terminat,int ImportantaApel):
+        Task(std::move(Denumire), zi, luna, an, StatusCurent,Terminat),ImportantaApel(ImportantaApel)
 
 {
 

@@ -7,7 +7,7 @@
 #include <utility>
 
 
-/// daca vreau sa fac departamentul d1=d2, cum fac??????
+/// daca vreau sa fac departamentul d1=d2,unul sa fie departament tehnic, altul sa fie relatii clienti
 
 std::ostream &operator<<(std::ostream &afisare, const Departament &departament) {
 
@@ -67,23 +67,6 @@ void DepartamenteTehnice::afisare(std::ostream &afis) const {
 
 }
 
-//int DepartamenteTehnice::CalculeazaPierderiDepartament() const {
-//    float pierdere=0;
-//    for(const auto &angajat:AngajatiiDinDepartamente)
-//    {
-//        std::shared_ptr<NetworkEngineer>AngajatNetwork=std::dynamic_pointer_cast<NetworkEngineer>(angajat);
-//        if(AngajatNetwork!= nullptr){
-//            pierdere+=100*AngajatNetwork->GetNrEchipDis();
-//
-//        }
-//        //else angajatul este de alt tip si nu networkengineer
-//
-//
-//
-//    }
-//    return pierdere;
-//
-//}
 
 void DepartamenteTehnice::SetProfitDepartament() {
 
@@ -91,11 +74,10 @@ void DepartamenteTehnice::SetProfitDepartament() {
         std::shared_ptr<NetworkEngineer>Angajat = std::dynamic_pointer_cast<NetworkEngineer>(angajat);
         if(Angajat!= nullptr) {
             ProfitTotal += Angajat->GetReteleRez() * 300 - Angajat->GetNrEchipDis() * 100;
-            for (const auto &task: angajat->GetVectorAng()) {
+            for (const auto &task: angajat->GetVectorTaskAng()) {
                 std::shared_ptr<TaskRetelistica> t = std::dynamic_pointer_cast<TaskRetelistica>(task);
                 if(t!= nullptr){
-                if (task->GetStatusTask() == false && DiferentaIntreDouaDati(DataCurenta(), task->GetDeadlineTask()) ==
-                                                      false) {
+                if (task->GetStatusTask() == false && DiferentaIntreDouaDati(DataCurenta(), task->GetDeadlineTask()) ==false) {
 ProfitTotal-=t->GetValoareTask();
 
 
@@ -115,17 +97,64 @@ ProfitTotal-=t->GetValoareTask();
 }
 
 void DepartamenteTehnice::SetNrTaskuriTotale() {
+    NrTaskuriTotale=0;
 for(const auto&angajat:AngajatiiDinDepartamente){
     NrTaskuriTotale+=angajat->GetSizeOfVectTaskAng();
 
 }
 }
 
+void DepartamenteTehnice::AfisareProcentReusitaDepartament()const {
+    float procent;
+    int TaskTerminate=0;
+    for( const auto&angajat:AngajatiiDinDepartamente)
+        for(const auto &task: angajat->GetVectorTaskAng())
+            if(task->GetStatusTask()== true)TaskTerminate++;
+
+    procent=(TaskTerminate*100)/NrTaskuriTotale;
+    cout<<"Reusita departamentului tehnic este de : "<<procent<<"% \n";
+
+
+
+
+
+
+
+
+}
+//
+//void DepartamenteTehnice::ConcediereAngajatiIneficienti() {
+//    for(const auto &angajat:AngajatiiDinDepartamente){
+//
+//       std::shared_ptr<NetworkEngineer>Angajat= std::dynamic_pointer_cast<NetworkEngineer>(angajat);
+//       if(Angajat!= nullptr){
+//if(Angajat->GetNrEchipDis()>=3 && angajat->GetPenalizari()>=3)
+//    AngajatiiDinDepartamente.erase(std::remove(AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end()
+//    ,angajat),AngajatiiDinDepartamente.end());
+//
+//
+//       }
+//    }
+//
+//}
+
 
 DepartamentRelatiiClienti::DepartamentRelatiiClienti(const std::string &NumeDepartament,
                                                      const std::vector<std::shared_ptr<Angajat>> &AngajatiDepartamente,
                                                      int Target) :
-        Departament(NumeDepartament, AngajatiDepartamente), Target(Target) {}
+        Departament(NumeDepartament, AngajatiDepartamente), Target(Target) {
+
+    for(const auto&angajat:AngajatiDepartamente)
+    {
+        std::shared_ptr<OperatorCallCenter>Angajat=std::dynamic_pointer_cast<OperatorCallCenter>(angajat);
+        if(Angajat!= nullptr){
+            Angajat->SetNrTargetLunar(Target);
+
+        }
+    }
+
+
+}
 
 void DepartamentRelatiiClienti::afisare(std::ostream &afis) const {
 
@@ -138,6 +167,39 @@ void DepartamentRelatiiClienti::afisare(std::ostream &afis) const {
 std::shared_ptr<Departament> DepartamentRelatiiClienti::clone() const {
     return std::make_shared<DepartamentRelatiiClienti>(*this);
 }
+
+void DepartamentRelatiiClienti::AfisareProcentReusitaDepartament() const {
+    float procent;
+    int TaskTerminate=0;
+    for( const auto&angajat:AngajatiiDinDepartamente)
+        for(const auto &task: angajat->GetVectorTaskAng())
+            if(task->GetStatusTask()== true)TaskTerminate++;
+
+    procent=(TaskTerminate*100)/Target;
+    cout<<"Reusita departamentului RelatiiClienti este de : "<<procent<<"%\n";
+
+
+
+
+
+}
+
+//void DepartamentRelatiiClienti::ConcediereAngajatiIneficienti() {
+//    for( auto &angajat:AngajatiiDinDepartamente){
+//            if(angajat->GetPenalizari()>=3)
+//                AngajatiiDinDepartamente.erase(std::remove(AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end()
+//                        ,angajat),AngajatiiDinDepartamente.end());
+//
+//
+//
+//    }
+//
+//}
+
+
+
+
+
 
 
 
