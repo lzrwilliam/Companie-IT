@@ -58,7 +58,7 @@ DepartamentRelatiiClienti d2("HR",{AngajatCall2,AngajatCall1},30);
     }
 
 
-  //  d1.ConcediereAngajatiIneficienti();
+    d1.ConcediereAngajatiIneficienti();
    d1.SetProfitDepartament();
    d1.SetNrTaskuriTotale();
    d1.AfisareProcentReusitaDepartament();
