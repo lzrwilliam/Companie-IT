@@ -37,7 +37,7 @@ int GetSizeOfVectTaskAng();
     void AdaugaTask(const std::shared_ptr<Task>TaskAng1);
     int GetPenalizari();
     string GetNume();
-    int GetId();
+   // int GetId();
     virtual void ApelareComenzi()=0;
 
 

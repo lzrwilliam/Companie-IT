@@ -30,6 +30,8 @@ Task::Task(string Denumire, int zi, int luna, int an, bool StatusCurent,bool Ter
     tm.tm_mday = zi;
     std::time_t time1 = mktime(&tm);
     Deadline = time1;
+    
+    ApelareFunctiiTask();
 }
 
 Task &Task::operator=(const Task &altul) {
@@ -64,6 +66,12 @@ void Task::SetTerminatTask() {
         if(StatusCurent==false && DiferentaIntreDouaDati(DataCurenta(),Deadline)==false) Terminat= false;
         if(StatusCurent==true && DiferentaIntreDouaDati(DataCurenta(),Deadline))  Terminat=true;
                 // am acoperit cazul in care angajatul terminat task-ul dupa data de deadline, pentru a putea face diferenta intre cele terminate la timp si cu intarziere
+
+}
+
+void Task::ApelareFunctiiTask() {
+   SetStatusTask();
+   SetTerminatTask();
 
 }
 

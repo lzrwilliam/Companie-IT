@@ -74,9 +74,9 @@ string Angajat::GetNume() {
     return NumeAngajat;
 }
 
-int Angajat::GetId() {
-    return IdAngajat;
-}
+//int Angajat::GetId() {
+//    return IdAngajat;
+//}
 
 
 NetworkEngineer::NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float Salariu, int Penalizari, int ReteleRez, int EchipamenteDis,
@@ -121,7 +121,7 @@ void NetworkEngineer::SetEchipDistruseReteleRez() {
 
 void NetworkEngineer::SetClientiNemultumiti() {
     for(const auto &task:TaskAng){
-        int DifInZile= DiferentaIntreDouaDati(DataCurenta(),task->GetDeadlineTask())/(60*60*24);
+        int DifInZile= DiferentaIntreDouaDatiInZile(DataCurenta(),task->GetDeadlineTask());
         if (DifInZile <= 2 &&task->GetStatusTask() == false )
              ClientiNemultumiti++;
 

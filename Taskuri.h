@@ -39,6 +39,7 @@ public:
     bool GetTerminatTask();
     void SetTerminatTask();
     time_t GetDeadlineTask();
+    void ApelareFunctiiTask();
 
 protected:
     Task &operator=(const Task &altul);
