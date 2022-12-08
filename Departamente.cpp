@@ -142,41 +142,41 @@ void DepartamenteTehnice::AfisareProcentReusitaDepartament()const {
 
 
 
-//void DepartamenteTehnice::ConcediereAngajatiIneficienti() {
-//    for (auto &angajat: AngajatiiDinDepartamente) {
-//
-//        std::shared_ptr<NetworkEngineer> Angajat = std::dynamic_pointer_cast<NetworkEngineer>(angajat);
-//        if (Angajat != nullptr) {
-//            if (Angajat->GetNrEchipDis() >= 3 && angajat->GetPenalizari() >= 3) {
-//                AngajatiiDinDepartamente.erase(
-//                        std::remove(AngajatiiDinDepartamente.begin(), AngajatiiDinDepartamente.end(), angajat),
-//                        AngajatiiDinDepartamente.end());
-//                std::cout<<"Angajatul "<<Angajat->GetNume() <<" din departamentul Tehnic a fost concediat!"<<'\n';
-//
-//            }
-//        }
-//
-//    }
-//}
-//
-
-
-
 void DepartamenteTehnice::ConcediereAngajatiIneficienti() {
-    for (auto angajat=AngajatiiDinDepartamente.begin();angajat!=AngajatiiDinDepartamente.end();) {
+    for (auto &angajat: AngajatiiDinDepartamente) {
 
-        std::shared_ptr<NetworkEngineer> Angajat = std::dynamic_pointer_cast<NetworkEngineer>(*angajat);
+        std::shared_ptr<NetworkEngineer> Angajat = std::dynamic_pointer_cast<NetworkEngineer>(angajat);
         if (Angajat != nullptr) {
-            if (Angajat->GetNrEchipDis() >= 3 && (*angajat)->GetPenalizari() >= 3) {
-                angajat=AngajatiiDinDepartamente.erase(angajat++);
+            if (Angajat->GetNrEchipDis() >= 3 && angajat->GetPenalizari() >= 3) {
+                AngajatiiDinDepartamente.erase(
+                        std::remove(AngajatiiDinDepartamente.begin(), AngajatiiDinDepartamente.end(), angajat),
+                        AngajatiiDinDepartamente.end());
                 std::cout<<"Angajatul "<<Angajat->GetNume() <<" din departamentul Tehnic a fost concediat!"<<'\n';
 
             }
-            else ++angajat;
         }
 
     }
 }
+
+
+
+//
+//void DepartamenteTehnice::ConcediereAngajatiIneficienti() {
+//    for (auto angajat=AngajatiiDinDepartamente.begin();angajat!=AngajatiiDinDepartamente.end();) {
+//
+//        std::shared_ptr<NetworkEngineer> Angajat = std::dynamic_pointer_cast<NetworkEngineer>(*angajat);
+//        if (Angajat != nullptr) {
+//            if (Angajat->GetNrEchipDis() >= 3 && (*angajat)->GetPenalizari() >= 3) {
+//                angajat=AngajatiiDinDepartamente.erase(angajat++);
+//                std::cout<<"Angajatul "<<Angajat->GetNume() <<" din departamentul Tehnic a fost concediat!"<<'\n';
+//
+//            }
+//            else ++angajat;
+//        }
+//
+//    }
+//}
 
 /////!!!!!!!!! DE INTREBAT CARE VARIANTA LA ERASE ESTE BUNA, CEA CU ANGAJAT ++ SAU CEALALTA?
 

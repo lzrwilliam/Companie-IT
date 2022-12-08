@@ -64,7 +64,7 @@ DepartamentRelatiiClienti d2("HR",{AngajatCall2,AngajatCall1},30);
    d1.AfisareProcentReusitaDepartament();
    try{
    d1.AdaugaAngajat(AngajatNet2);} catch(EroarePointer &err){std::cout<<err.what()<<'\n';}
-   d1.AfisareAngajatDupaNume("Tudor");
+   d1.AfisareAngajatDupaNume("Catalin");
 
 
 cout<<d1<<d2;
@@ -75,8 +75,10 @@ cout<<d1<<d2;
 catch(EroareLaConstructor &err){
     std::cout<<err.what();
 }
-catch (EroarePointer &err){
-    std::cout<<err.what();}
+catch (EroarePointer &err) {
+    std::cout << err.what();
+
+}
 
 
 
