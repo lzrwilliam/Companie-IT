@@ -36,7 +36,10 @@ public:
 virtual void AfisareProcentReusitaDepartament() const =0;
     virtual  ~Departament() = default;
 
-   // virtual void ConcediereAngajatiIneficienti() =0;
+    virtual void ConcediereAngajatiIneficienti() =0;
+  std::vector<  std::shared_ptr<Angajat>>GetVectAng() const ;
+    std::shared_ptr<Angajat>AfisareAngajatDupaNume(string nume);
+
 
 
 protected:
@@ -71,7 +74,7 @@ public:
 
    void SetProfitDepartament();
    void SetNrTaskuriTotale();
-  // void ConcediereAngajatiIneficienti() override;
+   void ConcediereAngajatiIneficienti() override;
 
 
 };
@@ -90,7 +93,7 @@ public:
     std::shared_ptr<Departament> clone() const override;
 
     void AfisareProcentReusitaDepartament() const override;
-  //  void ConcediereAngajatiIneficienti()  override;
+    void ConcediereAngajatiIneficienti()  override;
 
 
 

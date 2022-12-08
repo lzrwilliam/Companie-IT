@@ -9,6 +9,7 @@
 #include <memory>
 #include "Taskuri.h"
 #include <vector>
+#include "Exceptii.h"
 using std::string;
 
 class Angajat {
@@ -34,7 +35,11 @@ public:
 int GetSizeOfVectTaskAng();
     virtual ~Angajat() = default;
     void AdaugaTask(const std::shared_ptr<Task>TaskAng1);
-  //  int GetPenalizari();
+    int GetPenalizari();
+    string GetNume();
+    int GetId();
+    virtual void ApelareComenzi()=0;
+
 
     std::vector<std::shared_ptr<Task>> GetVectorTaskAng() const;
 
@@ -69,6 +74,7 @@ public:
     void SetEchipDistruseReteleRez();
     void SetClientiNemultumiti();
     void MarireSalariu() override;
+    void ApelareComenzi() override;
 
 
 
@@ -92,6 +98,7 @@ public:
 void SetNrTargetLunar(int x);
     void SetNrApeluri();
     void SetProcentTargetRealizat();
+    void ApelareComenzi() override;
 
 };
 

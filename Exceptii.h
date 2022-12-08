@@ -11,10 +11,17 @@ class EroareAplicatie:public std::runtime_error{
 
     using std::runtime_error::runtime_error;
 };
+
+
+
 class EroareLaConstructor:public EroareAplicatie{
 
 public:
     explicit  EroareLaConstructor(const std::string &string ):EroareAplicatie("Eroare la constructor:"+ string){}
+};
+class EroarePointer:public EroareAplicatie{
+public:
+    explicit  EroarePointer(const std::string &string):EroareAplicatie("Problema la pointer: "+string){}
 };
 
 #endif //OOP_EXCEPTII_H

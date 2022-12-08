@@ -20,7 +20,7 @@ private:
 
 
 public:
-    Companie(const string &Denumire, const std::vector<std::shared_ptr<Departament>> &Departamente1);
+    Companie(const string &Denumire, std::vector<std::shared_ptr<Departament>> Departamente1);
 
 
     Companie &operator=(const Companie &altul);

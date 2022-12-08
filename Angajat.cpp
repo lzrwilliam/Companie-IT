@@ -7,6 +7,8 @@
 Angajat::Angajat(const string &nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float salariu, int Penalizari) : NumeAngajat(nume), TaskAng(TaskAng),Salariu(salariu),
                                                                       PenalizariPentruTaskuriIntarziate(Penalizari),IdAngajat(Id) { Id++;
 
+
+
 }
 int Angajat::Id=1;
 
@@ -55,7 +57,7 @@ std::vector<std::shared_ptr<Task>> Angajat::GetVectorTaskAng() const {
 
 void Angajat::SetPenalizariTaskIntarziat() {
 
-
+PenalizariPentruTaskuriIntarziate=0;
     for(const auto &task:TaskAng)
         if(task->GetStatusTask()== false && DiferentaIntreDouaDati(DataCurenta(),task->GetDeadlineTask())== false)
             PenalizariPentruTaskuriIntarziate++;
@@ -64,9 +66,17 @@ void Angajat::SetPenalizariTaskIntarziat() {
 
 }
 
-//int Angajat::GetPenalizari() {
-//    return PenalizariPentruTaskuriIntarziate;
-//}
+int Angajat::GetPenalizari() {
+    return PenalizariPentruTaskuriIntarziate;
+}
+
+string Angajat::GetNume() {
+    return NumeAngajat;
+}
+
+int Angajat::GetId() {
+    return IdAngajat;
+}
 
 
 NetworkEngineer::NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float Salariu, int Penalizari, int ReteleRez, int EchipamenteDis,
@@ -96,13 +106,12 @@ int NetworkEngineer::GetReteleRez() {
 
 void NetworkEngineer::SetEchipDistruseReteleRez() {
     for(const auto &task: TaskAng ){
-        std::shared_ptr<TaskRetelistica> t= std::dynamic_pointer_cast<TaskRetelistica>(t);
+        std::shared_ptr<TaskRetelistica> t= std::dynamic_pointer_cast<TaskRetelistica>(task);
         if(t!= nullptr){
 
-
-            if(task->GetStatusTask()==false)
-                EchipamenteDistruse=t->GetEchipamente();
-            else ReteleRezolvate=t->GetReteleImplicate();
+            if(!task->GetStatusTask())
+                EchipamenteDistruse+=t->GetEchipamente();
+            else ReteleRezolvate+=t->GetReteleImplicate();
         }
 
 
@@ -128,6 +137,15 @@ void NetworkEngineer::MarireSalariu() {
 
     if(PenalizariPentruTaskuriIntarziate==0)
         Salariu+=ReteleRezolvate*40;
+
+}
+
+void NetworkEngineer::ApelareComenzi() {
+
+    SetPenalizariTaskIntarziat();
+    SetEchipDistruseReteleRez();
+    SetClientiNemultumiti();
+    MarireSalariu();
 
 }
 
@@ -171,6 +189,14 @@ void OperatorCallCenter::SetNrTargetLunar(int x) {
 }
 
 void OperatorCallCenter::SetProcentTargetRealizat() {
-    ProcentTarget=NrApeluriPeUltimaLuna*100/NrPentruTargetLunar;
+    ProcentTarget=(NrApeluriPeUltimaLuna*100)/(NrPentruTargetLunar);
+
+}
+
+void OperatorCallCenter::ApelareComenzi() {
+    SetNrApeluri();
+   // SetNrTargetLunar(x);
+    SetProcentTargetRealizat();
+
 
 }

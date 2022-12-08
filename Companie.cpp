@@ -4,9 +4,9 @@
 
 #include "Companie.h"
 
-Companie::Companie(const string &Denumire, const std::vector<std::shared_ptr<Departament>> &Departamente1) :
+Companie::Companie(const string &Denumire, std::vector<std::shared_ptr<Departament>> Departamente1) :
         DenumireCompanie{Denumire},
-        Departamente{Departamente1} {}
+        Departamente{std::move(Departamente1)} {}
 
 Companie &Companie::operator=(const Companie &altul) {
     swap(*this, altul);

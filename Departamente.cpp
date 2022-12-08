@@ -7,7 +7,6 @@
 #include <utility>
 
 
-/// daca vreau sa fac departamentul d1=d2,unul sa fie departament tehnic, altul sa fie relatii clienti
 
 std::ostream &operator<<(std::ostream &afisare, const Departament &departament) {
 
@@ -43,9 +42,25 @@ Departament::Departament(const Departament &altul):NumeDepartament(altul.NumeDep
 }
 
 void Departament::AdaugaAngajat(std::shared_ptr<Angajat> Ang){
+    if(std::find(AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end(),Ang)==AngajatiiDinDepartamente.end())
     AngajatiiDinDepartamente.emplace_back(Ang);
+    else throw EroarePointer("Nu putem avea mai multi angajati identici!");
 
 }
+
+std::shared_ptr<Angajat> Departament::AfisareAngajatDupaNume(string nume) {
+
+    for(const auto &angajat:AngajatiiDinDepartamente)
+        if(nume.compare(angajat->GetNume())==0)
+            return angajat;
+    throw EroarePointer("Angajatul nu exista, se returneaza pointer null!");
+}
+
+std::vector<std::shared_ptr<Angajat>> Departament::GetVectAng() const {
+
+        std::vector<std::shared_ptr<Angajat>>vec (AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end());
+        return vec;
+    }
 
 
 
@@ -55,7 +70,8 @@ DepartamenteTehnice::DepartamenteTehnice(const std::string &NumeDepartament,
                                          float Profit, int nrtaskuri) :
         Departament(NumeDepartament, AngajatiDepartamente), ProfitTotal(Profit),
         NrTaskuriTotale(nrtaskuri) {
-    if(AngajatiiDinDepartamente.size()==0) throw EroareLaConstructor("Departamentul trebuie sa aiba minim un angajat!");
+    if(AngajatiDepartamente.empty()) throw EroareLaConstructor("Departamentul trebuie sa aiba minim un angajat!");
+
 
 }
 
@@ -123,21 +139,29 @@ void DepartamenteTehnice::AfisareProcentReusitaDepartament()const {
 
 
 }
-//
-//void DepartamenteTehnice::ConcediereAngajatiIneficienti() {
-//    for(const auto &angajat:AngajatiiDinDepartamente){
-//
-//       std::shared_ptr<NetworkEngineer>Angajat= std::dynamic_pointer_cast<NetworkEngineer>(angajat);
-//       if(Angajat!= nullptr){
-//if(Angajat->GetNrEchipDis()>=3 && angajat->GetPenalizari()>=3)
-//    AngajatiiDinDepartamente.erase(std::remove(AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end()
-//    ,angajat),AngajatiiDinDepartamente.end());
-//
-//
-//       }
-//    }
-//
-//}
+
+
+
+void DepartamenteTehnice::ConcediereAngajatiIneficienti() {
+    for (auto &angajat: AngajatiiDinDepartamente) {
+
+        std::shared_ptr<NetworkEngineer> Angajat = std::dynamic_pointer_cast<NetworkEngineer>(angajat);
+        if (Angajat != nullptr) {
+            if (Angajat->GetNrEchipDis() >= 3 && angajat->GetPenalizari() >= 3) {
+                AngajatiiDinDepartamente.erase(
+                        std::remove(AngajatiiDinDepartamente.begin(), AngajatiiDinDepartamente.end(), angajat),
+                        AngajatiiDinDepartamente.end());
+                std::cout<<"Angajatul "<<Angajat->GetNume() <<" din departamentul Tehnic a fost concediat!"<<'\n';
+
+            }
+        }
+
+    }
+}
+
+
+
+
 
 
 DepartamentRelatiiClienti::DepartamentRelatiiClienti(const std::string &NumeDepartament,
@@ -185,17 +209,18 @@ void DepartamentRelatiiClienti::AfisareProcentReusitaDepartament() const {
 
 }
 
-//void DepartamentRelatiiClienti::ConcediereAngajatiIneficienti() {
-//    for( auto &angajat:AngajatiiDinDepartamente){
-//            if(angajat->GetPenalizari()>=3)
-//                AngajatiiDinDepartamente.erase(std::remove(AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end()
-//                        ,angajat),AngajatiiDinDepartamente.end());
-//
-//
-//
-//    }
-//
-//}
+void DepartamentRelatiiClienti::ConcediereAngajatiIneficienti() {
+    for( auto &angajat:AngajatiiDinDepartamente){
+            if(angajat->GetPenalizari()>=3){
+                AngajatiiDinDepartamente.erase(std::remove(AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end()
+                        ,angajat),AngajatiiDinDepartamente.end());
+            cout<<"Angajatul "<<angajat->GetNume() <<" din departamentul Relatii Clienti a fost sters! \n";}
+
+
+
+    }
+
+}
 
 
 
