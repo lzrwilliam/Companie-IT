@@ -48,7 +48,7 @@ void Departament::AdaugaAngajat(std::shared_ptr<Angajat> Ang){
 
 }
 
-std::shared_ptr<Angajat> Departament::AfisareAngajatDupaNume(string nume) {
+std::shared_ptr<Angajat> Departament::AfisareAngajatDupaNume(const string& nume) {
 
     for(const auto &angajat:AngajatiiDinDepartamente)
         if(nume.compare(angajat->GetNume())==0)
@@ -209,19 +209,34 @@ void DepartamentRelatiiClienti::AfisareProcentReusitaDepartament() const {
 
 }
 
+//void DepartamentRelatiiClienti::ConcediereAngajatiIneficienti() {
+//    for( auto &angajat:AngajatiiDinDepartamente){
+//            if(angajat->GetPenalizari()>=3){
+//                AngajatiiDinDepartamente.erase(std::remove(AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end()
+//                        ,angajat),AngajatiiDinDepartamente.end());
+//            cout<<"Angajatul "<<angajat->GetNume() <<" din departamentul Relatii Clienti a fost sters! \n";}
+//
+//
+//
+//    }
+//
+//}
+//
+//
+//
+
+
 void DepartamentRelatiiClienti::ConcediereAngajatiIneficienti() {
-    for( auto &angajat:AngajatiiDinDepartamente){
-            if(angajat->GetPenalizari()>=3){
-                AngajatiiDinDepartamente.erase(std::remove(AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end()
-                        ,angajat),AngajatiiDinDepartamente.end());
-            cout<<"Angajatul "<<angajat->GetNume() <<" din departamentul Relatii Clienti a fost sters! \n";}
+for(auto angajat=AngajatiiDinDepartamente.begin();angajat!=AngajatiiDinDepartamente.end();){
+        if((*angajat)->GetPenalizari()>=3){
+       angajat=AngajatiiDinDepartamente.erase(angajat);
+             cout<<"Angajatul "<<(*angajat)->GetNume() <<" din departamentul Relatii Clienti a fost sters! \n";}
 
 
 
     }
 
 }
-
 
 
 

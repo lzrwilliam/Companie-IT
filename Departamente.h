@@ -38,7 +38,7 @@ virtual void AfisareProcentReusitaDepartament() const =0;
 
     virtual void ConcediereAngajatiIneficienti() =0;
   std::vector<  std::shared_ptr<Angajat>>GetVectAng() const ;
-    std::shared_ptr<Angajat>AfisareAngajatDupaNume(string nume);
+    std::shared_ptr<Angajat>AfisareAngajatDupaNume(const string& nume);
 
 
 
