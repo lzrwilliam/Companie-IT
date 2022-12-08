@@ -63,7 +63,7 @@ Ang.emplace_back(AngajatNet1);Ang.emplace_back(AngajatNet2);
 
 
     d1.ConcediereAngajatiIneficienti();
-
+d1.SetProfitDepartament();
     d1.SetNrTaskuriTotale();
 
    d1.AfisareProcentReusitaDepartament();
