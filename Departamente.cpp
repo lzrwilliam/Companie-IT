@@ -204,9 +204,10 @@ std::shared_ptr<Departament> DepartamentRelatiiClienti::clone() const {
 }
 
 void DepartamentRelatiiClienti::AfisareProcentReusitaDepartament() const {
-    float procent;
+
     int TaskTerminate = 0;
     if (!AngajatiiDinDepartamente.empty()) {
+        float procent;
         for (const auto &angajat: AngajatiiDinDepartamente)
             for (const auto &task: angajat->GetVectorTaskAng())
                 if (task->GetStatusTask() == true)TaskTerminate++;
