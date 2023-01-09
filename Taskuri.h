@@ -34,11 +34,16 @@ public:
 
     friend std::ostream &operator<<(std::ostream &afis, const Task &task);
 
-    Task(string Denumire, int zi, int luna, int an, bool StatusCurent,bool terminat);
-    bool GetStatusTask();
-    bool GetTerminatTask();
+    Task(string Denumire, int zi, int luna, int an, bool StatusCurent, bool terminat);
+
+    bool GetStatusTask() const;
+
+    bool GetTerminatTask() const;
+
     void SetTerminatTask();
-    time_t GetDeadlineTask();
+
+    time_t GetDeadlineTask() const;
+
     void ApelareFunctiiTask();
 
 protected:
@@ -62,9 +67,11 @@ public:
 
     shared_ptr<Task> clone() const override;
 
-    int GetEchipamente();
-    int GetReteleImplicate();
-    float GetValoareTask();
+    int GetEchipamente() const;
+
+    int GetReteleImplicate() const;
+
+    float GetValoareTask() const;
 
 };
 

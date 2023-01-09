@@ -49,16 +49,16 @@ void Task::SetStatusTask() {
 
 }
 
-bool Task::GetStatusTask() {
-    return StatusCurent;
-}
+ bool Task::GetStatusTask() const {
+     return StatusCurent;
+ }
 
-time_t Task::GetDeadlineTask() {
+time_t Task::GetDeadlineTask() const {
     return Deadline;
 }
 
-bool Task::GetTerminatTask() {
-    return  Terminat;
+bool Task::GetTerminatTask() const {
+    return Terminat;
 }
 
 void Task::SetTerminatTask() {
@@ -99,15 +99,15 @@ void TaskRetelistica::afisare(std::ostream &afis) const {
 
 }
 
-int TaskRetelistica::GetEchipamente() {
+int TaskRetelistica::GetEchipamente() const {
     return NrEchipInMentenanta;
 }
 
-int TaskRetelistica::GetReteleImplicate() {
+int TaskRetelistica::GetReteleImplicate() const {
     return ReteleImplicate;
 }
 
-float TaskRetelistica::GetValoareTask() {
+float TaskRetelistica::GetValoareTask() const {
     return ValoareTask;
 }
 

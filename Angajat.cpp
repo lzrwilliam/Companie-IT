@@ -46,7 +46,7 @@ void Angajat::AdaugaTask(const std::shared_ptr<Task> TaskAng1) {
 
 }
 
-int Angajat::GetSizeOfVectTaskAng() {
+int Angajat::GetSizeOfVectTaskAng() const {
     return TaskAng.size();
 }
 
@@ -66,11 +66,11 @@ PenalizariPentruTaskuriIntarziate=0;
 
 }
 
-int Angajat::GetPenalizari() {
+int Angajat::GetPenalizari() const {
     return PenalizariPentruTaskuriIntarziate;
 }
 
-string Angajat::GetNume() {
+string Angajat::GetNume() const {
     return NumeAngajat;
 }
 
@@ -96,11 +96,11 @@ void NetworkEngineer::afisare(std::ostream &afis) const {
     afis << "Clienti care s-au declarat nemultumiti: " << ClientiNemultumiti << '\n';
 }
 
-int NetworkEngineer::GetNrEchipDis()  {
+int NetworkEngineer::GetNrEchipDis() const {
     return EchipamenteDistruse;
 }
 
-int NetworkEngineer::GetReteleRez() {
+int NetworkEngineer::GetReteleRez() const {
     return ReteleRezolvate;
 }
 

@@ -27,24 +27,31 @@ protected:
 
 
 public:
-    Angajat(const string &nume,const std::vector<std::shared_ptr<Task>>&TaskAng ,float salariu, int Penalizari);
+    Angajat(const string &nume, const std::vector<std::shared_ptr<Task>> &TaskAng, float salariu, int Penalizari);
 
     virtual std::shared_ptr<Angajat> clone() const = 0;
 
     friend std::ostream &operator<<(std::ostream &afis, const Angajat &angajat);
-int GetSizeOfVectTaskAng();
+
+    int GetSizeOfVectTaskAng() const;
+
     virtual ~Angajat() = default;
-    void AdaugaTask(const std::shared_ptr<Task>TaskAng1);
-    int GetPenalizari();
-    string GetNume();
-   // int GetId();
-    virtual void ApelareComenzi()=0;
+
+    void AdaugaTask(const std::shared_ptr<Task> TaskAng1);
+
+    int GetPenalizari() const;
+
+    string GetNume() const;
+
+    // int GetId();
+    virtual void ApelareComenzi() = 0;
 
 
     std::vector<std::shared_ptr<Task>> GetVectorTaskAng() const;
 
-  virtual  void MarireSalariu() =0;
-  void SetPenalizariTaskIntarziat();
+    virtual void MarireSalariu() = 0;
+
+    void SetPenalizariTaskIntarziat();
 
 protected:
     Angajat &operator=(const Angajat &altul);
@@ -63,20 +70,24 @@ class NetworkEngineer : public Angajat {
 
 
 public:
-  explicit NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float Salariu = 400, int Penalizari = 0, int ReteleRez = 0,
-                           int EchipamenteDis = 0,
-                           int ClientiMultu = 0);
+    explicit NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>> &TaskAng, float Salariu = 400,
+                             int Penalizari = 0, int ReteleRez = 0,
+                             int EchipamenteDis = 0,
+                             int ClientiMultu = 0);
 
     std::shared_ptr<Angajat> clone() const override;
 
-    int GetNrEchipDis();
-    int GetReteleRez();
+    int GetNrEchipDis() const;
+
+    int GetReteleRez() const;
+
     void SetEchipDistruseReteleRez();
+
     void SetClientiNemultumiti();
+
     void MarireSalariu() override;
+
     void ApelareComenzi() override;
-
-
 
 
 };
