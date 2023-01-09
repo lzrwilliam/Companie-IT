@@ -79,11 +79,13 @@ shared_ptr<Task> TaskRetelistica::clone() const {
     return std::make_shared<TaskRetelistica>(*this);
 }
 
-TaskRetelistica::TaskRetelistica(string Denumire, int zi, int luna, int an, bool StatusCurent,bool Terminat,
+TaskRetelistica::TaskRetelistica(string Denumire, int zi, int luna, int an,
                                  int NrEchipinMentenanta,
-                                 int NrReteleimplicate,float  ValoareTask) : Task(std::move(Denumire), zi, luna, an, StatusCurent,Terminat),
-                                                          NrEchipInMentenanta(NrEchipinMentenanta),
-                                                          ReteleImplicate(NrReteleimplicate),ValoareTask(ValoareTask) {
+                                 int NrReteleimplicate, float ValoareTask) : Task(std::move(Denumire), zi, luna, an,
+                                                                                  false, false),
+                                                                             NrEchipInMentenanta(NrEchipinMentenanta),
+                                                                             ReteleImplicate(NrReteleimplicate),
+                                                                             ValoareTask(ValoareTask) {
 
 }
 
@@ -110,8 +112,8 @@ float TaskRetelistica::GetValoareTask() {
 }
 
 
-TaskRelatiiClienti::TaskRelatiiClienti(string Denumire, int zi, int luna, int an, bool StatusCurent,bool Terminat,int ImportantaApel):
-        Task(std::move(Denumire), zi, luna, an, StatusCurent,Terminat),ImportantaApel(ImportantaApel)
+TaskRelatiiClienti::TaskRelatiiClienti(string Denumire, int zi, int luna, int an, int ImportantaApel) :
+        Task(std::move(Denumire), zi, luna, an, false, false), ImportantaApel(ImportantaApel)
 
 {
 

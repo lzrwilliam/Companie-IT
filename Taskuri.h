@@ -56,9 +56,9 @@ class TaskRetelistica : public Task {
     void afisare(std::ostream &afis) const override;
 
 public:
-    TaskRetelistica(string Denumire, int zi, int luna, int an, bool StatusCurent,bool Terminat,
+    TaskRetelistica(string Denumire, int zi, int luna, int an,
                     int nrEchipamenteInMentenanta,
-                    int ReteleImplicate,float ValoareTask);
+                    int ReteleImplicate, float ValoareTask);
 
     shared_ptr<Task> clone() const override;
 
@@ -76,8 +76,9 @@ class TaskRelatiiClienti:public Task{
 
     void afisare(std::ostream&afis) const override;
 public:
-   explicit TaskRelatiiClienti(string Denumire, int zi, int luna, int an, bool StatusCurent,bool Terminat,int ImportantaApel);
-    shared_ptr<Task>clone() const override;
+    explicit TaskRelatiiClienti(string Denumire, int zi, int luna, int an, int ImportantaApel);
+
+    shared_ptr<Task> clone() const override;
 
 
 
