@@ -77,7 +77,7 @@ try {
     }
 
 
-    // d1.ConcediereAngajatiIneficienti();
+     d1.ConcediereAngajatiIneficienti();
     d1.SetProfitDepartament();
     d1.SetNrTaskuriTotale();
 //

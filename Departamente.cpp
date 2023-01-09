@@ -128,14 +128,15 @@ void DepartamenteTehnice::SetNrTaskuriTotale() {
 
 void DepartamenteTehnice::AfisareProcentReusitaDepartament()const {
     float procent;
-    int TaskTerminate=0;
-    for( const auto&angajat:AngajatiiDinDepartamente)
-        for(const auto &task: angajat->GetVectorTaskAng())
-            if(task->GetStatusTask()== true)TaskTerminate++;
+    int TaskTerminate = 0;
+    if (!AngajatiiDinDepartamente.empty()) {
+        for (const auto &angajat: AngajatiiDinDepartamente)
+            for (const auto &task: angajat->GetVectorTaskAng())
+                if (task->GetStatusTask() == true)TaskTerminate++;
 
-    procent=(TaskTerminate*100)/NrTaskuriTotale;
-    cout<<"Reusita departamentului tehnic este de : "<<procent<<"% \n";
-
+        procent = (TaskTerminate * 100) / NrTaskuriTotale;
+        cout << "Reusita departamentului tehnic este de : " << procent << "% \n";
+    }
 
 
 
@@ -209,7 +210,7 @@ void DepartamentRelatiiClienti::AfisareProcentReusitaDepartament() const {
         for (const auto &angajat: AngajatiiDinDepartamente)
             for (const auto &task: angajat->GetVectorTaskAng())
                 if (task->GetStatusTask() == true)TaskTerminate++;
-        if (Target != 0 && TaskTerminate != 0) {
+        if (Target != 0) {
             procent = (TaskTerminate * 100) / Target;
             cout << "Reusita departamentului RelatiiClienti este de : " << procent << "%\n";
         } else { cout << "Reusita departamentului este de 0%!"; }
