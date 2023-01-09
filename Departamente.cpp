@@ -210,12 +210,13 @@ void DepartamentRelatiiClienti::AfisareProcentReusitaDepartament() const {
 
     if (!AngajatiiDinDepartamente.empty()) {
         int TaskTerminate = 0;
-        float procent;
+
         for (const auto &angajat: AngajatiiDinDepartamente)
             for (const auto &task: angajat->GetVectorTaskAng())
                 if (task->GetStatusTask() == true)TaskTerminate++;
+
         if (Target != 0) {
-            procent = (TaskTerminate * 100) / Target;
+            float procent = (TaskTerminate * 100) / Target;
             cout << "Reusita departamentului RelatiiClienti este de : " << procent << "%\n";
         } else { cout << "Reusita departamentului este de 0%!"; }
 
