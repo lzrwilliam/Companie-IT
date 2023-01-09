@@ -128,9 +128,10 @@ void DepartamenteTehnice::SetNrTaskuriTotale() {
 
 void DepartamenteTehnice::AfisareProcentReusitaDepartament()const {
 
-    int TaskTerminate = 0;
+
     if (!AngajatiiDinDepartamente.empty()) {
         float procent;
+        int TaskTerminate = 0;
         for (const auto &angajat: AngajatiiDinDepartamente)
             for (const auto &task: angajat->GetVectorTaskAng())
                 if (task->GetStatusTask() == true)TaskTerminate++;
@@ -206,8 +207,9 @@ std::shared_ptr<Departament> DepartamentRelatiiClienti::clone() const {
 
 void DepartamentRelatiiClienti::AfisareProcentReusitaDepartament() const {
 
-    int TaskTerminate = 0;
+
     if (!AngajatiiDinDepartamente.empty()) {
+        int TaskTerminate = 0;
         float procent;
         for (const auto &angajat: AngajatiiDinDepartamente)
             for (const auto &task: angajat->GetVectorTaskAng())
