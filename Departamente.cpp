@@ -132,11 +132,16 @@ void DepartamenteTehnice::AfisareProcentReusitaDepartament()const {
     if (!AngajatiiDinDepartamente.empty()) {
         float procent;
         int TaskTerminate = 0;
+        int TaskDepasitDeadline = 0;
         for (const auto &angajat: AngajatiiDinDepartamente)
-            for (const auto &task: angajat->GetVectorTaskAng())
+            for (const auto &task: angajat->GetVectorTaskAng()) {
                 if (task->GetStatusTask() == true)TaskTerminate++;
+                if ((task->GetTerminatTask() == false && task->GetStatusTask() == false) &&
+                    DiferentaIntreDouaDati(DataCurenta(), task->GetDeadlineTask()) == false)
+                    TaskDepasitDeadline++;
+            }
 
-        procent = (TaskTerminate * 100) / NrTaskuriTotale;
+        procent = ((TaskTerminate - TaskDepasitDeadline) * 100) / NrTaskuriTotale;
         cout << "Reusita departamentului tehnic este de : " << procent << "% \n";
     }
 
