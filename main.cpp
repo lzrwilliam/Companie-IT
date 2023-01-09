@@ -72,23 +72,23 @@ try {
    for(auto &angajat:d1.GetVectAng()){
        angajat->ApelareComenzi();
    }
-    for(auto &angajat:d2.GetVectAng()){
+    for (auto &angajat: d2.GetVectAng()) {
         angajat->ApelareComenzi();
     }
 
 
-  ///  d1.ConcediereAngajatiIneficienti();
-d1.SetProfitDepartament();
+    // d1.ConcediereAngajatiIneficienti();
+    d1.SetProfitDepartament();
     d1.SetNrTaskuriTotale();
+//
+    d1.AfisareProcentReusitaDepartament();
+    try {
+        d1.AdaugaAngajat(AngajatNet2);
+    } catch (EroarePointer &err) { std::cout << err.what() << '\n'; }
+    d1.AfisareAngajatDupaNume("Catalin");
 
-   d1.AfisareProcentReusitaDepartament();
-   try{
-   d1.AdaugaAngajat(AngajatNet2);} catch(EroarePointer &err){std::cout<<err.what()<<'\n';}
-   d1.AfisareAngajatDupaNume("Catalin");
 
-
-cout<<d1<<d2;
-
+    cout << d1 << d2;
 
 
 }
