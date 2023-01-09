@@ -49,15 +49,16 @@ public:
 
     std::vector<std::shared_ptr<Task>> GetVectorTaskAng() const;
 
-    virtual void MarireSalariu() = 0;
 
-    void SetPenalizariTaskIntarziat();
 
 protected:
     Angajat &operator=(const Angajat &altul);
 
     Angajat(const Angajat &other);
 
+    virtual void MarireSalariu() = 0;
+
+    void SetPenalizariTaskIntarziat();
 };
 
 class NetworkEngineer : public Angajat {
@@ -67,6 +68,13 @@ class NetworkEngineer : public Angajat {
 
 
     void afisare(std::ostream &afis) const override;
+
+protected:
+    void SetEchipDistruseReteleRez();
+
+    void SetClientiNemultumiti();
+
+    void MarireSalariu() override;
 
 
 public:
@@ -81,11 +89,7 @@ public:
 
     int GetReteleRez() const;
 
-    void SetEchipDistruseReteleRez();
 
-    void SetClientiNemultumiti();
-
-    void MarireSalariu() override;
 
     void ApelareComenzi() override;
 

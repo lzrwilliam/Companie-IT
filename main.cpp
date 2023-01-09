@@ -101,5 +101,7 @@ catch (EroarePointer &err) {
 }
 
 
-
 }
+
+
+//// de facyt functie pt setat status task!!!
