@@ -9,7 +9,7 @@
 #include <iostream>
 #include <typeinfo>
 #include "Exceptii.h"
-
+#include <set>
 using std::cout;
 using std::string;
 

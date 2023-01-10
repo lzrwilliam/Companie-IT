@@ -33,20 +33,32 @@ Departament &Departament::operator=(const Departament &altul) {
 
     auto copie=altul.clone();
     std::swap(NumeDepartament,copie->NumeDepartament);
-    std::swap(AngajatiiDinDepartamente,copie->AngajatiiDinDepartamente);
+    std::swap(AngajatiiDinDepartamente, copie->AngajatiiDinDepartamente);
     return *this;
 
 }
 
-Departament::Departament(const Departament &altul):NumeDepartament(altul.NumeDepartament) {
-    for(const auto &Angajati:altul.AngajatiiDinDepartamente)
+Departament::Departament(const Departament &altul) : NumeDepartament(altul.NumeDepartament) {
+    for (const auto &Angajati: altul.AngajatiiDinDepartamente)
         AngajatiiDinDepartamente.emplace_back(Angajati->clone());
 }
 
-void Departament::AdaugaAngajat(std::shared_ptr<Angajat> Ang){
-    if(std::find(AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end(),Ang)==AngajatiiDinDepartamente.end())
-    AngajatiiDinDepartamente.emplace_back(Ang);
-    else throw EroarePointer("Nu putem avea mai multi angajati identici!");
+//void Departament::AdaugaAngajat(std::shared_ptr<Angajat> Ang){
+//    if(std::find(AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end(),Ang)==AngajatiiDinDepartamente.end())
+//    AngajatiiDinDepartamente.emplace_back(Ang);
+//    else throw EroarePointer("Nu putem avea mai multi angajati identici!");
+//
+//}
+
+void Departament::AdaugaAngajat(std::shared_ptr<Angajat> Ang) {
+
+    std::set<std::shared_ptr<Angajat>> setangajat;
+    for (const auto &angajat: AngajatiiDinDepartamente)
+        if (setangajat.find(angajat) != setangajat.end())
+            throw EroarePointer("Nu putem avea mai multi angajati identici! \n");
+        else
+            AngajatiiDinDepartamente.emplace_back(Ang);
+    cout << "Angajatul " << Ang->GetNume() << " a fost adaugat cu succes \n";
 
 }
 
