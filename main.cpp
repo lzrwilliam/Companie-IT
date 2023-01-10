@@ -83,7 +83,8 @@ try {
     d1.SetProfitDepartament();
     d1.SetNrTaskuriTotale();
 
-    d1.AfisareProcentReusitaDepartament();
+    cout << "Procentul de reusita al departamentului " << d1.GetNumeDepartament() << " este de : "
+         << d1.CalculareProcentReusitaDepartament() << "% \n";
     try {
         d1.AdaugaAngajat(AngajatNet2);
         //  cout<<d1;

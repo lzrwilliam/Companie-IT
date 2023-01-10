@@ -140,7 +140,7 @@ void DepartamenteTehnice::SetNrTaskuriTotale() {
     }
 }
 
-void DepartamenteTehnice::AfisareProcentReusitaDepartament()const {
+float DepartamenteTehnice::CalculareProcentReusitaDepartament() const {
 
 
     if (!AngajatiiDinDepartamente.empty()) {
@@ -156,14 +156,11 @@ void DepartamenteTehnice::AfisareProcentReusitaDepartament()const {
             }
 
         procent = ((TaskTerminate - TaskDepasitDeadline) * 100) / NrTaskuriTotale;
-        cout << "Reusita departamentului tehnic este de : " << procent << "% \n";
+        return procent;
     }
 
 
-
-
-
-
+    return 0;
 
 }
 
@@ -223,7 +220,7 @@ std::shared_ptr<Departament> DepartamentRelatiiClienti::clone() const {
     return std::make_shared<DepartamentRelatiiClienti>(*this);
 }
 
-void DepartamentRelatiiClienti::AfisareProcentReusitaDepartament() const {
+float DepartamentRelatiiClienti::CalculareProcentReusitaDepartament() const {
 
 
     if (!AngajatiiDinDepartamente.empty()) {
@@ -235,12 +232,13 @@ void DepartamentRelatiiClienti::AfisareProcentReusitaDepartament() const {
 
         if (Target != 0) {
             float procent = (TaskTerminate * 100) / Target;
-            cout << "Reusita departamentului RelatiiClienti este de : " << procent << "%\n";
-        } else { cout << "Reusita departamentului este de 0%!"; }
+
+            return procent;
+        }
 
     }
 
-
+    return 0;
 }
 
 

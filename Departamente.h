@@ -33,17 +33,25 @@ public:
 
     friend std::ostream &operator<<(std::ostream &afisare, const Departament &departament);
 
-virtual void AfisareProcentReusitaDepartament() const =0;
+    virtual float CalculareProcentReusitaDepartament() const = 0;
+
     virtual  ~Departament() = default;
 
-    virtual void ConcediereAngajatiIneficienti() =0;
-  std::vector<  std::shared_ptr<Angajat>>GetVectAng() const ;
-    std::shared_ptr<Angajat>AfisareAngajatDupaNume(const string& nume);
+    virtual void ConcediereAngajatiIneficienti() = 0;
 
+    std::vector<std::shared_ptr<Angajat>> GetVectAng() const;
+
+    std::shared_ptr<Angajat> AfisareAngajatDupaNume(const string &nume);
+
+
+    string GetNumeDepartament() const {
+        return NumeDepartament;
+    }
 
 
 protected:
-    Departament &operator=(const Departament&altul);
+    Departament &operator=(const Departament &altul);
+
     Departament(const Departament &altul);
 
 
@@ -68,13 +76,14 @@ public:
         return std::make_shared<DepartamenteTehnice>(*this);
     }
 
-    void AfisareProcentReusitaDepartament() const override;
+    float CalculareProcentReusitaDepartament() const override;
 
 
 
    void SetProfitDepartament();
    void SetNrTaskuriTotale();
    void ConcediereAngajatiIneficienti() override;
+
 
 
 };
@@ -92,8 +101,9 @@ public:
 
     std::shared_ptr<Departament> clone() const override;
 
-    void AfisareProcentReusitaDepartament() const override;
-    void ConcediereAngajatiIneficienti()  override;
+    float CalculareProcentReusitaDepartament() const override;
+
+    void ConcediereAngajatiIneficienti() override;
 
 
 
