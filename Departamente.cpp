@@ -189,7 +189,6 @@ void DepartamenteTehnice::ConcediereAngajatiIneficienti() {
     }
 }
 
-/////!!!!!!!!! DE INTREBAT CARE VARIANTA LA ERASE ESTE BUNA, CEA CU ANGAJAT ++ SAU CEALALTA?
 
 
 
@@ -246,19 +245,32 @@ void DepartamentRelatiiClienti::AfisareProcentReusitaDepartament() const {
 
 
 
+//void DepartamentRelatiiClienti::ConcediereAngajatiIneficienti() {
+//    if (!AngajatiiDinDepartamente.empty()) {
+//        for (auto angajat = AngajatiiDinDepartamente.begin(); angajat != AngajatiiDinDepartamente.end();) {
+//            if ((*angajat)->GetPenalizari() >= 3) {
+//                angajat = AngajatiiDinDepartamente.erase(angajat);
+//                cout << "Angajatul " << (*angajat)->GetNume() << " din departamentul Relatii Clienti a fost sters! \n";
+//            }
+//
+//
+//        }
+//    }
+//
+//}
+
 void DepartamentRelatiiClienti::ConcediereAngajatiIneficienti() {
-    if (!AngajatiiDinDepartamente.empty()) {
-        for (auto angajat = AngajatiiDinDepartamente.begin(); angajat != AngajatiiDinDepartamente.end();) {
-            if ((*angajat)->GetPenalizari() >= 3) {
-                angajat = AngajatiiDinDepartamente.erase(angajat);
-                cout << "Angajatul " << (*angajat)->GetNume() << " din departamentul Relatii Clienti a fost sters! \n";
-            }
 
+    std::erase_if(AngajatiiDinDepartamente, [](const std::shared_ptr<Angajat> &ang) {
+        return ang->GetPenalizari() >= 3;
 
-        }
-    }
+        cout << "Angajatul " << ang->GetNume()
+             << " a fost sters din departamentul Relatii Clienti din cauza penalizarilor '\n'";
+    });
+
 
 }
+
 
 
 
