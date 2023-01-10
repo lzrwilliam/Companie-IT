@@ -11,67 +11,69 @@ int main() {
 try {
     std::vector<std::shared_ptr<Task>> TaskuriAngajat;
 
-    std::shared_ptr<Task> Task1 = std::make_shared<TaskRetelistica>("Configurare router", 10, 10, 2020, 5, 10, 500);
-    std::shared_ptr<Task> Task2 = std::make_shared<TaskRetelistica>("Inlocuire switch", 10, 10, 2021, 1, 24, 200);
-    std::shared_ptr<Task> Task3 = std::make_shared<TaskRetelistica>("Schimbare placa de retea", 10, 12, 2020, 5, 10,
-                                                                    99);
+    auto Task1 = TaskRetelistica("Configurare router", 10, 10, 2020, 5, 10, 500).clone();
+    auto Task2 = TaskRetelistica("Inlocuire switch", 10, 10, 2021, 1, 24, 200).clone();
+    auto Task3 = TaskRetelistica("Schimbare placa de retea", 10, 12, 2020, 5, 10,
+                                 99).clone();
     TaskuriAngajat.emplace_back(Task1);
     TaskuriAngajat.emplace_back(Task2);
     TaskuriAngajat.emplace_back(Task3);
-    std::shared_ptr<Angajat> AngajatNet1 = std::make_shared<NetworkEngineer>("William", TaskuriAngajat, 5000, 0, 0, 0);
+    // std::shared_ptr<Angajat> AngajatNet1 = std::make_shared<NetworkEngineer>("William", TaskuriAngajat, 5000, 0, 0, 0);
+    auto AngajatNet1 = NetworkEngineer("William", TaskuriAngajat, 5000, 0, 0, 0).clone();
 
     TaskuriAngajat.clear();
 
-    std::shared_ptr<Task> Task4 = std::make_shared<TaskRetelistica>("Configurare router", 10, 10, 2020, 5, 10, 500);
-    std::shared_ptr<Task> Task5 = std::make_shared<TaskRetelistica>("Inlocuire switch", 10, 10, 2020, 1, 24, 200);
-    std::shared_ptr<Task> Task6 = std::make_shared<TaskRetelistica>("Schimbare placa de retea", 10, 12, 2020, 5, 10,
-                                                                    99);
+    auto Task4 = TaskRetelistica("Configurare router", 10, 10, 2020, 5, 10, 500).clone();
+    auto Task5 = TaskRetelistica("Inlocuire switch", 10, 10, 2020, 1, 24, 200).clone();
+    auto Task6 = TaskRetelistica("Schimbare placa de retea", 10, 12, 2020, 5, 10,
+                                 99).clone();
     TaskuriAngajat.emplace_back(Task4);
     TaskuriAngajat.emplace_back(Task5);
     TaskuriAngajat.emplace_back(Task6);
-    std::shared_ptr<Angajat> AngajatNet2 = std::make_shared<NetworkEngineer>("William", TaskuriAngajat, 5000, 0, 0, 0);
+    auto AngajatNet2 = NetworkEngineer("William", TaskuriAngajat, 5000, 0, 0, 0).clone();
 
     TaskuriAngajat.clear();
 
 
-    std::shared_ptr<Task> TaskRel1 = std::make_shared<TaskRelatiiClienti>("Convins client sa vina sa semneze", 10, 10,
-                                                                          2010, 100);
-    std::shared_ptr<Task> TaskRel2 = std::make_shared<TaskRelatiiClienti>("Lamurire problema client", 10, 10, 2010,
-                                                                          300);
-    std::shared_ptr<Task> TaskRel3 = std::make_shared<TaskRelatiiClienti>("Recuperat echipamente", 10, 2, 2010, 3000);
+    auto TaskRel1 = TaskRelatiiClienti("Convins client sa vina sa semneze", 10, 10,
+                                       2010, 100).clone();
+    auto TaskRel2 = TaskRelatiiClienti("Lamurire problema client", 10, 10, 2010,
+                                       300).clone();
+    auto TaskRel3 = TaskRelatiiClienti("Recuperat echipamente", 10, 2, 2010, 3000).clone();
     TaskuriAngajat.emplace_back(TaskRel1);
     TaskuriAngajat.emplace_back(TaskRel2);
     TaskuriAngajat.emplace_back(TaskRel3);
-    std::shared_ptr<Angajat> AngajatCall1 = std::make_shared<OperatorCallCenter>("Turis", TaskuriAngajat, 10000, 0, 0,
-                                                                                 0, 0);
+    auto AngajatCall1 = OperatorCallCenter("Turis", TaskuriAngajat, 10000, 0, 0,
+                                           0, 0).clone();
 
 
     TaskuriAngajat.clear();
 
 
-    std::shared_ptr<Task> TaskRel4 = std::make_shared<TaskRelatiiClienti>("Convins client sa vina sa semneze", 10, 10,
-                                                                          2010, 100);
-    std::shared_ptr<Task> TaskRel5 = std::make_shared<TaskRelatiiClienti>("Lamurire problema client", 10, 10, 2010,
-                                                                          300);
-    std::shared_ptr<Task> TaskRel6 = std::make_shared<TaskRelatiiClienti>("Recuperat echipamente", 10, 2, 2010, 3000);
+    auto TaskRel4 = TaskRelatiiClienti("Convins client sa vina sa semneze", 10, 10,
+                                       2010, 100).clone();
+    auto TaskRel5 = TaskRelatiiClienti("Lamurire problema client", 10, 10, 2010,
+                                       300).clone();
+    auto TaskRel6 = TaskRelatiiClienti("Recuperat echipamente", 10, 2, 2010, 3000).clone();
     TaskuriAngajat.emplace_back(TaskRel4);
     TaskuriAngajat.emplace_back(TaskRel5);
-    std::shared_ptr<Angajat> AngajatCall2 = std::make_shared<OperatorCallCenter>("Catalin", TaskuriAngajat, 10000, 0, 0,
-                                                                                 0, 0);
+    auto AngajatCall2 = OperatorCallCenter("Catalin", TaskuriAngajat, 10000, 0, 0,
+                                           0, 0).clone();
     AngajatCall2->AdaugaTask(TaskRel6);
 
     DepartamenteTehnice d1("Cisco", {AngajatNet1, AngajatNet2}, 0, 0);
     DepartamentRelatiiClienti d2("HR", {AngajatCall2, AngajatCall1}, 30);
 
-    std::vector<std::shared_ptr<Angajat>> Ang;
-    Ang.emplace_back(AngajatNet1);
-    Ang.emplace_back(AngajatNet2);
+
+    //  std::vector<std::shared_ptr<Angajat>> Ang;
+//   Ang.emplace_back(AngajatNet1);
+    // Ang.emplace_back(AngajatNet2);
 
 
 
-   for(auto &angajat:d1.GetVectAng()){
-       angajat->ApelareComenzi();
-   }
+    for (auto &angajat: d1.GetVectAng()) {
+        angajat->ApelareComenzi();
+    }
     for (auto &angajat: d2.GetVectAng()) {
         angajat->ApelareComenzi();
     }
@@ -80,7 +82,7 @@ try {
      d1.ConcediereAngajatiIneficienti();
     d1.SetProfitDepartament();
     d1.SetNrTaskuriTotale();
-//
+
     d1.AfisareProcentReusitaDepartament();
     try {
         d1.AdaugaAngajat(AngajatNet2);
