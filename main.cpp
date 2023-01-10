@@ -86,6 +86,8 @@ try {
     d1.AfisareProcentReusitaDepartament();
     try {
         d1.AdaugaAngajat(AngajatNet2);
+        //  cout<<d1;
+
     } catch (EroarePointer &err) { std::cout << err.what() << '\n'; }
     d1.AfisareAngajatDupaNume("Catalin");
 
