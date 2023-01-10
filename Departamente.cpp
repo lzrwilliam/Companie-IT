@@ -62,7 +62,7 @@ void Departament::AdaugaAngajat(std::shared_ptr<Angajat> Ang) {
 
 }
 
-std::shared_ptr<Angajat> Departament::AfisareAngajatDupaNume(const string& nume) {
+std::shared_ptr<Angajat> Departament::AfisareAngajatDupaNume(const string &nume) {
     if (!AngajatiiDinDepartamente.empty()) {
         for (const auto &angajat: AngajatiiDinDepartamente)
             if (nume.compare(angajat->GetNume()) == 0)
@@ -71,11 +71,18 @@ std::shared_ptr<Angajat> Departament::AfisareAngajatDupaNume(const string& nume)
     throw EroarePointer("Angajatul nu exista, se returneaza pointer null!");
 }
 
+//std::vector<std::shared_ptr<Angajat>> Departament::GetVectAng() const {
+//
+//        std::vector<std::shared_ptr<Angajat>>vec (AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end());
+//        return vec;
+//    }
+
 std::vector<std::shared_ptr<Angajat>> Departament::GetVectAng() const {
 
-        std::vector<std::shared_ptr<Angajat>>vec (AngajatiiDinDepartamente.begin(),AngajatiiDinDepartamente.end());
-        return vec;
-    }
+
+    return AngajatiiDinDepartamente;
+}
+
 
 
 
