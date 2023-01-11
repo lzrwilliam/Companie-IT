@@ -72,30 +72,30 @@ int Angajat::GetPenalizari() const {
 string Angajat::GetNume() const {
     return NumeAngajat;
 }
-
-void Angajat::RezolvaTask() {
-    std::cout << "Angajatul " << NumeAngajat << " mai are de rezolvat task-urile: \n";
-    for (const auto &task: TaskAng) {
-        std::cout << task->GetIdTask() << " ";
-    }
-    std::cout << " \nAlegeti ce task se marcheaza ca rezolvat sau 0 daca se doreste anularea operatiei \n";
-    int IdTask;
-    std::cin >> IdTask;
-    //while (IdTask != 0) {
-
-
-    for (const auto &task: TaskAng) {
-        if (task->GetIdTask() == IdTask) {
-            task->ApelareFunctiiTask();
-            std::cout << "Task-ul " << IdTask << " a fost marcat ca rezolvat daca nu s-a depasit deadline! \n";
-        }
-    }
-
-    //    std::cin >> IdTask;
-
+//
+//void Angajat::RezolvaTask() {
+//    std::cout << "Angajatul " << NumeAngajat << " mai are de rezolvat task-urile: \n";
+//    for (const auto &task: TaskAng) {
+//        std::cout << task->GetIdTask() << " ";
+//    }
+//    std::cout << " \nAlegeti ce task se marcheaza ca rezolvat sau 0 daca se doreste anularea operatiei \n";
+//    int IdTask;
+//    std::cin >> IdTask;
+//    while (IdTask != 0) {
+//
+//
+//    for (const auto &task: TaskAng) {
+//        if (task->GetIdTask() == IdTask) {
+//            task->ApelareFunctiiTask();
+//            std::cout << "Task-ul " << IdTask << " a fost marcat ca rezolvat daca nu s-a depasit deadline! \n";
+//        }
+//    }
+//
+//       std::cin >> IdTask;
+//
 //}
-
-}
+//
+//}
 //int Angajat::GetId() {
 //    return IdAngajat;
 //}
@@ -164,7 +164,7 @@ void NetworkEngineer::MarireSalariu() {
 }
 
 void NetworkEngineer::ApelareComenzi() {
-    RezolvaTask();
+    // RezolvaTask();
     SetPenalizariTaskIntarziat();
     SetEchipDistruseReteleRez();
     SetClientiNemultumiti();
@@ -217,7 +217,7 @@ void OperatorCallCenter::SetProcentTargetRealizat() {
 }
 
 void OperatorCallCenter::ApelareComenzi() {
-    RezolvaTask();
+//    RezolvaTask();
     SetNrApeluri();
    // SetNrTargetLunar(x);
     SetProcentTargetRealizat();
