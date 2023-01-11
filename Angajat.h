@@ -49,7 +49,7 @@ public:
 
     std::vector<std::shared_ptr<Task>> GetVectorTaskAng() const;
 
-    void RezolvaTask();
+    //void RezolvaTask();
 
 
 protected:
