@@ -81,10 +81,10 @@ void Task::ApelareFunctiiTask() {
     SetTerminatTask();
 
 }
-
-int Task::GetIdTask() const {
-    return IdTask;
-}
+//
+//int Task::GetIdTask() const {
+//    return IdTask;
+//}
 
 shared_ptr<Task> TaskRetelistica::clone() const {
     return std::make_shared<TaskRetelistica>(*this);
