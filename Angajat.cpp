@@ -74,11 +74,11 @@ string Angajat::GetNume() const {
 }
 
 void Angajat::RezolvaTask() {
-    std::cout << "Angajatul " << NumeAngajat << " mai are de rezolvat task-urile:";
+    std::cout << "Angajatul " << NumeAngajat << " mai are de rezolvat task-urile: \n";
     for (const auto &task: TaskAng) {
         std::cout << task->GetIdTask() << " ";
     }
-    std::cout << "Alegeti ce task se marcheaza ca rezolvat sau 0 daca se doreste anularea operatiei";
+    std::cout << " \nAlegeti ce task se marcheaza ca rezolvat sau 0 daca se doreste anularea operatiei \n";
     int IdTask;
     std::cin >> IdTask;
     while (IdTask != 0) {
@@ -165,7 +165,7 @@ void NetworkEngineer::MarireSalariu() {
 }
 
 void NetworkEngineer::ApelareComenzi() {
-
+    RezolvaTask();
     SetPenalizariTaskIntarziat();
     SetEchipDistruseReteleRez();
     SetClientiNemultumiti();
@@ -218,6 +218,7 @@ void OperatorCallCenter::SetProcentTargetRealizat() {
 }
 
 void OperatorCallCenter::ApelareComenzi() {
+    RezolvaTask();
     SetNrApeluri();
    // SetNrTargetLunar(x);
     SetProcentTargetRealizat();

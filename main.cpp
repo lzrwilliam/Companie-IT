@@ -18,7 +18,7 @@ int main() {
     TaskuriAngajat.emplace_back(Task1);
     TaskuriAngajat.emplace_back(Task2);
     TaskuriAngajat.emplace_back(Task3);
-    auto AngajatNet1 = NetworkEngineer("William", TaskuriAngajat, 5000, 0, 0, 0).clone();
+    auto AngajatNet1 = NetworkEngineer("William1", TaskuriAngajat, 5000, 0, 0, 0).clone();
 
     TaskuriAngajat.clear();
 
@@ -65,11 +65,6 @@ int main() {
 
         auto c1 = Companie("Indeco GROUP", {d1.clone(), d2.clone()});
 
-        AngajatNet2->RezolvaTask();
-        for (const auto &task: AngajatNet2->GetVectorTaskAng())
-            cout << *task << "\n";
-        // task-urile se modifica aici n vector, dar mai jos in functie management departamente apar tot restante daca rezolvam unul, las asa, deja am stat prea mult pe ele
-
         c1.ManagementDepartamente();
 
 
@@ -97,6 +92,7 @@ int main() {
     catch (EroareAplicatie &err) {
         std::cout << err.what();
     }
+
 
 }
 

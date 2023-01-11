@@ -44,6 +44,7 @@ void Companie::ManagementDepartamente() {
 
     for (const auto &departament: Departamente) {
         for (const auto &angajat: departament->GetVectAng()) {
+
             angajat->ApelareComenzi();
         }
         departament->ConcediereAngajatiIneficienti();
