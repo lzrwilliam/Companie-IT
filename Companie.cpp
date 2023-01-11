@@ -48,12 +48,13 @@ void Companie::ManagementDepartamente() {
         }
         departament->ConcediereAngajatiIneficienti();
 
-        if (auto pointerDepTehnic = dynamic_cast<DepartamenteTehnice *>(departament.get())) {
-            pointerDepTehnic->SetNrTaskuriTotale();
-            pointerDepTehnic->SetProfitDepartament();
-
-
-        }
+// auto  pointerDepTehnic =  std::dynamic_pointer_cast<DepartamenteTehnice >(departament);
+// if(pointerDepTehnic!= nullptr){
+//            pointerDepTehnic->SetNrTaskuriTotale();
+//            pointerDepTehnic->SetProfitDepartament();
+//
+//
+//        }
 
 
         cout << "Procentul de reusita al departamentului " << departament->GetNumeDepartament() << " este de "
