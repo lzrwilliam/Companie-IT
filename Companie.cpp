@@ -39,5 +39,29 @@ std::ostream &operator<<(std::ostream &afisare, const Companie &companie) {
 
 }
 
+void Companie::ManagementDepartamente() {
+
+
+    for (const auto &departament: Departamente) {
+        for (const auto &angajat: departament->GetVectAng()) {
+            angajat->ApelareComenzi();
+        }
+        departament->ConcediereAngajatiIneficienti();
+
+        if (auto pointerDepTehnic = dynamic_cast<DepartamenteTehnice *>(departament.get())) {
+            pointerDepTehnic->SetNrTaskuriTotale();
+            pointerDepTehnic->SetProfitDepartament();
+
+
+        }
+
+
+        cout << "Procentul de reusita al departamentului " << departament->GetNumeDepartament() << " este de "
+             << departament->CalculareProcentReusitaDepartament() << '\n';
+
+
+    }
+}
+
 
 

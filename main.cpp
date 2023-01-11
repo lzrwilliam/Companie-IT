@@ -1,6 +1,6 @@
 #include <iostream>
 #include  <vector>
-//#include "Companie.h"
+#include "Companie.h"
 #include "Departamente.h"
 #include "Angajat.h"
 #include "Taskuri.h"
@@ -8,7 +8,7 @@
 #include "Exceptii.h"
 
 int main() {
-try {
+
     std::vector<std::shared_ptr<Task>> TaskuriAngajat;
 
     auto Task1 = TaskRetelistica("Configurare router", 10, 10, 2020, 5, 10, 500).clone();
@@ -49,62 +49,51 @@ try {
 
     TaskuriAngajat.clear();
 
-
-    auto TaskRel4 = TaskRelatiiClienti("Convins client sa vina sa semneze", 10, 10,
-                                       2010, 100).clone();
-    auto TaskRel5 = TaskRelatiiClienti("Lamurire problema client", 10, 10, 2010,
-                                       300).clone();
-    auto TaskRel6 = TaskRelatiiClienti("Recuperat echipamente", 10, 2, 2010, 3000).clone();
-    TaskuriAngajat.emplace_back(TaskRel4);
-    TaskuriAngajat.emplace_back(TaskRel5);
-    auto AngajatCall2 = OperatorCallCenter("Catalin", TaskuriAngajat, 10000, 0, 0,
-                                           0, 0).clone();
-    AngajatCall2->AdaugaTask(TaskRel6);
+    try {
+        auto TaskRel4 = TaskRelatiiClienti("Convins client sa vina sa semneze", 10, 10,
+                                           2010, 100).clone();
+        auto TaskRel5 = TaskRelatiiClienti("Lamurire problema client", 10, 10, 2010,
+                                           300).clone();
+        auto TaskRel6 = TaskRelatiiClienti("Recuperat echipamente", 10, 2, 2010, 3000).clone();
+        TaskuriAngajat.emplace_back(TaskRel4);
+        TaskuriAngajat.emplace_back(TaskRel5);
+        auto AngajatCall2 = OperatorCallCenter("Catalin", TaskuriAngajat, 10000, 0, 0,
+                                               0, 0).clone();
+        AngajatCall2->AdaugaTask(TaskRel6);
 
     DepartamenteTehnice d1("Cisco", {AngajatNet1, AngajatNet2}, 0, 0);
     DepartamentRelatiiClienti d2("HR", {AngajatCall2, AngajatCall1}, 30);
 
 
-    //  std::vector<std::shared_ptr<Angajat>> Ang;
-//   Ang.emplace_back(AngajatNet1);
-    // Ang.emplace_back(AngajatNet2);
+        auto c1 = Companie("Indeco GROUP", {d1.clone(), d2.clone()});
+
+        c1.ManagementDepartamente();
 
 
+        try {
+            d1.AdaugaAngajat(AngajatNet2);
 
-    for (auto &angajat: d1.GetVectAng()) {
-        angajat->ApelareComenzi();
+            cout << d1;
+
+        } catch (ResursaLipsa &err) { std::cout << err.what() << '\n'; }
+        d1.AfisareAngajatDupaNume("Catalin");
+
+
+        cout << d1 << d2;
+
+
     }
-    for (auto &angajat: d2.GetVectAng()) {
-        angajat->ApelareComenzi();
+
+    catch (ArgumentInvalid &err) {
+        std::cout << err.what();
     }
+    catch (ResursaLipsa &err) {
+        std::cout << err.what();
 
-
-     d1.ConcediereAngajatiIneficienti();
-    d1.SetProfitDepartament();
-    d1.SetNrTaskuriTotale();
-
-    cout << "Procentul de reusita al departamentului " << d1.GetNumeDepartament() << " este de : "
-         << d1.CalculareProcentReusitaDepartament() << "% \n";
-    try {
-        d1.AdaugaAngajat(AngajatNet2);
-        //  cout<<d1;
-
-    } catch (EroarePointer &err) { std::cout << err.what() << '\n'; }
-    d1.AfisareAngajatDupaNume("Catalin");
-
-
-    cout << d1 << d2;
-
-
-}
-catch(EroareLaConstructor &err){
-    std::cout<<err.what();
-}
-catch (EroarePointer &err) {
-    std::cout << err.what();
-
-}
-
+    }
+    catch (EroareAplicatie &err) {
+        std::cout << err.what();
+    }
 
 }
 

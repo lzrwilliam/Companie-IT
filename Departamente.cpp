@@ -48,7 +48,7 @@ void Departament::AdaugaAngajat(std::shared_ptr<Angajat> Ang) {
         AngajatiiDinDepartamente.end()) {
         AngajatiiDinDepartamente.emplace_back(Ang);
         cout << "Angajatul " << Ang->GetNume() << " adaugat cu succes \n";
-    } else throw EroarePointer("Nu putem avea mai multi angajati identici! \n");
+    } else throw ResursaLipsa("Nu putem avea mai multi angajati identici! \n");
 
 }
 
@@ -63,7 +63,7 @@ std::shared_ptr<Angajat> Departament::AfisareAngajatDupaNume(const string &nume)
             if (nume.compare(angajat->GetNume()) == 0)
                 return angajat;
     }
-    throw EroarePointer("Angajatul nu exista, se returneaza pointer null!");
+    throw ResursaLipsa("Angajatul nu exista, se returneaza pointer null!");
 }
 
 //std::vector<std::shared_ptr<Angajat>> Departament::GetVectAng() const {
@@ -87,7 +87,7 @@ DepartamenteTehnice::DepartamenteTehnice(const std::string &NumeDepartament,
                                          float Profit, int nrtaskuri) :
         Departament(NumeDepartament, AngajatiDepartamente), ProfitTotal(Profit),
         NrTaskuriTotale(nrtaskuri) {
-    if(AngajatiDepartamente.empty()) throw EroareLaConstructor("Departamentul trebuie sa aiba minim un angajat!");
+    if (AngajatiDepartamente.empty()) throw ArgumentInvalid("Departamentul trebuie sa aiba minim un angajat!");
 
 
 }
@@ -253,7 +253,7 @@ void DepartamentRelatiiClienti::ConcediereAngajatiIneficienti() {
 
 
         }
-    }
+    } else throw PointerInvalid("Nu putem sterge dintr-un vector care este gol!");
 
 }
 

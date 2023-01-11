@@ -34,6 +34,8 @@ public:
 
     friend std::ostream &operator<<(std::ostream &afisare, const Companie &companie);
 
+    void ManagementDepartamente();
+
 };
 
 

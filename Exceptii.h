@@ -13,15 +13,20 @@ class EroareAplicatie:public std::runtime_error{
 };
 
 
-
-class EroareLaConstructor:public EroareAplicatie{
+class ArgumentInvalid : public EroareAplicatie {
 
 public:
-    explicit  EroareLaConstructor(const std::string &string ):EroareAplicatie("Eroare la constructor:"+ string){}
+    explicit ArgumentInvalid(const std::string &string) : EroareAplicatie("Eroare la constructor:" + string) {}
 };
-class EroarePointer:public EroareAplicatie{
+
+class ResursaLipsa : public EroareAplicatie {
 public:
-    explicit  EroarePointer(const std::string &string):EroareAplicatie("Problema la pointer: "+string){}
+    explicit ResursaLipsa(const std::string &string) : EroareAplicatie("Problema la pointer: " + string) {}
+};
+
+class PointerInvalid : public EroareAplicatie {
+public:
+    explicit PointerInvalid(const std::string &string) : EroareAplicatie("Pointerul nu exista : " + string) {}
 };
 
 #endif //OOP_EXCEPTII_H
