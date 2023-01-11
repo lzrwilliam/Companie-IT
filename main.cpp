@@ -12,8 +12,8 @@ int main() {
     std::vector<std::shared_ptr<Task>> TaskuriAngajat;
 
     auto Task1 = TaskRetelistica("Configurare router", 10, 10, 2020, 5, 10, 500).clone();
-    auto Task2 = TaskRetelistica("Inlocuire switch", 10, 10, 2021, 1, 24, 200).clone();
-    auto Task3 = TaskRetelistica("Schimbare placa de retea", 10, 12, 2020, 5, 10,
+    auto Task2 = TaskRetelistica("Inlocuire switch", 10, 10, 2023, 1, 24, 200).clone();
+    auto Task3 = TaskRetelistica("Schimbare placa de retea", 10, 12, 2023, 5, 10,
                                  99).clone();
     TaskuriAngajat.emplace_back(Task1);
     TaskuriAngajat.emplace_back(Task2);
