@@ -63,7 +63,6 @@ PenalizariPentruTaskuriIntarziate=0;
             PenalizariPentruTaskuriIntarziate++;
 
 
-
 }
 
 int Angajat::GetPenalizari() const {
@@ -74,13 +73,37 @@ string Angajat::GetNume() const {
     return NumeAngajat;
 }
 
+void Angajat::RezolvaTask() {
+    std::cout << "Angajatul " << NumeAngajat << " mai are de rezolvat task-urile:";
+    for (const auto &task: TaskAng) {
+        std::cout << task->GetIdTask() << " ";
+    }
+    std::cout << "Alegeti ce task se marcheaza ca rezolvat sau 0 daca se doreste anularea operatiei";
+    int IdTask;
+    std::cin >> IdTask;
+    while (IdTask != 0) {
+
+
+        for (const auto &task: TaskAng) {
+            if (task->GetIdTask() == IdTask) {
+                task->ApelareFunctiiTask();
+                std::cout << "Task-ul " << IdTask << " a fost marcat ca rezolvat daca nu s-a depasit deadline! \n";
+            }
+        }
+
+        std::cin >> IdTask;
+    }
+
+}
+
 //int Angajat::GetId() {
 //    return IdAngajat;
 //}
 
 
-NetworkEngineer::NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>>&TaskAng,float Salariu, int Penalizari, int ReteleRez, int EchipamenteDis,
-                                 int ClientiMultu) : Angajat(Nume, TaskAng,Salariu, Penalizari),
+NetworkEngineer::NetworkEngineer(const string &Nume, const std::vector<std::shared_ptr<Task>> &TaskAng, float Salariu,
+                                 int Penalizari, int ReteleRez, int EchipamenteDis,
+                                 int ClientiMultu) : Angajat(Nume, TaskAng, Salariu, Penalizari),
                                                      ReteleRezolvate(ReteleRez), EchipamenteDistruse(EchipamenteDis),
                                                      ClientiNemultumiti(ClientiMultu) {
 
@@ -107,11 +130,12 @@ int NetworkEngineer::GetReteleRez() const {
 void NetworkEngineer::SetEchipDistruseReteleRez() {
     for(const auto &task: TaskAng ){
         std::shared_ptr<TaskRetelistica> t= std::dynamic_pointer_cast<TaskRetelistica>(task);
-        if(t!= nullptr){
+        if(t!= nullptr) {
 
-            if(!task->GetStatusTask())
-                EchipamenteDistruse+=t->GetEchipamente();
-            else ReteleRezolvate+=t->GetReteleImplicate();
+            if (task->GetStatusTask() == false) {
+                std::cout << "da ";
+                EchipamenteDistruse += t->GetEchipamente();
+            } else ReteleRezolvate += t->GetReteleImplicate();
         }
 
 

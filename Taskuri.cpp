@@ -62,17 +62,28 @@ bool Task::GetTerminatTask() const {
 }
 
 void Task::SetTerminatTask() {
-    if((StatusCurent==true &&Terminat==false) && DiferentaIntreDouaDati(DataCurenta(),Deadline)==false){StatusCurent= false;}  // terminat dupa deadline
-        if(StatusCurent==false && DiferentaIntreDouaDati(DataCurenta(),Deadline)==false) Terminat= false;
-        if(StatusCurent==true && DiferentaIntreDouaDati(DataCurenta(),Deadline))  Terminat=true;
-                // am acoperit cazul in care angajatul terminat task-ul dupa data de deadline, pentru a putea face diferenta intre cele terminate la timp si cu intarziere
+    if ((StatusCurent == true && Terminat == false) &&
+        DiferentaIntreDouaDati(DataCurenta(), Deadline) == false) { StatusCurent = false; }  // terminat dupa deadline
+    if (StatusCurent == false && DiferentaIntreDouaDati(DataCurenta(), Deadline) == false) Terminat = false;
+    if (StatusCurent == true && DiferentaIntreDouaDati(DataCurenta(), Deadline)) Terminat = true;
+    // am acoperit cazul in care angajatul terminat task-ul dupa data de deadline, pentru a putea face diferenta intre cele terminate la timp si cu intarziere
 
 }
 
-void Task::ApelareFunctiiTask() {
-   SetStatusTask();
-   SetTerminatTask();
+void Task::SetTask() {
 
+    StatusCurent = true;
+}
+
+void Task::ApelareFunctiiTask() {
+    SetTask();
+    SetStatusTask();
+    SetTerminatTask();
+
+}
+
+int Task::GetIdTask() const {
+    return IdTask;
 }
 
 shared_ptr<Task> TaskRetelistica::clone() const {

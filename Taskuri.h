@@ -40,6 +40,8 @@ public:
 
     bool GetTerminatTask() const;
 
+    int GetIdTask() const;
+
     void SetTerminatTask();
 
     time_t GetDeadlineTask() const;
@@ -50,6 +52,9 @@ protected:
     Task &operator=(const Task &altul);
 
     Task(const Task &altul) = default;
+
+
+    void SetTask();
 };
 
 class TaskRetelistica : public Task {

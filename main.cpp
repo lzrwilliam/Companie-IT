@@ -18,14 +18,13 @@ int main() {
     TaskuriAngajat.emplace_back(Task1);
     TaskuriAngajat.emplace_back(Task2);
     TaskuriAngajat.emplace_back(Task3);
-    // std::shared_ptr<Angajat> AngajatNet1 = std::make_shared<NetworkEngineer>("William", TaskuriAngajat, 5000, 0, 0, 0);
     auto AngajatNet1 = NetworkEngineer("William", TaskuriAngajat, 5000, 0, 0, 0).clone();
 
     TaskuriAngajat.clear();
 
     auto Task4 = TaskRetelistica("Configurare router", 10, 10, 2020, 5, 10, 500).clone();
-    auto Task5 = TaskRetelistica("Inlocuire switch", 10, 10, 2020, 1, 24, 200).clone();
-    auto Task6 = TaskRetelistica("Schimbare placa de retea", 10, 12, 2020, 5, 10,
+    auto Task5 = TaskRetelistica("Inlocuire switch", 10, 10, 2023, 1, 24, 200).clone();
+    auto Task6 = TaskRetelistica("Schimbare placa de retea", 10, 12, 2023, 5, 10,
                                  99).clone();
     TaskuriAngajat.emplace_back(Task4);
     TaskuriAngajat.emplace_back(Task5);
@@ -33,7 +32,6 @@ int main() {
     auto AngajatNet2 = NetworkEngineer("William", TaskuriAngajat, 5000, 0, 0, 0).clone();
 
     TaskuriAngajat.clear();
-
 
     auto TaskRel1 = TaskRelatiiClienti("Convins client sa vina sa semneze", 10, 10,
                                        2010, 100).clone();
@@ -61,11 +59,16 @@ int main() {
                                                0, 0).clone();
         AngajatCall2->AdaugaTask(TaskRel6);
 
-    DepartamenteTehnice d1("Cisco", {AngajatNet1, AngajatNet2}, 0, 0);
-    DepartamentRelatiiClienti d2("HR", {AngajatCall2, AngajatCall1}, 30);
+        DepartamenteTehnice d1("Cisco", {AngajatNet1, AngajatNet2}, 0, 0);
+        DepartamentRelatiiClienti d2("HR", {AngajatCall2, AngajatCall1}, 30);
 
 
         auto c1 = Companie("Indeco GROUP", {d1.clone(), d2.clone()});
+
+        AngajatNet2->RezolvaTask();
+        for (const auto &task: AngajatNet2->GetVectorTaskAng())
+            cout << *task << "\n";
+        // task-urile se modifica aici n vector, dar mai jos in functie management departamente apar tot restante daca rezolvam unul, las asa, deja am stat prea mult pe ele
 
         c1.ManagementDepartamente();
 
@@ -98,4 +101,3 @@ int main() {
 }
 
 
-//// de facyt functie pt setat status task!!!
