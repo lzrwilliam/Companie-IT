@@ -40,7 +40,7 @@ public:
 
     bool GetTerminatTask() const;
 
-  //  int GetIdTask() const;
+    int GetIdTask() const;
 
     void SetTerminatTask();
 
