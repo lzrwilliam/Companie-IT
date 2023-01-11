@@ -133,7 +133,6 @@ void NetworkEngineer::SetEchipDistruseReteleRez() {
         if(t!= nullptr) {
 
             if (task->GetStatusTask() == false) {
-                std::cout << "da ";
                 EchipamenteDistruse += t->GetEchipamente();
             } else ReteleRezolvate += t->GetReteleImplicate();
         }
@@ -165,7 +164,7 @@ void NetworkEngineer::MarireSalariu() {
 }
 
 void NetworkEngineer::ApelareComenzi() {
-    RezolvaTask();
+    //RezolvaTask();
     SetPenalizariTaskIntarziat();
     SetEchipDistruseReteleRez();
     SetClientiNemultumiti();
@@ -218,7 +217,7 @@ void OperatorCallCenter::SetProcentTargetRealizat() {
 }
 
 void OperatorCallCenter::ApelareComenzi() {
-    RezolvaTask();
+    //  RezolvaTask();
     SetNrApeluri();
    // SetNrTargetLunar(x);
     SetProcentTargetRealizat();
