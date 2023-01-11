@@ -190,7 +190,6 @@ void DepartamenteTehnice::ConcediereAngajatiIneficienti() {
 
 
 
-
 DepartamentRelatiiClienti::DepartamentRelatiiClienti(const std::string &NumeDepartament,
                                                      const std::vector<std::shared_ptr<Angajat>> &AngajatiDepartamente,
                                                      int Target) :
@@ -243,33 +242,21 @@ float DepartamentRelatiiClienti::CalculareProcentReusitaDepartament() const {
 
 
 
+
 void DepartamentRelatiiClienti::ConcediereAngajatiIneficienti() {
-    if (!AngajatiiDinDepartamente.empty()) {
-        for (auto angajat = AngajatiiDinDepartamente.begin(); angajat != AngajatiiDinDepartamente.end();) {
-            if ((*angajat)->GetPenalizari() >= 3) {
-                angajat = AngajatiiDinDepartamente.erase(angajat);
-                cout << "Angajatul " << (*angajat)->GetNume() << " din departamentul Relatii Clienti a fost sters! \n";
-            }
 
+    std::erase_if(AngajatiiDinDepartamente, [](const std::shared_ptr<Angajat> &ang) {
+        if (ang->GetPenalizari() >= 3) {
 
+            cout << "Angajatul " << ang->GetNume()
+                 << " a fost sters din departamentul Relatii Clienti din cauza penalizarilor '\n'";
         }
-    } else throw PointerInvalid("Nu putem sterge dintr-un vector care este gol!");
+        return ang->GetPenalizari() >= 3;
+    });
+
 
 }
 
-//void DepartamentRelatiiClienti::ConcediereAngajatiIneficienti() {
-//
-//    std::erase_if(AngajatiiDinDepartamente, [](const std::shared_ptr<Angajat> &ang) {
-//        return ang->GetPenalizari() >= 3;
-//        {
-//
-//        cout << "Angajatul " << ang->GetNume()
-//             << " a fost sters din departamentul Relatii Clienti din cauza penalizarilor '\n'";}
-//    });
-//
-//
-//}
-//
 
 
 
